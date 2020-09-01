@@ -1,3 +1,4 @@
 {
-    "MongoURI": "mongodb+srv://logibear:sythelord9@devconnector.gz54s.mongodb.net/<dbname>?retryWrites=true&w=majority"
+    "MongoURI": "mongodb+srv://logibear:sythelord9@devconnector.gz54s.mongodb.net/<dbname>?retryWrites=true&w=majority",
+    "jwtSecret": "sourblueberries"
 }
