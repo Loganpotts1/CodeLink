@@ -89,7 +89,6 @@ router
 
             return res.status(500, "The server is having some issues");
         }
-        
     }
 );
 
