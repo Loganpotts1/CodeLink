@@ -4,6 +4,7 @@ const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("config");
+
 const User = require("../../models/User");
 
 const router = express.Router();
@@ -86,10 +87,12 @@ router
 
         } catch(err) {
             console.log(err.message);
+            
             return res.status(500, "The server is having some issues");
         }
         
     }
 );
+
 
 module.exports = router;
