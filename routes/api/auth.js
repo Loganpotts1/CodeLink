@@ -11,11 +11,10 @@ const router = express.Router();
 
 
 
-router
 //  @router     GET api/auth
 //  @desc       Test route
 //  @access     Private
-.get("/",
+router.get("/",
  auth, 
  async (req, res) => {
     try {
@@ -29,6 +28,9 @@ router
         return res.status(500, "The server is having some issues");
     }
 })
+
+
+
 //  @router     POST api/auth
 //  @desc       Validate user
 //  @access     Public
@@ -40,9 +42,8 @@ router
     async (req, res) => {
         const errors = validationResult(req);
 
-        if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
-        }
+        if (!errors.isEmpty())
+        return res.status(400).json({ errors: errors.array() });
 
 
         const { email, password } = req.body;
@@ -51,16 +52,14 @@ router
         try {
             const existingUser = await User.findOne({ email });
 
-            if (!existingUser) {
-                return res.status(400).json({ errors: [{ msg: "Email or password is incorrect" }] });
-            }
+            if (!existingUser)
+            return res.status(400).json({ errors: [{ msg: "Email or password is incorrect" }] });
 
 
             const passwordMatch = await bcrypt.compare(password, existingUser.password);
             
-            if (!passwordMatch) {
-                return res.status(400).json({ errors: [{ msg: "Email or password is incorrect" }] });
-            }
+            if (!passwordMatch)
+            return res.status(400).json({ errors: [{ msg: "Email or password is incorrect" }] });
 
 
             // Create jsonwebtoken
@@ -89,6 +88,7 @@ router
         }
     }
 );
+
 
 
 module.exports = router;

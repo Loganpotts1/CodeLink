@@ -10,11 +10,10 @@ const router = express.Router();
 
 
 
-router
 //  @router     GET api/profile/me
 //  @desc       Get current users profile
 //  @access     Private
-.get("/me",
+router.get("/me",
     auth, 
     async (req, res) => {
 
@@ -22,9 +21,8 @@ router
             const { id } = req.user;
             const profile = await Profile.findOne({ user: id }).populate("user", [ "name", "avatar" ]);
 
-            if (!profile) {
-                return res.status(400).json({ errors: [{ msg: "There is no profile for this user" }] });
-            }
+            if (!profile) 
+            return res.status(400).json({ errors: [{ msg: "There is no profile for this user" }] });
 
 
         } catch (err) {
@@ -33,6 +31,9 @@ router
         }
     }
 )
+
+
+
 //  @router     POST api/profile
 //  @desc       Create or update user profile
 //  @access     Private
@@ -47,9 +48,8 @@ router
     async (req, res) => {
         const errors = validationResult(req);
 
-        if(!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
-        }
+        if(!errors.isEmpty())
+        return res.status(400).json({ errors: errors.array() });
 
 
         const { id } = req.user;
@@ -113,6 +113,9 @@ router
         }
     }
 )
+
+
+
 //  @router     GET api/profile
 //  @desc       Get all profiles
 //  @access     Public
@@ -123,6 +126,29 @@ router
 
             return res.send(profiles);
 
+
+        } catch (err) {
+            console.log(err.message);
+            return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
+        }
+    }
+)
+
+
+
+//  @router     GET api/profile/users/:user_id
+//  @desc       Get profile by user id
+//  @access     Public
+.get("/users/:user_id",
+    async (req, res) => {
+        try {
+            const profile = await Profile.findOne({ user: req.params.user_id }).populate("user", [ "name", "avatar" ]);
+
+            if (!profile)
+            return res.status(400).json({ errors: [{ msg: "There is no profile for this user" }] });
+
+            return res.send(profile);
+
             
         } catch (err) {
             console.log(err.message);
@@ -130,6 +156,7 @@ router
         }
     }
 );
+
 
 
 module.exports = router;

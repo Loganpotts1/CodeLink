@@ -11,11 +11,10 @@ const router = express.Router();
 
 
 
-router
 //  @router     POST api/users
 //  @desc       Register user
 //  @access     Public
-.post("/",
+router.post("/",
     [
         check("name", "Name is required").notEmpty(),
         check("email", "A valid email is required").isEmail(),
@@ -24,9 +23,8 @@ router
     async (req, res) => {
         const errors = validationResult(req);
 
-        if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
-        }
+        if (!errors.isEmpty())
+        return res.status(400).json({ errors: errors.array() });
 
 
         const { name, email, password } = req.body;
