@@ -108,7 +108,24 @@ router
 
 
         } catch (err) {
-            console.log(err);
+            console.log(err.message);
+            return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
+        }
+    }
+)
+//  @router     GET api/profile
+//  @desc       Get all profiles
+//  @access     Public
+.get("/",
+    async (req, res) => {
+        try {
+            const profiles = await Profile.find().populate("user", [ "name", "avatar" ]);
+
+            return res.send(profiles);
+
+            
+        } catch (err) {
+            console.log(err.message);
             return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
         }
     }
