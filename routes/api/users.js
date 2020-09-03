@@ -87,8 +87,7 @@ router
 
         } catch(err) {
             console.log(err.message);
-            
-            return res.status(500, "The server is having some issues");
+            return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
         }
         
     }

@@ -1,5 +1,6 @@
 const express = require("express");
 const { check, validationResult } = require("express-validator");
+const normalize = require("normalize-url");
 
 const auth = require("../../middleware/auth");
 const Profile = require("../../models/Profile");
@@ -28,8 +29,7 @@ router
 
         } catch (err) {
             console.log(err.message);
-
-            return res.status(500, "The server is having some issues");
+            return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
         }
     }
 )
@@ -52,8 +52,9 @@ router
         }
 
 
+        const { id } = req.user;
+
         const {
-            user,
             company,
             website,
             location,
@@ -68,19 +69,48 @@ router
             linkedin
         } = req.body;
 
-        //  Build profile object
+        //  Build profile object (It looks confusing i know, but it's actually fairly simple)
         const profileFields = {
-            user: user.id,
+            user: id,
             company,
             location,
-            website: website.notEmpty() ? normalize(website, { forceHttps: true }) : '',
+            website: website && website !== ""
+                ? normalize(website, { forceHttps: true })
+                : "",
             bio,
             skills: Array.isArray(skills)
-              ? skills
-              : skills.split(',').map((skill) => ' ' + skill.trim()),
+                ? skills
+                : skills.split(",").map((skill) => " " + skill.trim()),
             status,
             githubusername
-          };
+        };
+
+        //  Verifying that socialfields' inputs are actual "http://" web links
+        const socialfields = { youtube, twitter, instagram, linkedin, facebook };
+
+        for (const [key, value] of Object.entries(socialfields)) {
+            if (value && value.length > 0)
+            socialfields[key] = normalize(value, { forceHttps: true });
+        }
+
+        profileFields.social = socialfields;
+
+
+        //  Updates profile, and creates on if one is not found
+        try {
+            let profile = await Profile.findOneAndUpdate(
+                { user: id },
+                { ...profileFields },
+                { new: true, upsert: true }
+            );
+
+            return res.send(profile);
+
+
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
+        }
     }
 );
 
