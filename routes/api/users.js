@@ -5,7 +5,9 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("config");
 
+const auth = require("../../middleware/auth");
 const User = require("../../models/User");
+const Profile = require("../../models/Profile");
 
 const router = express.Router();
 
@@ -88,6 +90,31 @@ router.post("/",
             return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
         }
         
+    }
+)
+
+
+
+//  @router     DELETE api/user
+//  @desc       Delete user, profile, and posts
+//  @access     Private
+.delete("/",
+    auth,
+    async (req, res) => {
+        try {
+            const { id } = req.user;
+
+            await Profile.findOneAndDelete({ user: id });
+
+            await User.findOneAndDelete({ _id: id });
+
+            return res.json({ msg: "User deleted" });
+
+            
+        } catch (err) {
+            console.log(err.message);
+            return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
+        }
     }
 );
 

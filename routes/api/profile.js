@@ -25,6 +25,9 @@ router.get("/me",
             return res.status(400).json({ errors: [{ msg: "There is no profile for this user" }] });
 
 
+            return res.json(profile);
+
+
         } catch (err) {
             console.log(err.message);
             return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
@@ -159,31 +162,6 @@ router.get("/me",
 
 
 
-//  @router     DELETE api/profile
-//  @desc       Delete user, profile, and posts
-//  @access     Private
-.delete("/",
-    auth,
-    async (req, res) => {
-        try {
-            const { id } = req.user;
-
-            await Profile.findOneAndDelete({ user: id });
-
-            await User.findOneAndDelete({ _id: id });
-
-            return res.json({ msg: "User deleted" });
-
-            
-        } catch (err) {
-            console.log(err.message);
-            return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
-        }
-    }
-)
-
-
-
 //  @router     PUT api/profile/experience
 //  @desc       Update profile to include experience
 //  @access     Private
@@ -246,7 +224,7 @@ router.get("/me",
 
 
 
-//  @router     DELETE api/profile/experience/:exp_id
+//  @router     DELETE api/profile/experience/:targeted_exp_id
 //  @desc       Delete profile experience
 //  @access     Private
 .delete("/experience/:targeted_exp_id",
@@ -261,6 +239,104 @@ router.get("/me",
             profile.experience = profile.experience.filter(
                 (exp) => exp._id.toString() !== targeted_exp_id
             );
+
+
+            await profile.save();
+
+            return res.json(profile);
+
+            
+        } catch (err) {
+            console.log(err.message);
+            return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
+        }
+    }
+)
+
+
+
+//  @router     PUT api/profile/education
+//  @desc       Update profile to include education
+//  @access     Private
+.put("/education",
+    [
+        auth,
+        [
+            check("school", "A School is required").notEmpty(),
+            check("degree", "Degree is required").notEmpty(),
+            check("fieldofstudy", "A field of study is required").notEmpty()
+        ]
+    ],
+    async (req, res) => {
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty())
+        return res.status(400).json({ errors: errors.array() });
+
+
+        const { id } = req.user;
+
+        const {
+            school,
+            degree,
+            fieldofstudy,
+            from,
+            to,
+            current,
+            description
+        } = req.body;
+
+        const newEducation = {
+            school,
+            degree,
+            fieldofstudy,
+            from,
+            to,
+            current,
+            description
+        };
+
+
+        try {
+            const profile = await Profile.findOne({ user: id });
+
+            profile.education.unshift(newEducation);
+
+            await profile.save();
+            
+
+            res.json(profile);
+
+
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
+        }
+    }
+)
+
+
+
+//  @router     DELETE api/profile/education
+//  @desc       Delete profile education
+//  @access     Private
+.delete("/education/:targeted_edu_id",
+    auth,
+    async (req, res) => {
+        try {
+            const { id } = req.user;
+            const { targeted_edu_id } = req.params;
+
+            const profile = await Profile.findOne({ user: id });
+
+            profile.education = profile.education.filter(
+                (edu) => edu._id.toString() !== targeted_edu_id
+            );
+
+
+            await profile.save();
+
+            return res.json(profile);
 
             
         } catch (err) {
