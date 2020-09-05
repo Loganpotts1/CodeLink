@@ -10,37 +10,10 @@ const router = express.Router();
 
 
 
-//  @router     GET api/profile/me
-//  @desc       Get current users profile
-//  @access     Private
-router.get("/me",
-    auth, 
-    async (req, res) => {
-
-        try{
-            const { id } = req.user;
-            const profile = await Profile.findOne({ user: id }).populate("user", [ "name", "avatar" ]);
-
-            if (!profile) 
-            return res.status(400).json({ errors: [{ msg: "There is no profile for this user" }] });
-
-
-            return res.json(profile);
-
-
-        } catch (err) {
-            console.log(err.message);
-            return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
-        }
-    }
-)
-
-
-
 //  @router     POST api/profile
 //  @desc       Create or update user profile
 //  @access     Private
-.post("/",
+router.post("/",
     [
         auth,
         [
@@ -119,15 +92,22 @@ router.get("/me",
 
 
 
-//  @router     GET api/profile
-//  @desc       Get all profiles
-//  @access     Public
-.get("/",
+//  @router     GET api/profile/me
+//  @desc       Get current users profile
+//  @access     Private
+.get("/me",
+    auth, 
     async (req, res) => {
-        try {
-            const profiles = await Profile.find().populate("user", [ "name", "avatar" ]);
 
-            return res.send(profiles);
+        try{
+            const { id } = req.user;
+            const profile = await Profile.findOne({ user: id }).populate("user", [ "name", "avatar" ]);
+
+            if (!profile) 
+            return res.status(400).json({ errors: [{ msg: "There is no profile for this user" }] });
+
+
+            return res.json(profile);
 
 
         } catch (err) {
@@ -153,6 +133,26 @@ router.get("/me",
             return res.send(profile);
 
             
+        } catch (err) {
+            console.log(err.message);
+            return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
+        }
+    }
+)
+
+
+
+//  @router     GET api/profile
+//  @desc       Get all profiles
+//  @access     Public
+.get("/",
+    async (req, res) => {
+        try {
+            const profiles = await Profile.find().populate("user", [ "name", "avatar" ]);
+
+            return res.send(profiles);
+
+
         } catch (err) {
             console.log(err.message);
             return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
