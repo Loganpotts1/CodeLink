@@ -236,9 +236,35 @@ router.get("/me",
 
             res.json(profile);
 
-            
+
         } catch (err) {
             console.log(err);
+            return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
+        }
+    }
+)
+
+
+
+//  @router     DELETE api/profile/experience/:exp_id
+//  @desc       Delete profile experience
+//  @access     Private
+.delete("/experience/:targeted_exp_id",
+    auth,
+    async (req, res) => {
+        try {
+            const { id } = req.user;
+            const { targeted_exp_id } = req.params;
+
+            const profile = await Profile.findOne({ user: id });
+
+            profile.experience = profile.experience.filter(
+                (exp) => exp._id.toString() !== targeted_exp_id
+            );
+
+            
+        } catch (err) {
+            console.log(err.message);
             return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
         }
     }
