@@ -180,6 +180,68 @@ router.get("/me",
             return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
         }
     }
+)
+
+
+
+//  @router     PUT api/profile/experience
+//  @desc       Update profile to include experience
+//  @access     Private
+.put("/experience",
+    [
+        auth,
+        [
+            check("title", "A Title is required").notEmpty(),
+            check("company", "A company name is required").notEmpty(),
+            check("from", "A 'from' date is required").notEmpty()
+        ]
+    ],
+    async (req, res) => {
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty())
+        return res.status(400).json({ errors: errors.array() });
+
+
+        const { id } = req.user;
+
+        const {
+            title,
+            company,
+            location,
+            from,
+            to,
+            current,
+            description
+        } = req.body;
+
+        const newExperience = {
+            title,
+            company,
+            location,
+            from,
+            to,
+            current,
+            description
+        };
+
+
+        try {
+            const profile = await Profile.findOne({ user: id });
+
+            profile.experience.unshift(newExperience);
+
+            await profile.save();
+            
+
+            res.json(profile);
+
+            
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
+        }
+    }
 );
 
 
