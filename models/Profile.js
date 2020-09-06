@@ -1,34 +1,45 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const model = mongoose.model;
 
 
-const ProfileSchema = new mongoose.Schema({
+const ProfileSchema = new Schema({
+
     user: { //  Links profile with appropriate user
-        type: mongoose.Schema.Types.ObjectId, //    Tells mongoose the type is "_id:"
+        type: Schema.Types.ObjectId, //    Tells mongoose the type is "_id:"
         ref: "user" // Tells mongoose that this is an "_id:" from the "user" model
     },
+
     company: {
         type: String
     },
+
     website: {
         type: String
     },
+
     location: {
         type: String
     },
+
     status: {
         type: String,
         required: true
     },
+
     skills: {
         type: [String],
         required: true
     },
+
     bio: {
         type: String
     },
+
     githubusername: {
         type: String
     },
+
     experience: [
         {
             title: {
@@ -58,6 +69,7 @@ const ProfileSchema = new mongoose.Schema({
             }
         }
     ],
+
     education: [
         {
             school: {
@@ -88,6 +100,7 @@ const ProfileSchema = new mongoose.Schema({
             }
         }
     ],
+
     social: {
         youtube: {
             type: String
@@ -108,4 +121,4 @@ const ProfileSchema = new mongoose.Schema({
 });
 
 
-module.exports = Profile = mongoose.model("profile", ProfileSchema);
+module.exports = Profile = model("profile", ProfileSchema);
