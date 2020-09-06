@@ -1,6 +1,5 @@
 {
     "MongoURI": "mongodb+srv://logibear:sythelord9@devconnector.gz54s.mongodb.net/<dbname>?retryWrites=true&w=majority",
     "jwtSecret": "sourblueberries",
-    "githubClientId": "e0a39c364f047881b558",
-    "githubClientSecret": "6b95e7b97c4b6b1e7b9f38a69bbea79585afb5f2"
+    "githubToken": "d42398190a7def4b253e2c7f3b906ed06997e6d4"
 }
