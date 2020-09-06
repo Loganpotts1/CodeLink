@@ -25,12 +25,11 @@ router.post("/",
     async (req, res) => {
         const errors = validationResult(req);
 
-        if(!errors.isEmpty())
+        if (!errors.isEmpty())
         return res.status(400).json({ errors: errors.array() });
 
 
         const { id } = req.user;
-
         const {
             company,
             website,
@@ -46,35 +45,36 @@ router.post("/",
             linkedin
         } = req.body;
 
-        //  Build profile object (It looks confusing i know, but it's actually fairly simple)
-        const profileFields = {
-            user: id,
-            company,
-            location,
-            website: website && website !== ""
-                ? normalize(website, { forceHttps: true })
-                : "",
-            bio,
-            skills: Array.isArray(skills)
-                ? skills
-                : skills.split(",").map((skill) => " " + skill.trim()),
-            status,
-            githubusername
-        };
 
-        //  Verifying that socialfields' inputs are actual "http://" web links
-        const socialfields = { youtube, twitter, instagram, linkedin, facebook };
-
-        for (const [key, value] of Object.entries(socialfields)) {
-            if (value && value.length > 0)
-            socialfields[key] = normalize(value, { forceHttps: true });
-        }
-
-        profileFields.social = socialfields;
-
-
-        //  Updates profile, and creates on if one is not found
         try {
+            //  Build profile object (It looks confusing i know, but it's actually fairly simple)
+            const profileFields = {
+                user: id,
+                company,
+                location,
+                website: website && website !== ""
+                    ? normalize(website, { forceHttps: true })
+                    : "",
+                bio,
+                skills: Array.isArray(skills)
+                    ? skills
+                    : skills.split(",").map((skill) => " " + skill.trim()),
+                status,
+                githubusername
+            };
+
+            //  Verifying that socialfields' inputs are actual "http://" web links
+            const socialfields = { youtube, twitter, instagram, linkedin, facebook };
+
+            for (const [key, value] of Object.entries(socialfields)) {
+                if (value && value.length > 0)
+                socialfields[key] = normalize(value, { forceHttps: true });
+            }
+
+            profileFields.social = socialfields;
+
+
+            //  Updates profile, and creates on if one is not found
             let profile = await Profile.findOneAndUpdate(
                 { user: id },
                 { ...profileFields },
@@ -99,9 +99,10 @@ router.post("/",
 .get("/me",
     auth, 
     async (req, res) => {
+        const { id } = req.user;
+
 
         try{
-            const { id } = req.user;
             const profile = await Profile.findOne({ user: id }).populate("user", [ "name", "avatar" ]);
 
             if (!profile) 
@@ -125,11 +126,15 @@ router.post("/",
 //  @access     Public
 .get("/users/:user_id",
     async (req, res) => {
+        const { user_id } = req.params;
+
+
         try {
-            const profile = await Profile.findOne({ user: req.params.user_id }).populate("user", [ "name", "avatar" ]);
+            const profile = await Profile.findOne({ user: user_id }).populate("user", [ "name", "avatar" ]);
 
             if (!profile)
             return res.status(400).json({ errors: [{ msg: "Profile not found" }] });
+
 
             return res.send(profile);
 
@@ -148,6 +153,7 @@ router.post("/",
 //  @access     Public
 .get("/",
     async (req, res) => {
+
         try {
             const profiles = await Profile.find().populate("user", [ "name", "avatar" ]);
 
@@ -183,7 +189,6 @@ router.post("/",
 
 
         const { id } = req.user;
-
         const {
             title,
             company,
@@ -194,18 +199,19 @@ router.post("/",
             description
         } = req.body;
 
-        const newExperience = {
-            title,
-            company,
-            location,
-            from,
-            to,
-            current,
-            description
-        };
-
 
         try {
+            const newExperience = {
+                title,
+                company,
+                location,
+                from,
+                to,
+                current,
+                description
+            };
+
+        
             const profile = await Profile.findOne({ user: id });
 
             profile.experience.unshift(newExperience);
@@ -231,10 +237,11 @@ router.post("/",
 .delete("/experience/:targeted_exp_id",
     auth,
     async (req, res) => {
-        try {
-            const { id } = req.user;
-            const { targeted_exp_id } = req.params;
+        const { id } = req.user;
+        const { targeted_exp_id } = req.params;
 
+
+        try {
             const profile = await Profile.findOne({ user: id });
 
             profile.experience = profile.experience.filter(
@@ -276,7 +283,6 @@ router.post("/",
 
 
         const { id } = req.user;
-
         const {
             school,
             degree,
@@ -287,18 +293,19 @@ router.post("/",
             description
         } = req.body;
 
-        const newEducation = {
-            school,
-            degree,
-            fieldofstudy,
-            from,
-            to,
-            current,
-            description
-        };
-
 
         try {
+            const newEducation = {
+                school,
+                degree,
+                fieldofstudy,
+                from,
+                to,
+                current,
+                description
+            };
+
+        
             const profile = await Profile.findOne({ user: id });
 
             profile.education.unshift(newEducation);
@@ -324,10 +331,11 @@ router.post("/",
 .delete("/education/:targeted_edu_id",
     auth,
     async (req, res) => {
-        try {
-            const { id } = req.user;
-            const { targeted_edu_id } = req.params;
+        const { id } = req.user;
+        const { targeted_edu_id } = req.params;
 
+        
+        try {
             const profile = await Profile.findOne({ user: id });
 
             profile.education = profile.education.filter(
@@ -354,6 +362,7 @@ router.post("/",
 // @access   Public
 .get('/github/:username', 
     async (req, res) => {
+
         try {
             const uri = encodeURI(
               `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc`

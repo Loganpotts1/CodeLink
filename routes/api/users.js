@@ -101,12 +101,14 @@ router.post("/",
 .delete("/",
     auth,
     async (req, res) => {
-        try {
-            const { id } = req.user;
+        const { id } = req.user;
 
+        
+        try {
             await Profile.findOneAndDelete({ user: id });
 
             await User.findOneAndDelete({ _id: id });
+
 
             return res.json({ msg: "User deleted" });
 
