@@ -103,7 +103,7 @@ router.post("/",
     async (req, res) => {
         const { id } = req.user;
 
-        
+
         try {
             await Profile.findOneAndDelete({ user: id });
 
@@ -119,6 +119,7 @@ router.post("/",
         }
     }
 );
+
 
 
 module.exports = router;

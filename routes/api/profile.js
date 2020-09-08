@@ -383,7 +383,8 @@ router.post("/",
             console.error(err.message);
             return res.status(404).json({ errors: [{ msg: 'No Github profile found' }] });
         }
-    });
+    }
+);
 
 
 
