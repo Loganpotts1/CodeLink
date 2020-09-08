@@ -42,8 +42,29 @@ router.post("/",
 
             post = await newPost.save();
 
-            
+
             return res.json(post);
+
+
+        } catch (err) {
+            console.log(err.message);
+            return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
+        }
+    }
+)
+
+
+
+//  @router     Post api/posts
+//  @desc       Create a post
+//  @access     Private
+.get("/",
+    async (req, res) => {
+        try {
+            const posts = await Post.find().sort({ date: -1 }); //  This sorts the posts by the most recent
+
+            
+            res.json(posts);
 
 
         } catch (err) {
