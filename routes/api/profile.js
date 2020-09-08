@@ -170,7 +170,7 @@ router.post("/",
 
 
 //  @router     PUT api/profile/experience
-//  @desc       Update profile to include experience
+//  @desc       Add experience
 //  @access     Private
 .put("/experience",
     [
@@ -232,7 +232,7 @@ router.post("/",
 
 
 //  @router     DELETE api/profile/experience/:targeted_exp_id
-//  @desc       Delete profile experience
+//  @desc       Delete experience
 //  @access     Private
 .delete("/experience/:targeted_exp_id",
     auth,
@@ -264,7 +264,7 @@ router.post("/",
 
 
 //  @router     PUT api/profile/education
-//  @desc       Update profile to include education
+//  @desc       Add education
 //  @access     Private
 .put("/education",
     [
@@ -326,7 +326,7 @@ router.post("/",
 
 
 //  @router     DELETE api/profile/education
-//  @desc       Delete profile education
+//  @desc       Delete education
 //  @access     Private
 .delete("/education/:targeted_edu_id",
     auth,
