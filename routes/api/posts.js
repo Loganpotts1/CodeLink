@@ -2,6 +2,7 @@ const express = require("express");
 const { check, validationResult } = require("express-validator");
 
 const auth = require("../../middleware/auth");
+const checkObjectId = require("../../middleware/checkObjectId");
 const User = require("../../models/User");
 const Profile = require("../../models/Profile");
 const Post = require("../../models/Post");
@@ -10,7 +11,18 @@ const router = express.Router();
 
 
 
-//  @router     Post api/posts
+/*  ROUTES LAYOUT:
+    Create Post - POST
+    Get Post by ID - GET
+    Get All Posts - GET
+    Like Post - PUT
+    Unlike Post - PUT
+    Delete Post - DELETE
+*/
+
+
+
+//  @router     POST api/posts
 //  @desc       Create a post
 //  @access     Private
 router.post("/",
@@ -60,6 +72,7 @@ router.post("/",
 //  @desc       Get post by ID
 //  @access     Public
 .get("/:post_id",
+    checkObjectId("post_id"),
     async (req, res) => {
         const { post_id } = req.params;
 
@@ -110,6 +123,7 @@ router.post("/",
 //  @access     Private
 .put("/like/:post_id",
     auth,
+    checkObjectId("post_id"),
     async (req, res) => {
         const { id } = req.user;
         const { post_id } = req.params;
@@ -118,7 +132,10 @@ router.post("/",
         try {
             const post = await Post.findById(post_id);
 
-            if (post.likes.some(({ user }) => user.toString() === id)) // Checks to see if user has already liked this post
+            // Checks to see if user has already liked this post
+            if (post.likes.some(
+                ({ user }) => user.toString() === id)
+            )
             return res.status(400).json({ errors: [{ msg: "You have already liked this post" }] });
 
 
@@ -144,6 +161,7 @@ router.post("/",
 //  @access     Private
 .put("/unlike/:post_id",
     auth,
+    checkObjectId("post_id"),
     async (req, res) => {
         const { id } = req.user;
         const { post_id } = req.params;
@@ -152,11 +170,16 @@ router.post("/",
         try {
             const post = await Post.findById(post_id);
 
-            if (!post.likes.some(({ user }) => user.toString() === id)) // Checks to see if user has already liked this post
+            // Checks to see if user has NOT liked this post
+            if (!post.likes.some(
+                ({ user }) => user.toString() === id)
+            )
             return res.status(400).json({ errors: [{ msg: "You have not liked this post" }] });
 
 
-            post.likes = post.likes.filter(({ user }) => user.toString() !== id);
+            post.likes = post.likes.filter(
+                ({ user }) => user.toString() !== id
+            );
 
             await post.save();
 
@@ -178,6 +201,7 @@ router.post("/",
 //  @access     Private
 .delete("/:post_id",
     auth,
+    checkObjectId("post_id"),
     async (req, res) => {
         const { id } = req.user;
         const { post_id } = req.params;

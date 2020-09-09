@@ -5,9 +5,23 @@ const config = require("config");
 const axios = require("axios");
 
 const auth = require("../../middleware/auth");
+const checkObjectId = require("../../middleware/checkObjectId");
 const Profile = require("../../models/Profile");
 
 const router = express.Router();
+
+
+
+/*  ROUTES LAYOUT:
+    Create/Update Profile - POST
+    Get Current Profile - GET
+    Get User Profile - GET
+    Create Experience - PUT
+    Delete Experience - DELETE
+    Create Education - PUT
+    Delete Education - DELETE
+    Get User Github - GET
+*/
 
 
 
@@ -125,6 +139,7 @@ router.post("/",
 //  @desc       Get profile by user id
 //  @access     Public
 .get("/users/:user_id",
+    checkObjectId("user_id"),
     async (req, res) => {
         const { user_id } = req.params;
 
@@ -236,6 +251,7 @@ router.post("/",
 //  @access     Private
 .delete("/experience/:targeted_exp_id",
     auth,
+    checkObjectId("targeted_exp_id"),
     async (req, res) => {
         const { id } = req.user;
         const { targeted_exp_id } = req.params;
@@ -245,7 +261,7 @@ router.post("/",
             const profile = await Profile.findOne({ user: id });
 
             profile.experience = profile.experience.filter(
-                (exp) => exp._id.toString() !== targeted_exp_id
+                ({ _id }) => _id.toString() !== targeted_exp_id
             );
 
 
@@ -330,6 +346,7 @@ router.post("/",
 //  @access     Private
 .delete("/education/:targeted_edu_id",
     auth,
+    checkObjectId("targeted_edu_id"),
     async (req, res) => {
         const { id } = req.user;
         const { targeted_edu_id } = req.params;
@@ -339,7 +356,7 @@ router.post("/",
             const profile = await Profile.findOne({ user: id });
 
             profile.education = profile.education.filter(
-                (edu) => edu._id.toString() !== targeted_edu_id
+                ({ _id }) => _id.toString() !== targeted_edu_id
             );
 
 
@@ -362,21 +379,26 @@ router.post("/",
 // @access   Public
 .get('/github/:username', 
     async (req, res) => {
+        const { username } = req.params;
+
 
         try {
+            const githubToken = config.get("githubToken");
+
             const uri = encodeURI(
-              `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc`
+              `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc`
             );
             
             const headers = {
               'user-agent': 'node.js',
-              Authorization: `token ${config.get('githubToken')}`
+              Authorization: `token ${githubToken}`
             };
         
-            const gitHubResponse = await axios.get(uri, { headers });
+
+            const githubRes = await axios.get(uri, { headers });
 
 
-            return res.json(gitHubResponse.data);
+            return res.json(githubRes.data);
             
 
         } catch (err) {

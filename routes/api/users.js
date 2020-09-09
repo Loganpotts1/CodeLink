@@ -13,8 +13,15 @@ const router = express.Router();
 
 
 
+/*  ROUTES LAYOUT:
+    Create User - POST
+    Delete User, Profile, and Posts - DELETE
+*/
+
+
+
 //  @router     POST api/users
-//  @desc       Register user
+//  @desc       Create user
 //  @access     Public
 router.post("/",
     [
