@@ -11,8 +11,15 @@ const router = express.Router();
 
 
 
+/*  ROUTES LAYOUT:
+    Test Route, Get User Id - GET
+    Login User - PUT
+*/
+
+
+
 //  @router     GET api/auth
-//  @desc       Test route
+//  @desc       Test route, get user id
 //  @access     Private
 router.get("/",
  auth, 
@@ -31,10 +38,10 @@ router.get("/",
 
 
 
-//  @router     POST api/auth
-//  @desc       Validate user
+//  @router     PUT api/auth
+//  @desc       Login User
 //  @access     Public
-.post("/",
+.put("/",
     [
         check("email", "A valid email is required").isEmail(),
         check("password", "A password is required").exists()
@@ -65,7 +72,7 @@ router.get("/",
             // Create jsonwebtoken
             const payload = {
                 user: {
-                    id: existingUser.id
+                    userId: existingUser.id
                 }
             }
 
@@ -77,7 +84,7 @@ router.get("/",
                 { expiresIn: 3600000 },
                 (err, token) => {
                     if (err) throw err;
-                    res.json({ token });
+                    return res.json({ token });
                 }
             );
 

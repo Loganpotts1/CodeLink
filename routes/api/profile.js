@@ -14,12 +14,13 @@ const router = express.Router();
 
 /*  ROUTES LAYOUT:
     Create/Update Profile - POST
-    Get Current Profile - GET
-    Get User Profile - GET
     Create Experience - PUT
     Delete Experience - DELETE
     Create Education - PUT
     Delete Education - DELETE
+    Get Current Profile - GET
+    Get User Profile - GET
+    Get All Profiles - GET
     Get User Github - GET
 */
 
@@ -43,14 +44,14 @@ router.post("/",
         return res.status(400).json({ errors: errors.array() });
 
 
-        const { id } = req.user;
+        const { userId } = req.user;
         const {
             company,
             website,
             location,
             bio,
             status,
-            githubusername,
+            githubUsername,
             skills,
             youtube,
             facebook,
@@ -63,7 +64,7 @@ router.post("/",
         try {
             //  Build profile object (It looks confusing i know, but it's actually fairly simple)
             const profileFields = {
-                user: id,
+                user: userId,
                 company,
                 location,
                 website: website && website !== ""
@@ -74,7 +75,7 @@ router.post("/",
                     ? skills
                     : skills.split(",").map((skill) => " " + skill.trim()),
                 status,
-                githubusername
+                githubUsername
             };
 
             //  Verifying that socialfields' inputs are actual "http://" web links
@@ -90,89 +91,12 @@ router.post("/",
 
             //  Updates profile, and creates on if one is not found
             let profile = await Profile.findOneAndUpdate(
-                { user: id },
+                { user: userId },
                 { ...profileFields },
                 { new: true, upsert: true }
             );
 
             return res.send(profile);
-
-
-        } catch (err) {
-            console.log(err.message);
-            return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
-        }
-    }
-)
-
-
-
-//  @router     GET api/profile/me
-//  @desc       Get current users profile
-//  @access     Private
-.get("/me",
-    auth, 
-    async (req, res) => {
-        const { id } = req.user;
-
-
-        try{
-            const profile = await Profile.findOne({ user: id }).populate("user", [ "name", "avatar" ]);
-
-            if (!profile) 
-            return res.status(400).json({ errors: [{ msg: "There is no profile for this user" }] });
-
-
-            return res.json(profile);
-
-
-        } catch (err) {
-            console.log(err.message);
-            return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
-        }
-    }
-)
-
-
-
-//  @router     GET api/profile/users/:user_id
-//  @desc       Get profile by user id
-//  @access     Public
-.get("/users/:user_id",
-    checkObjectId("user_id"),
-    async (req, res) => {
-        const { user_id } = req.params;
-
-
-        try {
-            const profile = await Profile.findOne({ user: user_id }).populate("user", [ "name", "avatar" ]);
-
-            if (!profile)
-            return res.status(400).json({ errors: [{ msg: "Profile not found" }] });
-
-
-            return res.send(profile);
-
-            
-        } catch (err) {
-            console.log(err.message);
-            return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
-        }
-    }
-)
-
-
-
-//  @router     GET api/profile
-//  @desc       Get all profiles
-//  @access     Public
-.get("/",
-    async (req, res) => {
-
-        try {
-            const profiles = await Profile.find().populate("user", [ "name", "avatar" ]);
-
-            return res.send(profiles);
 
 
         } catch (err) {
@@ -203,7 +127,7 @@ router.post("/",
         return res.status(400).json({ errors: errors.array() });
 
 
-        const { id } = req.user;
+        const { userId } = req.user;
         const {
             title,
             company,
@@ -227,9 +151,10 @@ router.post("/",
             };
 
         
-            const profile = await Profile.findOne({ user: id });
+            const profile = await Profile.findOne({ user: userId });
 
             profile.experience.unshift(newExperience);
+
 
             await profile.save();
             
@@ -250,18 +175,20 @@ router.post("/",
 //  @desc       Delete experience
 //  @access     Private
 .delete("/experience/:targeted_exp_id",
-    auth,
-    checkObjectId("targeted_exp_id"),
+    [
+        auth,
+        checkObjectId("targeted_exp_id")
+    ],
     async (req, res) => {
-        const { id } = req.user;
+        const { userId } = req.user;
         const { targeted_exp_id } = req.params;
 
 
         try {
-            const profile = await Profile.findOne({ user: id });
+            const profile = await Profile.findOne({ user: userId });
 
             profile.experience = profile.experience.filter(
-                ({ _id }) => _id.toString() !== targeted_exp_id
+                ({ id }) => id.toString() !== targeted_exp_id
             );
 
 
@@ -288,7 +215,7 @@ router.post("/",
         [
             check("school", "A School is required").notEmpty(),
             check("degree", "Degree is required").notEmpty(),
-            check("fieldofstudy", "A field of study is required").notEmpty()
+            check("fieldOfStudy", "A field of study is required").notEmpty()
         ]
     ],
     async (req, res) => {
@@ -298,11 +225,11 @@ router.post("/",
         return res.status(400).json({ errors: errors.array() });
 
 
-        const { id } = req.user;
+        const { userId } = req.user;
         const {
             school,
             degree,
-            fieldofstudy,
+            fieldOfStudy,
             from,
             to,
             current,
@@ -314,7 +241,7 @@ router.post("/",
             const newEducation = {
                 school,
                 degree,
-                fieldofstudy,
+                fieldOfStudy,
                 from,
                 to,
                 current,
@@ -322,7 +249,7 @@ router.post("/",
             };
 
         
-            const profile = await Profile.findOne({ user: id });
+            const profile = await Profile.findOne({ user: userId });
 
             profile.education.unshift(newEducation);
 
@@ -345,18 +272,20 @@ router.post("/",
 //  @desc       Delete education
 //  @access     Private
 .delete("/education/:targeted_edu_id",
-    auth,
-    checkObjectId("targeted_edu_id"),
+    [
+        auth,
+        checkObjectId("targeted_edu_id")
+    ],
     async (req, res) => {
-        const { id } = req.user;
+        const { userId } = req.user;
         const { targeted_edu_id } = req.params;
 
         
         try {
-            const profile = await Profile.findOne({ user: id });
+            const profile = await Profile.findOne({ user: userId });
 
             profile.education = profile.education.filter(
-                ({ _id }) => _id.toString() !== targeted_edu_id
+                ({ id }) => id.toString() !== targeted_edu_id
             );
 
 
@@ -365,6 +294,83 @@ router.post("/",
             return res.json(profile);
 
             
+        } catch (err) {
+            console.log(err.message);
+            return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
+        }
+    }
+)
+
+
+
+//  @router     GET api/profile/me
+//  @desc       Get current users profile
+//  @access     Private
+.get("/me",
+    auth, 
+    async (req, res) => {
+        const { userId } = req.user;
+
+
+        try{
+            const profile = await Profile.findOne({ user: userId }).populate("user", [ "name", "avatar" ]);
+
+            if (!profile) 
+            return res.status(400).json({ errors: [{ msg: "There is no profile for this user" }] });
+
+
+            return res.json(profile);
+
+
+        } catch (err) {
+            console.log(err.message);
+            return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
+        }
+    }
+)
+
+
+
+//  @router     GET api/profile/users/:user_id
+//  @desc       Get profile by user id
+//  @access     Public
+.get("/users/:user_id",
+    checkObjectId("user_id"),
+    async (req, res) => {
+        const { userId } = req.params;
+
+
+        try {
+            const profile = await Profile.findOne({ user: userId }).populate("user", [ "name", "avatar" ]);
+
+            if (!profile)
+            return res.status(400).json({ errors: [{ msg: "Profile not found" }] });
+
+
+            return res.send(profile);
+
+            
+        } catch (err) {
+            console.log(err.message);
+            return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
+        }
+    }
+)
+
+
+
+//  @router     GET api/profile
+//  @desc       Get all profiles
+//  @access     Public
+.get("/",
+    async (req, res) => {
+
+        try {
+            const profiles = await Profile.find().populate("user", [ "name", "avatar" ]);
+
+            return res.send(profiles);
+
+
         } catch (err) {
             console.log(err.message);
             return res.status(500).json({ errors: [{ msg: "The server is having some issues" }] });
