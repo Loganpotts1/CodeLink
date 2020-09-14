@@ -1,27 +1,28 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
 
     return (
         <nav className="navbar bg-dark">
             <h1>
-                <a href="index.html"><i class="fas fa-code"></i> DevConnector</a>
+                <Link to="/"><i class="fas fa-code"></i> DevConnector</Link>
             </h1>
             <ul>
                 <li>
-                    <a href="profiles.html">
-                        Developers
-                    </a>
+                    <Link to="/profiles">
+                        Profiles
+                    </Link>
                 </li>
                 <li>
-                    <a href="register.html">
+                    <Link to="/register">
                         Register
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a href="login.html">
+                    <Link to="/login">
                         Login
-                    </a>
+                    </Link>
                 </li>
             </ul>
       </nav>
