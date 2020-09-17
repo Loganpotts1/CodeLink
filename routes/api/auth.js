@@ -24,8 +24,10 @@ const router = express.Router();
 router.get("/",
  auth, 
  async (req, res) => {
+    const { userId } = req.user;
+
     try {
-        const user = await User.findById(req.user.id).select("-password");
+        const user = await User.findById(userId).select("-password");
 
         return res.send(user);
 
