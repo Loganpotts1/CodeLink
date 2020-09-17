@@ -1,17 +1,12 @@
 import React, { Fragment } from 'react'
 import axios from 'axios';
 import { Link } from "react-router-dom";
-import { setAlert } from "../../actions/alert";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-
 import { SET_ALERT, REMOVE_ALERT } from "../../actions/types";
-
 
 export default function Register() {
     const dispatch = useDispatch();
-
-
     const [formData, setFormData] = React.useState({
         name: "",
         email: "",
@@ -21,7 +16,7 @@ export default function Register() {
 
     const {name, email, password, password2} = formData;
 
-    function setAlert (msg, alertType, timeout = 5000) {
+    function setAlert(msg, alertType, timeout = 5000) {
         const id = uuidv4();
     
         dispatch({
