@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { SET_ALERT, REMOVE_ALERT } from "../../actions/types";
+import { setAlert } from "../../actions/alert";
 
 export default function Register() {
     const dispatch = useDispatch();
@@ -13,28 +14,12 @@ export default function Register() {
         password: "",
         password2: ""
     });
-
-    const {name, email, password, password2} = formData;
-
-    function setAlert(msg, alertType, timeout = 5000) {
-        const id = uuidv4();
-    
-        dispatch({
-            type: SET_ALERT,
-            payload: {
-                msg,
-                alertType,
-                id
-            }
-        });
-    
-        setTimeout(() => {
-            dispatch({
-                type: REMOVE_ALERT,
-                payload: id
-            })
-        }, timeout);
-    }
+    const {
+        name,
+        email,
+        password,
+        password2
+    } = formData;
 
 
     const onChange = event => setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -44,7 +29,7 @@ export default function Register() {
         event.preventDefault();
 
         if (password !== password2)
-        setAlert("Passwords do not match", "danger");
+        dispatch(setAlert("Passwords do not match", "danger"));
 
         try {
             const newUser = {
