@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment } from "react";
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
@@ -7,23 +7,41 @@ export default function Login() {
         email: "",
         password: "",
     });
+    const {
+        email, 
+        password
+    } = formData;
 
-    const {email, password} = formData;
 
-    const onChange = event => setFormData({ ...formData, [event.target.name]: event.target.value });
+    const onChange = event => setFormData({
+        ...formData, [event.target.name]: event.target.value 
+    });
 
+    
     const onSubmit = async event => {
-
         event.preventDefault();
         console.log("Success");
     }
 
-    return (
+
+    return(
         <Fragment>
-            <h1 className="large text-primary">Sign In</h1>
-            <p className="lead"><i className="fas fa-user"></i> Log Into Your Account</p>
+
+
+            <h1 className="large text-primary">
+                Sign In
+            </h1>
+
+
+            <p className="lead">
+                <i className="fas fa-user"></i>
+                Log Into Your Account
+            </p>
+
+
             <form className="form" onSubmit={onSubmit}>
-            <div className="form-group">
+
+                <div className="form-group">
                     <input 
                         type="email" 
                         placeholder="Email Address" 
@@ -32,6 +50,7 @@ export default function Login() {
                         onChange={onChange}
                     />
                 </div>
+
                 <div className="form-group">
                     <input
                         type="password"
@@ -42,16 +61,25 @@ export default function Login() {
                         onChange={onChange}
                     />
                 </div>
+
                 <input 
                     type="submit" 
                     className="btn btn-primary" 
                     value="Login" 
                     onChange={onChange} 
                 />
+
             </form>
+
+
             <p className="my-1">
-                Don't have an account? <Link to="/register">Sign Up</Link>
+                Don't have an account? 
+                <Link to="/register">
+                    Sign Up
+                </Link>
             </p>
+
+
         </Fragment>
     );
 }

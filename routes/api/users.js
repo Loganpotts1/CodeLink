@@ -42,9 +42,8 @@ router.post("/",
         try {
             const existingUser = await User.findOne({ email });
 
-            if (existingUser) {
-                return res.status(400).json({ errors: [{ msg: "Email address is already in use" }] });
-            }
+            if (existingUser)
+            return res.status(400).json({ errors: [{ msg: "Email address is already in use" }] });
 
 
             // Use gravatar to get avatar from email
@@ -75,7 +74,7 @@ router.post("/",
             // Create jsonwebtoken
             const payload = {
                 user: {
-                    id: user.id
+                    userId: user.id
                 }
             }
 
