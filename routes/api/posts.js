@@ -4,7 +4,6 @@ const { check, validationResult } = require("express-validator");
 const auth = require("../../middleware/auth");
 const checkObjectId = require("../../middleware/checkObjectId");
 const User = require("../../models/User");
-const Profile = require("../../models/Profile");
 const Post = require("../../models/Post");
 
 const router = express.Router();

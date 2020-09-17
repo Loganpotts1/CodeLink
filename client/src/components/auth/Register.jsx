@@ -1,8 +1,17 @@
 import React, { Fragment } from 'react'
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import { setAlert } from "../../actions/alert";
+import { useDispatch } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
+
+import { SET_ALERT, REMOVE_ALERT } from "../../actions/types";
+
 
 export default function Register() {
+    const dispatch = useDispatch();
+
+
     const [formData, setFormData] = React.useState({
         name: "",
         email: "",
@@ -12,14 +21,35 @@ export default function Register() {
 
     const {name, email, password, password2} = formData;
 
+    function setAlert (msg, alertType, timeout = 5000) {
+        const id = uuidv4();
+    
+        dispatch({
+            type: SET_ALERT,
+            payload: {
+                msg,
+                alertType,
+                id
+            }
+        });
+    
+        setTimeout(() => {
+            dispatch({
+                type: REMOVE_ALERT,
+                payload: id
+            })
+        }, timeout);
+    }
+
+
     const onChange = event => setFormData({ ...formData, [event.target.name]: event.target.value });
 
-    const onSubmit = async event => {
 
+    const onSubmit = async event => {
         event.preventDefault();
 
         if (password !== password2)
-        console.log("Passwords do not match");
+        setAlert("Passwords do not match", "danger");
 
         try {
             const newUser = {
