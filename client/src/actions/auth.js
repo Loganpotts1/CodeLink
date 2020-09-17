@@ -5,12 +5,36 @@ import setAuthToken from "../utils/setAuthToken";
 import api from "../utils/api";
 import {
     REGISTER_SUCCESS,
-    REGISTER_FAIL
+	REGISTER_FAIL,
+	USER_LOADED,
+	AUTH_ERROR
 } from "./types";
 
 
-// Register User
+//	Load User
+export const loadUser = () => async dispatch => {
+
+	try {
+		const res = await api.get("/auth");
+
+		dispatch({
+			type: USER_LOADED,
+			payload: res.data
+		});
+
+	} catch (err) {
+
+		setAuthToken();
+
+		dispatch({
+			type: AUTH_ERROR
+		});
+	}
+}
+
+//	Register User
 export const register = formData => async dispatch => {
+
     try {
 		const res = await api.post('/users', formData);
 
@@ -21,7 +45,7 @@ export const register = formData => async dispatch => {
 			payload: res.data
 		});
 
-
+		dispatch(loadUser());
 
 	} catch (err) {
 		const errors = err.response.data.errors;
