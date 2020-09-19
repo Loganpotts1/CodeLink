@@ -24,8 +24,6 @@ export const loadUser = () => async dispatch => {
 
 	} catch (err) {
 
-		setAuthToken();
-
 		dispatch({
 			type: AUTH_ERROR
 		});
@@ -37,8 +35,6 @@ export const register = formData => async dispatch => {
 
     try {
 		const res = await api.post('/users', formData);
-
-		setAuthToken(res.data.token);
 	
 		dispatch({
 			type: REGISTER_SUCCESS,
