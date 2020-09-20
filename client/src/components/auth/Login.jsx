@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { login } from "../../actions/auth";
+import Alert from "../Alert";
 
 export default function Login() {
     const dispatch = useDispatch();
@@ -33,6 +34,9 @@ export default function Login() {
 
     return(
         <Fragment>
+
+
+            <Alert />
 
 
             <h1 className="large text-primary">

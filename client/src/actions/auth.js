@@ -1,13 +1,12 @@
-import axios from "axios";
-
 import { setAlert } from "./alert";
-import setAuthToken from "../utils/setAuthToken";
 import api from "../utils/api";
 import {
     REGISTER_SUCCESS,
 	REGISTER_FAIL,
 	USER_LOADED,
-	AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL
+	AUTH_ERROR,
+	LOGIN_SUCCESS,
+	LOGIN_FAIL
 } from "./types";
 
 
@@ -15,7 +14,7 @@ import {
 export const register = formData => async dispatch => {
 
     try {
-		const res = await api.post('/users', formData);
+		const res = await api.post("/users", formData);
 	
 		dispatch({
 			type: REGISTER_SUCCESS,
@@ -29,7 +28,7 @@ export const register = formData => async dispatch => {
 
 		errors &&
 		errors.forEach(error => 
-			dispatch(setAlert(error.msg, 'danger'))
+			dispatch(setAlert(error.msg, "danger"))
 		);
 	
 
@@ -43,7 +42,7 @@ export const register = formData => async dispatch => {
 export const login = formData => async dispatch => {
 
 	try {
-		const res = api.put("/auth", formData);
+		const res = await api.put("/auth", formData);
 
 		dispatch({
 			type: LOGIN_SUCCESS,
@@ -53,11 +52,12 @@ export const login = formData => async dispatch => {
 		dispatch(loadUser());
 
 	} catch (err) {
+		console.log(err);
 		const errors = err.response.data.errors;
 
 		errors &&
 		errors.forEach(error => 
-			dispatch(setAlert(error.msg, 'danger'))
+			dispatch(setAlert(error.msg, "danger"))
 		);
 		
 		

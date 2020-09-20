@@ -20,10 +20,10 @@ let currentState = store.getState();//  This gets the state of the store as soon
 //  Set listener to store, and update the auth token when necessary
 store.subscribe(() => {
     const previousState = currentState;
-    const prevStoreToken = previousState.auths.token;
+    const prevStoreToken = previousState.auth.token;
 
     currentState = store.getState();
-    const currStoreToken = currentState.auths.token;
+    const currStoreToken = currentState.auth.token;
 
 
     if (currStoreToken !== prevStoreToken)
