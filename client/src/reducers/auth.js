@@ -1,8 +1,9 @@
 import {
     REGISTER_SUCCESS,
-    REGISTER_FAIL,
-    USER_LOADED,
-    AUTH_ERROR
+    // REGISTER_FAIL,
+    USER_LOADED, 
+    LOGOUT,
+    AUTH_ERROR, LOGIN_SUCCESS
 } from "../actions/types";
 
 
@@ -20,19 +21,11 @@ export default function(state = initialState, action) {
     switch(type) {
 
         case REGISTER_SUCCESS:
+        case LOGIN_SUCCESS:
             return {
                 ...state,
                 ...payload,
                 isAuthenticated: true,
-                loading: false
-            };
-
-        case REGISTER_FAIL:
-        case AUTH_ERROR:
-            return {
-                ...state,
-                token: null,
-                isAuthenticated: false,
                 loading: false
             };
 
@@ -42,6 +35,15 @@ export default function(state = initialState, action) {
                 isAuthenticated: true,
                 loading: false,
                 user: payload
+            };
+
+        case LOGOUT:
+        case AUTH_ERROR:
+            return {
+                token: null,
+                isAuthenticated: null,
+                loading: false,
+                user: null
             };
         
         default:

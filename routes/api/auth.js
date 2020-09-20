@@ -19,7 +19,7 @@ const router = express.Router();
 
 
 //  @router     GET api/auth
-//  @desc       Test route, get user id
+//  @desc       Get user
 //  @access     Private
 router.get("/",
  auth, 

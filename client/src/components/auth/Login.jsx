@@ -1,8 +1,11 @@
 import React, { Fragment } from "react";
-import axios from 'axios';
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
+import { login } from "../../actions/auth";
+
 export default function Login() {
+    const dispatch = useDispatch();
     const [formData, setFormData] = React.useState({
         email: "",
         password: "",
@@ -20,8 +23,12 @@ export default function Login() {
     
     const onSubmit = async event => {
         event.preventDefault();
-        console.log("Success");
-    }
+        
+        dispatch(login({
+            email,
+            password
+        }));
+    };
 
 
     return(
@@ -82,4 +89,4 @@ export default function Login() {
 
         </Fragment>
     );
-}
+};

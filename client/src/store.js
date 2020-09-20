@@ -17,17 +17,17 @@ const store = createStore(
 let currentState = store.getState();//  This gets the state of the store as soon as it is created
 
 
-//  Set listener to store, and change the auth token when necessary
+//  Set listener to store, and update the auth token when necessary
 store.subscribe(() => {
     const previousState = currentState;
+    const prevStoreToken = previousState.auths.token;
 
     currentState = store.getState();
+    const currStoreToken = currentState.auths.token;
 
-    if (previousState.auths.token !== currentState.auths.token) {
-        const token = currentState.auths.token;
 
-        setAuthToken(token);
-    }
+    if (currStoreToken !== prevStoreToken)
+    setAuthToken(currStoreToken);
 });
 
 

@@ -16,11 +16,14 @@ export default function App() {
 
 	useEffect(() => {
 		
-		//	Check for localStorage Token
-		if (localStorage.token)
-		setAuthToken(localStorage.token);
+		//	Check for localStorage Token, and load user
+		if (localStorage.token) {
 
-		dispatch(loadUser());
+			setAuthToken(localStorage.token);
+
+			dispatch(loadUser());
+		};
+		
 
 
 		//	If user logs out on one tab, log them out on all tabs
