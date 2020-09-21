@@ -11,7 +11,7 @@ export default function Navbar() {
             <ul>
                 <li>
                     <Link to="/profiles">
-                        Profiles
+                        Developers
                     </Link>
                 </li>
                 <li>

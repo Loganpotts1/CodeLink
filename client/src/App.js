@@ -15,14 +15,13 @@ export default function App() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		console.log("useEffect");
+		
 		//	Check for localStorage Token, and load user
 		if (localStorage.token) {
 
 			setAuthToken(localStorage.token);
 
 			dispatch(loadUser());
-			console.log("Loading Token");
 		}
 		
 

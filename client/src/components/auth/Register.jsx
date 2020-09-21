@@ -1,6 +1,6 @@
 import React, { Fragment } from "react"
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import { register } from "../../actions/auth";
 import { setAlert } from "../../actions/alert";
@@ -8,6 +8,7 @@ import Alert from "../Alert";
 
 
 export default function Register() {
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
     const dispatch = useDispatch();
     const [formData, setFormData] = React.useState({
         name: "",
@@ -21,6 +22,11 @@ export default function Register() {
         password,
         password2
     } = formData;
+
+
+    //  Check to see if user is already logged in, then redirect to /dashboard
+    if (isAuthenticated)
+    return <Redirect to="/dashboard" />;
 
 
     const onChange = event => setFormData({
