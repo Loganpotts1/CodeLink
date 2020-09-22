@@ -1,7 +1,7 @@
 import React, { Fragment } from "react"
 import { Link, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
+//  LOCAL
 import { register } from "../../actions/auth";
 import { setAlert } from "../../actions/alert";
 import Alert from "../Alert";
