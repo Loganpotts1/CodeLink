@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 
-export default function DashboardPage() {
+export default function Dashboard() {
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
     if (!isAuthenticated)

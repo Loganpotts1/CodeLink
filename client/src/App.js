@@ -32,7 +32,7 @@ export default function App() {
 			dispatch({ type: LOGOUT });
 		});
 
-	}, []);
+	}, [dispatch]);
 
 
   return (

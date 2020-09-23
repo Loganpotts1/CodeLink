@@ -1,13 +1,14 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 //  LOCAL
+import PrivateRoute from "./PrivateRoute";
 import Alert from "../util/Alert";
 import Register from "../auth/Register";
 import Login from "../auth/Login";
 import Dashboard from "../layout/Dashboard";
 
 
-export default function Routing(component) {
+export default function Routes() {
 
     return (
         <section className="container">
@@ -17,7 +18,7 @@ export default function Routing(component) {
             <Switch>
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/login" component={Login} />
-                <Route exact path="/dashboard" component={Dashboard} />
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
 
         </section>
