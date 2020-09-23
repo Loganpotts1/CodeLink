@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
-
+//	LOCAL
 import setAuthToken from "./utils/setAuthToken";
-import { loadUser } from './actions/auth';
-import { LOGOUT } from './actions/types';
-import LandingPage from "./components/pages/LandingPage";
-import LoginPage from "./components/pages/LoginPage";
-import RegisterPage from "./components/pages/RegisterPage";
-import './App.css';
+import { loadUser } from "./actions/auth";
+import { LOGOUT } from "./actions/types";
+import Routes from "./components/routing/Routes";
+import Navbar from "./components/layout/Navbar";
+import Landing from "./components/layout/Landing";
+import "./App.css";
 
 
 export default function App() {
@@ -36,22 +36,17 @@ export default function App() {
 
 
   return (
-	<Router>
-		<Switch>
+	  <Router>
+		<Fragment>
 
-			<Route exact path="/">
-				<LandingPage />
-			</Route>
+				<Navbar />
 
-			<Route path="/register">
-				<RegisterPage />
-			</Route>
-
-			<Route path="/login">
-				<LoginPage />
-			</Route>
-				
-		</Switch>
+				<Switch>
+					<Route exact path="/" component={Landing} />
+					<Route component={Routes} />
+				</Switch>
+			
+		</Fragment>
 	</Router>
   );
 };

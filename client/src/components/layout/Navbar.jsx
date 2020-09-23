@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 //  LOCAL
-import { logout } from "../actions/auth";
+import { logout } from "../../actions/auth";
 
 
 export default function Navbar() {
@@ -93,6 +93,6 @@ export default function Navbar() {
             </Fragment>
 
 
-      </nav>
+        </nav>
     );
 }

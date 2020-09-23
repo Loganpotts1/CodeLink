@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 //  LOCAL
 import { register } from "../../actions/auth";
 import { setAlert } from "../../actions/alert";
-import Alert from "../Alert";
 
 
 export default function Register() {
@@ -55,9 +54,6 @@ export default function Register() {
 
     return (
         <Fragment>
-
-
-            <Alert />
 
 
             <h1 className="large text-primary">

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 //  LOCAL
 import { login } from "../../actions/auth";
-import Alert from "../Alert";
+
 
 export default function Login() {
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
@@ -40,9 +40,6 @@ export default function Login() {
 
     return(
         <Fragment>
-
-
-            <Alert />
 
 
             <h1 className="large text-primary">
