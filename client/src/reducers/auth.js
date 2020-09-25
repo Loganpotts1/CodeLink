@@ -1,9 +1,9 @@
 import {
     REGISTER_SUCCESS,
-    // REGISTER_FAIL,
+    LOGIN_SUCCESS,
     USER_LOADED, 
     LOGOUT,
-    AUTH_ERROR, LOGIN_SUCCESS
+    AUTH_ERROR
 } from "../actions/types";
 
 

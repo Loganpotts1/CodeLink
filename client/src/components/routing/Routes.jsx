@@ -6,6 +6,7 @@ import Alert from "../util/Alert";
 import Register from "../auth/Register";
 import Login from "../auth/Login";
 import Dashboard from "../layout/Dashboard";
+import CreateProfile from "../profile/CreateProfile";
 
 
 export default function Routes() {
@@ -19,6 +20,7 @@ export default function Routes() {
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/login" component={Login} />
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                <PrivateRoute exact path="/create-profile" component={CreateProfile} />
             </Switch>
 
         </section>
