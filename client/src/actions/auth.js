@@ -54,7 +54,6 @@ export const login = formData => async dispatch => {
 		dispatch(loadUser());
 
 	} catch (err) {
-		console.log(err);
 		const errors = err.response.data.errors;
 
 		errors &&
