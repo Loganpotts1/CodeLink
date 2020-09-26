@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 //	LOCAL
@@ -37,16 +37,12 @@ export default function App() {
 
   return (
 	  <Router>
-		<Fragment>
+			<Navbar />
 
-				<Navbar />
-
-				<Switch>
-					<Route exact path="/" component={Landing} />
-					<Route component={Routes} />
-				</Switch>
-			
-		</Fragment>
+			<Switch>
+				<Route exact path="/" component={Landing} />
+				<Route component={Routes} />
+			</Switch>
 	</Router>
   );
 };

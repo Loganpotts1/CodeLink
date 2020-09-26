@@ -1,8 +1,13 @@
-import React, { useState, Fragment } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, Fragment } from "react";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+//  LOCAL
+import { createProfile } from "../../actions/profile";
 
 
 export default function CreateProfie() {
+    const { profile } = useSelector(state => state.profile);
+    const dispatch = useDispatch();
     const initialState = {
         company: '',
         website: '',
@@ -44,7 +49,7 @@ export default function CreateProfie() {
 
     const onSubmit = event => {
         event.preventDefault();
-        // createProfile(formData, history, profile ? true : false);
+        dispatch(createProfile(formData, profile ? true : false));
     };
 
 
