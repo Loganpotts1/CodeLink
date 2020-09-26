@@ -26,7 +26,7 @@ export const getCurrentProfile = () => async dispatch => {
 };
 
 
-export const createProfile = (formData, edit = false) => async dispatch => {
+export const createProfile = (formData, history, edit = false) => async dispatch => {
 
     try {
         const res = await api.post("/profile", formData);
@@ -38,10 +38,10 @@ export const createProfile = (formData, edit = false) => async dispatch => {
 
         dispatch(setAlert(edit ? "Profile Edited" : "Profile Created", "success"));
 
+        if (!edit)
+        history.push("/dashboard");
+
     } catch (err) {
-        dispatch({
-            type: PROFILE_ERROR,
-            payload: { msg: err.response.statusText, status: err.response.status }
-        });
+        console.log(err);
     }
 };
