@@ -1,14 +1,15 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 //  LOCAL
-import { createProfile } from "../../actions/profile";
+import { getCurrentProfile, createProfile } from "../../actions/profile";
 
 
 export default function CreateProfile() {
-    const { profile } = useSelector(state => state.profile);
+    const { profile, loading } = useSelector(state => state.profile);
     const dispatch = useDispatch();
     const history = useHistory();
+
     const initialState = {
         company: '',
         website: '',
@@ -23,8 +24,35 @@ export default function CreateProfile() {
         youtube: '',
         instagram: ''
     };
-
     const [ formData, setFormData ] = useState(initialState);
+
+
+    useEffect(() => {
+        //  Make sure that user's profile is in the state
+        if (!profile)
+        dispatch(getCurrentProfile());
+
+        //  Populating const profileData with properties from profile state
+        if (profile && !loading) {
+            const profileData = { ...initialState };
+
+            for (const key in profile) {
+                if (key in profileData)
+                profileData[key] = profile[key];
+            }
+
+            for (const key in profile.social) {
+                if (key in profileData)
+                profileData[key] = profile[key];
+            }
+
+            if (Array.isArray(profile.skills))
+            profileData.skills = profile.skills.join();
+            //  Then set formData to profileData
+            setFormData(profileData);
+        }
+    }, []);
+
     const {
         company,
         website,
