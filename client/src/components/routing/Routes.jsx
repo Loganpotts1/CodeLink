@@ -20,7 +20,7 @@ export default function Routes() {
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/login" component={Login} />
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
-                <PrivateRoute exact path="/create-profile" component={CreateProfile} />
+                <Route exact path="/create-profile" component={CreateProfile} />
             </Switch>
 
         </section>

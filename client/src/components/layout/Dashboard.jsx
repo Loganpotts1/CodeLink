@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 //  LOCAL
 import { getCurrentProfile } from "../../actions/profile";
+import DashboardActions from "./DashboardActions";
 
 
 export default function Dashboard() {
@@ -15,7 +16,6 @@ export default function Dashboard() {
     useEffect(() => {
         dispatch(getCurrentProfile());
     }, [dispatch]);
-
 
     return (
         <Fragment>
@@ -33,6 +33,7 @@ export default function Dashboard() {
                 profile !== null ? 
                 (
                     <Fragment>
+                        <DashboardActions/>
                         <div className="my-2">
                             <button className="btn btn-danger">
                                 <i className="fas fa-user-minus" />
