@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 //  LOCAL
 import { getCurrentProfile, createProfile } from "../../actions/profile";
@@ -79,6 +79,7 @@ export default function CreateProfile() {
     const onSubmit = event => {
         event.preventDefault();
         dispatch(createProfile(formData, history, profile ? true : false));
+        history.push("/dashboard");
     };
 
 
@@ -272,10 +273,10 @@ export default function CreateProfile() {
                 }
 
 
-                <input type="submit" className="btn btn-primary my-1" />
+                <input type="submit" className="btn btn-primary my-1"/>
 
                 <Link className="btn btn-light my-1" to="/dashboard">
-                Go Back
+                    Go Back
                 </Link>
 
             </form>

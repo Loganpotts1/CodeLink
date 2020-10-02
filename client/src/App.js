@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 //	LOCAL
 import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./actions/auth";
-import { getCurrentProfile } from "./actions/profile";
 import { LOGOUT } from "./actions/types";
 import Routes from "./components/routing/Routes";
 import Navbar from "./components/layout/Navbar";
