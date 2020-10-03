@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 //  LOCAL
+import { addEducation } from "../../actions/profile";
 
 
 export default function AddEducation() {
@@ -17,6 +18,15 @@ export default function AddEducation() {
         description: ""
     };
     const [ formData, setFormData ] = useState(initialState);
+    const {
+        school,
+        degree,
+        fieldOfStudy,
+        from,
+        to,
+        current,
+        description
+    } = formData;
 
 
     const onChange = event => {

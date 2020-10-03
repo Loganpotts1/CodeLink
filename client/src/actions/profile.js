@@ -60,7 +60,7 @@ export const createProfile = (formData, history, edit = false) => async dispatch
 };
 
 
-export const updateProfile = (formData, history) => async dispatch => {
+export const addEducation = (formData, history) => async dispatch => {
 
     try {
         const res = await api.put("/education", formData);
