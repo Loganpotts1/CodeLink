@@ -11,18 +11,18 @@ export default function CreateProfile() {
     const history = useHistory();
 
     const initialState = {
-        company: '',
-        website: '',
-        location: '',
-        status: '',
-        skills: '',
-        githubusername: '',
-        bio: '',
-        twitter: '',
-        facebook: '',
-        linkedin: '',
-        youtube: '',
-        instagram: ''
+        company: "",
+        website: "",
+        location: "",
+        status: "",
+        skills: "",
+        githubusername: "",
+        bio: "",
+        twitter: "",
+        facebook: "",
+        linkedin: "",
+        youtube: "",
+        instagram: ""
     };
     const [ formData, setFormData ] = useState(initialState);
 
