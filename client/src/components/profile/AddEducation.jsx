@@ -1,10 +1,12 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 //  LOCAL
 
 
 export default function AddEducation() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const initialState = {
         school: "",
         degree: "",
@@ -16,7 +18,7 @@ export default function AddEducation() {
     };
     const [ formData, setFormData ] = useState(initialState);
 
-    
+
     const onChange = event => {
         setFormData({ ...formData, [event.target.name] : event.target.value });
     }
@@ -78,6 +80,7 @@ export default function AddEducation() {
                         name="fieldOfStudy"
                         value={fieldOfStudy}
                         onChange={onChange}
+                        required
                     />
                 </div>
 

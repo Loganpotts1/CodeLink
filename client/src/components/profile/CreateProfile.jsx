@@ -79,7 +79,6 @@ export default function CreateProfile() {
     const onSubmit = event => {
         event.preventDefault();
         dispatch(createProfile(formData, history, profile ? true : false));
-        history.push("/dashboard");
     };
 
 

@@ -14,9 +14,9 @@ const router = express.Router();
 
 /*  ROUTES LAYOUT:
     Create/Update Profile - POST
-    Create Experience - PUT
+    Add Experience - PUT
     Delete Experience - DELETE
-    Create Education - PUT
+    Add Education - PUT
     Delete Education - DELETE
     Get Current Profile - GET
     Get User Profile - GET

@@ -3,6 +3,7 @@ import api from "../utils/api";
 import { setAlert } from "./alert";
 import {
     GET_PROFILE,
+    UPDATE_PROFILE,
     PROFILE_ERROR
 } from "./types";
 
@@ -36,9 +37,41 @@ export const createProfile = (formData, history, edit = false) => async dispatch
             payload: res.data
         });
 
-        dispatch(setAlert(edit ? "Profile Edited" : "Profile Created", "success"));
+        dispatch(setAlert(
+            edit ? "Profile Edited" : "Profile Created",
+            "success"
+        ));
 
-        if (!edit)
+        history.push("/dashboard");
+
+    } catch (err) {
+        const errors = err.response.data.errors;
+
+		errors &&
+		errors.forEach(error => 
+			dispatch(setAlert(error.msg, "danger"))
+        );
+        
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+};
+
+
+export const updateProfile = (formData, history) => async dispatch => {
+
+    try {
+        const res = await api.put("/education", formData);
+
+        dispatch({
+            type: UPDATE_PROFILE,
+            payload: res.data
+        });
+
+        dispatch(setAlert("Education Added", "success"));
+
         history.push("/dashboard");
 
     } catch (err) {
