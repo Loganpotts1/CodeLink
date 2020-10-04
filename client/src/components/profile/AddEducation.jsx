@@ -1,5 +1,5 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, Fragment } from "react";
+import { useHistory, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 //  LOCAL
 import { addEducation } from "../../actions/profile";
@@ -11,17 +11,17 @@ export default function AddEducation() {
     const initialState = {
         school: "",
         degree: "",
-        fieldOfStudy: "",
+        fieldofstudy: "",
         from: "",
         to: "",
-        current: "",
+        current: false,
         description: ""
     };
     const [ formData, setFormData ] = useState(initialState);
     const {
         school,
         degree,
-        fieldOfStudy,
+        fieldofstudy,
         from,
         to,
         current,
@@ -31,6 +31,7 @@ export default function AddEducation() {
 
     const onChange = event => {
         setFormData({ ...formData, [event.target.name] : event.target.value });
+        console.log(formData);
     }
 
 
@@ -50,13 +51,15 @@ export default function AddEducation() {
             </p>
 
 
-            <small>* = required field</small>
+            <small>
+                * = required field
+            </small>
 
 
             <form
                 className="form"
-                onSubmit={e => {
-                    e.preventDefault();
+                onSubmit={event => {
+                    event.preventDefault();
                     dispatch(addEducation(formData, history));
                 }}
             >
@@ -87,10 +90,9 @@ export default function AddEducation() {
                     <input
                         type="text"
                         placeholder="Field of Study"
-                        name="fieldOfStudy"
-                        value={fieldOfStudy}
+                        name="fieldofstudy"
+                        value={fieldofstudy}
                         onChange={onChange}
-                        required
                     />
                 </div>
 
@@ -98,7 +100,12 @@ export default function AddEducation() {
                     <h4>
                         From Date
                     </h4>
-                    <input type="date" name="from" value={from} onChange={onChange} />
+                    <input 
+                        type="date" 
+                        name="from" 
+                        value={from} 
+                        onChange={onChange} 
+                    />
                 </div>
 
                 <div className="form-group">

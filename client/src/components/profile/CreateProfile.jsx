@@ -72,7 +72,8 @@ export default function CreateProfile() {
 
 
     const onChange = event => {
-        setFormData({ ...formData, [event.target.name]: event.target.value });
+        console.log(formData);
+        setFormData({ ...formData, [event.target.name] : event.target.value });
     }
 
 

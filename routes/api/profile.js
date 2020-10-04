@@ -215,7 +215,7 @@ router.post("/",
         [
             check("school", "A School is required").notEmpty(),
             check("degree", "Degree is required").notEmpty(),
-            check("fieldOfStudy", "A field of study is required").notEmpty()
+            check("fieldofstudy", "A field of study is required").notEmpty()
         ]
     ],
     async (req, res) => {
@@ -229,7 +229,7 @@ router.post("/",
         const {
             school,
             degree,
-            fieldOfStudy,
+            fieldofstudy,
             from,
             to,
             current,
@@ -241,7 +241,7 @@ router.post("/",
             const newEducation = {
                 school,
                 degree,
-                fieldOfStudy,
+                fieldofstudy,
                 from,
                 to,
                 current,
@@ -256,7 +256,7 @@ router.post("/",
             await profile.save();
             
 
-            res.json(profile);
+            return res.json(profile);
 
 
         } catch (err) {
