@@ -2,26 +2,26 @@ import React, { useState, Fragment } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 //  LOCAL
-import { addEducation } from "../../actions/profile";
 
 
-export default function AddEducation() {
+export default function AddExperience() {
     const dispatch = useDispatch();
     const history = useHistory();
     const initialState = {
-        school: "",
-        degree: "",
-        fieldofstudy: "",
+        company: "",
+        title: "",
+        location: "",
         from: "",
         to: "",
         current: false,
         description: ""
     };
-    const [ formData, setFormData ] = useState(initialState);
+
+    const formData = useState(initialState);
     const {
-        school,
-        degree,
-        fieldofstudy,
+        company,
+        title,
+        location,
         from,
         to,
         current,
@@ -33,7 +33,7 @@ export default function AddEducation() {
         setFormData({ ...formData, [event.target.name] : event.target.value });
     }
 
-    
+
     const onSubmit = event => {
         event.preventDefault();
         dispatch(addEducation(formData, history));
@@ -45,14 +45,15 @@ export default function AddEducation() {
 
 
             <h1 className="large text-primary">
-                Add Your Education
+                Add An Experience
             </h1>
 
 
             <p className="lead">
-                <i className="fas fa-code-branch" /> 
-                Add any school or bootcamp that you
-                have attended
+                <i className="fas fa-code-branch" />
+                {' '}
+                Add any developer/programming
+                positions that you have had in the past
             </p>
 
 
@@ -69,9 +70,9 @@ export default function AddEducation() {
                 <div className="form-group">
                     <input
                         type="text"
-                        placeholder="* School or Bootcamp"
-                        name="school"
-                        value={school}
+                        placeholder="* Job Title"
+                        name="title"
+                        value={title}
                         onChange={onChange}
                         required
                     />
@@ -80,9 +81,9 @@ export default function AddEducation() {
                 <div className="form-group">
                     <input
                         type="text"
-                        placeholder="* Degree or Certificate"
-                        name="degree"
-                        value={degree}
+                        placeholder="* Company"
+                        name="company"
+                        value={company}
                         onChange={onChange}
                         required
                     />
@@ -91,9 +92,9 @@ export default function AddEducation() {
                 <div className="form-group">
                     <input
                         type="text"
-                        placeholder="Field of Study"
-                        name="fieldofstudy"
-                        value={fieldofstudy}
+                        placeholder="Location"
+                        name="location"
+                        value={location}
                         onChange={onChange}
                     />
                 </div>
@@ -117,10 +118,12 @@ export default function AddEducation() {
                             name="current"
                             checked={current}
                             value={current}
-                            onChange={() => setFormData({ ...formData, current: !current })}
+                            onChange={() => {
+                                setFormData({ ...formData, current: !current });
+                            }}
                         />
                         {' '}
-                        Current School
+                        Current Job
                     </p>
                 </div>
 
@@ -142,7 +145,7 @@ export default function AddEducation() {
                         name="description"
                         cols="30"
                         rows="5"
-                        placeholder="Program Description"
+                        placeholder="Job Description"
                         value={description}
                         onChange={onChange}
                     />
@@ -157,6 +160,6 @@ export default function AddEducation() {
             </form>
 
 
-      </Fragment>
+        </Fragment>
     );
 }
