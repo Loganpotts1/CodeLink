@@ -2,6 +2,7 @@ import React, { useState, Fragment } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 //  LOCAL
+import { addExperience } from "../../actions/profile";
 
 
 export default function AddExperience() {
@@ -17,7 +18,7 @@ export default function AddExperience() {
         description: ""
     };
 
-    const formData = useState(initialState);
+    const [ formData, setFormData ] = useState(initialState);
     const {
         company,
         title,
@@ -36,7 +37,7 @@ export default function AddExperience() {
 
     const onSubmit = event => {
         event.preventDefault();
-        dispatch(addEducation(formData, history));
+        dispatch(addExperience(formData, history));
     }
 
 

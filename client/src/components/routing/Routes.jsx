@@ -8,6 +8,7 @@ import Login from "../auth/Login";
 import Dashboard from "../layout/Dashboard";
 import CreateProfile from "../profile/CreateProfile";
 import AddEducation from "../profile/AddEducation";
+import AddExperience from "../profile/AddExperience";
 
 
 export default function Routes() {
@@ -23,6 +24,7 @@ export default function Routes() {
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
                 <PrivateRoute exact path="/create-profile" component={CreateProfile} />
                 <PrivateRoute exact path="/add-education" component={AddEducation} />
+                <PrivateRoute exact path="/add-experience" component={AddExperience} />
             </Switch>
 
         </section>
