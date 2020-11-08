@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 //  LOCAL
 import { getCurrentProfile } from "../../actions/profile";
 import DashboardActions from "./DashboardActions";
+import Experience from "./Experience";
 
 
 export default function Dashboard() {
@@ -34,6 +35,7 @@ export default function Dashboard() {
                 (
                     <Fragment>
                         <DashboardActions/>
+                        <Experience experience={profile.experience} />
                         <div className="my-2">
                             <button className="btn btn-danger">
                                 <i className="fas fa-user-minus" />
