@@ -1,14 +1,12 @@
 import React, { Fragment } from "react";
-import { useSelector } from "react-redux";
 import Moment from "react-moment";
 
 
 export default function Education(props) {
-    const state = useSelector(state => state);
     const { education } = props;
 
     const educations = education.map(edu => (
-        <tr key={edu.id}>
+        <tr key={edu._id}>
 
             <td>
                 {edu.school}
