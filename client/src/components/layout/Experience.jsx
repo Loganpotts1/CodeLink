@@ -41,7 +41,7 @@ export default function Experience(props) {
         <Fragment>
 
             <h2 className="my-2">
-                Experience Credentials
+                Experience
             </h2>
 
             <table className="table">
@@ -57,7 +57,7 @@ export default function Experience(props) {
                             Years
                         </th>
                         <th>
-                            {/* Delete Button */}
+                            {/* Column for Delete Buttons */}
                         </th>
                     </tr>
                 </thead>
