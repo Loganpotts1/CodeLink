@@ -3,8 +3,10 @@ import api from "../utils/api";
 import { setAlert } from "./alert";
 import {
     GET_PROFILE,
+    GET_PROFILES,
     UPDATE_PROFILE,
-    PROFILE_ERROR
+    PROFILE_ERROR,
+    CLEAR_PROFILE
 } from "./types";
 
 
@@ -15,6 +17,46 @@ export const getCurrentProfile = () => async dispatch => {
 
         dispatch({
             type: GET_PROFILE,
+            payload: res.data
+        });
+
+    } catch (err) {
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+};
+
+
+export const getProfileById = (userId) => async dispatch => {
+
+    try {
+        dispatch({ type: CLEAR_PROFILE });
+
+        const res = await api.get(`/profile/users/${userId}`);
+
+        dispatch({
+            type: GET_PROFILE,
+            payload: res.data
+        });
+
+    } catch (err) {
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+};
+
+
+export const getAllProfiles = () => async dispatch => {
+
+    try {
+        const res = await api.get("/profile");
+
+        dispatch({
+            type: GET_PROFILES,
             payload: res.data
         });
 

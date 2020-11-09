@@ -337,11 +337,11 @@ router.post("/",
 .get("/users/:user_id",
     checkObjectId("user_id"),
     async (req, res) => {
-        const { userId } = req.params;
+        const { user_id } = req.params;
 
 
         try {
-            const profile = await Profile.findOne({ user: userId }).populate("user", [ "name", "avatar" ]);
+            const profile = await Profile.findOne({ user: user_id }).populate("user", [ "name", "avatar" ]);
 
             if (!profile)
             return res.status(400).json({ errors: [{ msg: "Profile not found" }] });
