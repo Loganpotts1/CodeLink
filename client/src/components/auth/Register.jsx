@@ -63,7 +63,7 @@ export default function Register() {
 
             <p className="lead">
                 <i className="fas fa-user"></i>
-                Create Your Account
+                {" Create Your Account"}
             </p>
 
 
@@ -130,7 +130,7 @@ export default function Register() {
                 Already have an account? 
 
                 <Link to="/login">
-                    Sign In
+                    {" Sign In"}
                 </Link>
                 
             </p>

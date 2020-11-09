@@ -3,7 +3,8 @@ import {
     LOGIN_SUCCESS,
     USER_LOADED, 
     LOGOUT,
-    AUTH_ERROR
+    AUTH_ERROR,
+    ACCOUNT_DELETED
 } from "../actions/types";
 
 
@@ -39,6 +40,7 @@ export default function(state = initialState, action) {
 
         case LOGOUT:
         case AUTH_ERROR:
+        case ACCOUNT_DELETED:
             return {
                 token: null,
                 isAuthenticated: null,

@@ -8,7 +8,8 @@ import {
 	LOGIN_SUCCESS,
 	LOGIN_FAIL,
 	LOGOUT,
-	CLEAR_PROFILE
+	CLEAR_PROFILE,
+	ACCOUNT_DELETED
 } from "./types";
 
 
@@ -92,3 +93,23 @@ export const logout = () => dispatch => {
 	dispatch({ type: CLEAR_PROFILE });
 	dispatch({ type: LOGOUT });
 };
+
+//	Delete Account
+export const deleteAccount = () => async dispatch => {
+
+	if (window.confirm("Are you sure? This can't be undone.")) {
+		try {
+			await api.delete("/users");
+	
+			dispatch({ type: CLEAR_PROFILE });
+			dispatch({ type: ACCOUNT_DELETED });
+
+			dispatch(setAlert("Your account, profile, and posts have been deleted"));
+	
+		} catch (err) {
+			dispatch({
+				type: AUTH_ERROR
+			});
+		}
+	}
+}

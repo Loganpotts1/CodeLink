@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 //  LOCAL
 import { getCurrentProfile } from "../../actions/profile";
+import { deleteAccount } from "../../actions/auth";
 import DashboardActions from "./DashboardActions";
 import Experience from "./Experience";
 import Education from "./Education";
@@ -39,7 +40,7 @@ export default function Dashboard() {
                         <Experience experience={profile.experience} />
                         <Education education={profile.education} />
                         <div className="my-2">
-                            <button className="btn btn-danger">
+                            <button className="btn btn-danger" onClick={() => dispatch(deleteAccount())}>
                                 <i className="fas fa-user-minus" />
                                 {" Delete My Account"}
                             </button>

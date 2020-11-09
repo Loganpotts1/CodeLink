@@ -6,8 +6,8 @@ import { deleteExperience } from "../../actions/profile";
 
 
 export default function Experience(props) {
-    const dispatch = useDispatch();
     const { experience } = props;
+    const dispatch = useDispatch();
 
     const experiences = experience.map(exp => (
         <tr key={exp._id}>

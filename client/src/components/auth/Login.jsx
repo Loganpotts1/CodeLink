@@ -50,7 +50,7 @@ export default function Login() {
 
             <p className="lead">
                 <i className="fas fa-user"></i>
-                Log Into Your Account
+                {" Log Into Your Account"}
             </p>
 
 
@@ -91,7 +91,7 @@ export default function Login() {
                 Don't have an account?
 
                 <Link to="/register">
-                    Sign Up
+                    {" Sign Up"}
                 </Link>
                 
             </p>

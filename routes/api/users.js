@@ -101,20 +101,18 @@ router.post("/",
 
 
 
-//  @router     DELETE api/user
+//  @router     DELETE api/users
 //  @desc       Delete user, profile, and posts
 //  @access     Private
 .delete("/",
     auth,
     async (req, res) => {
-        const { id } = req.user;
+        const { userId } = req.user;
 
 
         try {
-            await Profile.findOneAndDelete({ user: id });
-
-            await User.findOneAndDelete({ _id: id });
-
+            await Profile.findOneAndDelete({ user: userId });
+            await User.findOneAndDelete({ _id: userId });
 
             return res.json({ msg: "User deleted" });
 
