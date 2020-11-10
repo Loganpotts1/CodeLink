@@ -3,7 +3,8 @@ import {
     UPDATE_PROFILE,
     GET_PROFILE,
     GET_PROFILES,
-    PROFILE_ERROR
+    PROFILE_ERROR,
+    GET_REPOS
 } from "../actions/types";
 
 
@@ -50,6 +51,13 @@ export default function(state = initialState, action) {
                 ...state,
                 profile: null,
                 repos: [],
+                loading: false
+            };
+
+        case GET_REPOS:
+            return {
+                ...state,
+                repos: payload,
                 loading: false
             };
             

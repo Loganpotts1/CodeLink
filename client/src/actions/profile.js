@@ -6,7 +6,8 @@ import {
     GET_PROFILES,
     UPDATE_PROFILE,
     PROFILE_ERROR,
-    CLEAR_PROFILE
+    CLEAR_PROFILE,
+    GET_REPOS
 } from "./types";
 
 
@@ -53,6 +54,8 @@ export const getProfileById = (userId) => async dispatch => {
 export const getAllProfiles = () => async dispatch => {
 
     try {
+        dispatch({ type: CLEAR_PROFILE });
+
         const res = await api.get("/profile");
 
         dispatch({
@@ -196,6 +199,25 @@ export const deleteExperience = (id) => async dispatch => {
         dispatch(setAlert("Experience Deleted", "danger"));
 
     } catch (err) { 
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+};
+
+
+export const getGithub = (username) => async dispatch => {
+
+    try {
+        const res = await api.get(`/profile/github/${username}`);
+
+        dispatch({
+            type: GET_REPOS,
+            payload: res.data
+        });
+
+    } catch (err) {
         dispatch({
             type: PROFILE_ERROR,
             payload: { msg: err.response.statusText, status: err.response.status }
