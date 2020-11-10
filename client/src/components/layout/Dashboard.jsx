@@ -12,8 +12,14 @@ import Education from "./Education";
 export default function Dashboard() {
     const dispatch = useDispatch();
     const state = useSelector(state => state);
-    const { user } = state.auth;
-    const { profile } = state.profile;
+    const {
+        auth: {
+            user
+        },
+        profile: {
+            profile
+        }
+    } = state;
 
 
     useEffect(() => {
@@ -33,12 +39,12 @@ export default function Dashboard() {
             </p>
 
             {
-                profile !== null ? 
+                profile ? 
                 (
                     <Fragment>
                         <DashboardActions/>
-                        <Experience experience={profile.experience} />
-                        <Education education={profile.education} />
+                        {profile.experience.length > 0 && <Experience experience={profile.experience} />}
+                        {profile.education.length > 0 && <Education education={profile.education} />}
                         <div className="my-2">
                             <button className="btn btn-danger" onClick={() => dispatch(deleteAccount())}>
                                 <i className="fas fa-user-minus" />

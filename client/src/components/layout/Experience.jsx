@@ -23,7 +23,7 @@ export default function Experience(props) {
             <td>
                 <Moment format="YYYY/MM/DD">
                     {exp.from}
-                </Moment> {"- "}{exp.current ? 
+                </Moment> {"- "}{exp.to ? 
                 (<Moment format="YYYY/MM/DD">
                     {exp.to}
                 </Moment>) :

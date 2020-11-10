@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { addEducation } from "../../actions/profile";
 
 
-export default function AddEducation() {
+export default function AddEducation(props) {
     const dispatch = useDispatch();
     const history = useHistory();
     const initialState = {

@@ -14,7 +14,13 @@ const api = axios.create({
  intercept any error responses from the api
  and check if the token is no longer valid.
 **/
-api.interceptors.response.use(
+const {
+  interceptors: {
+    response
+  }
+} = api;
+
+response.use(
   res => res,
   err => {
     if (err.response.status === 401) {
