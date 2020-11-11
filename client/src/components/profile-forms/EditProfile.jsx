@@ -25,8 +25,6 @@ export default function CreateProfile() {
         instagram: ""
     });
 
-    console.log(profile);
-
 
     useEffect(() => {
         //  Make sure that user's profile is in the state
