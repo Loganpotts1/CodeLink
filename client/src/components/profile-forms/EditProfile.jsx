@@ -10,7 +10,7 @@ export default function CreateProfile() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const initialState = {
+    const [ formData, setFormData ] = useState({
         company: "",
         website: "",
         location: "",
@@ -23,8 +23,9 @@ export default function CreateProfile() {
         linkedin: "",
         youtube: "",
         instagram: ""
-    };
-    const [ formData, setFormData ] = useState(initialState);
+    });
+
+    console.log(profile);
 
 
     useEffect(() => {
@@ -34,25 +35,26 @@ export default function CreateProfile() {
 
         //  Populating const profileData with properties from profile state
         if (profile && !loading) {
-            const profileData = { ...initialState };
+            const temp = { ...formData };
 
             for (const key in profile) {
-                if (key in profileData)
-                profileData[key] = profile[key];
+                if (key in temp)
+                temp[key] = profile[key];
             }
 
             for (const key in profile.social) {
-                if (key in profileData)
-                profileData[key] = profile[key];
+                if (key in temp)
+                temp[key] = profile.social[key] || "";
             }
 
             if (Array.isArray(profile.skills))
-            profileData.skills = profile.skills.join();
+            temp.skills = profile.skills.join();
             //  Then set formData to profileData
-            setFormData(profileData);
+            setFormData(temp);
         }
         // eslint-disable-next-line
     }, []);
+
 
     const {
         company,
@@ -73,8 +75,7 @@ export default function CreateProfile() {
 
 
     const onChange = event => {
-        console.log(formData);
-        setFormData({ ...formData, [event.target.name] : event.target.value });
+        setFormData({ ...formData, [event.target.name]: event.target.value });
     }
 
 
@@ -84,12 +85,13 @@ export default function CreateProfile() {
     };
 
 
-
     return (
         <Fragment>
 
 
-            <h1 className="large text-primary">Edit Your Profile</h1>
+            <h1 className="large text-primary">
+                Edit Your Profile
+            </h1>
 
 
             <p className="lead">
@@ -98,7 +100,9 @@ export default function CreateProfile() {
             </p>
 
 
-            <small>* = required field</small>
+            <small>
+                * = required field
+            </small>
 
 
             <form className="form" onSubmit={onSubmit}>
@@ -213,64 +217,62 @@ export default function CreateProfile() {
 
                 {
                     displaySocialInputs && 
-                    (
-                        <Fragment>
-                            <div className="form-group social-input">
-                                <i className="fab fa-twitter fa-2x" />
-                                <input
-                                    type="text"
-                                    placeholder="Twitter URL"
-                                    name="twitter"
-                                    value={twitter}
-                                    onChange={onChange}
-                                />
-                            </div>
+                    <Fragment>
+                        <div className="form-group social-input">
+                            <i className="fab fa-twitter fa-2x" />
+                            <input
+                                type="text"
+                                placeholder="Twitter URL"
+                                name="twitter"
+                                value={twitter}
+                                onChange={onChange}
+                            />
+                        </div>
 
-                            <div className="form-group social-input">
-                                <i className="fab fa-facebook fa-2x" />
-                                <input
-                                    type="text"
-                                    placeholder="Facebook URL"
-                                    name="facebook"
-                                    value={facebook}
-                                    onChange={onChange}
-                                />
-                            </div>
+                        <div className="form-group social-input">
+                            <i className="fab fa-facebook fa-2x" />
+                            <input
+                                type="text"
+                                placeholder="Facebook URL"
+                                name="facebook"
+                                value={facebook}
+                                onChange={onChange}
+                            />
+                        </div>
 
-                            <div className="form-group social-input">
-                                <i className="fab fa-youtube fa-2x" />
-                                <input
-                                    type="text"
-                                    placeholder="YouTube URL"
-                                    name="youtube"
-                                    value={youtube}
-                                    onChange={onChange}
-                                />
-                            </div>
+                        <div className="form-group social-input">
+                            <i className="fab fa-youtube fa-2x" />
+                            <input
+                                type="text"
+                                placeholder="YouTube URL"
+                                name="youtube"
+                                value={youtube}
+                                onChange={onChange}
+                            />
+                        </div>
 
-                            <div className="form-group social-input">
-                                <i className="fab fa-linkedin fa-2x" />
-                                <input
-                                    type="text"
-                                    placeholder="Linkedin URL"
-                                    name="linkedin"
-                                    value={linkedin}
-                                    onChange={onChange}
-                                />
-                            </div>
+                        <div className="form-group social-input">
+                            <i className="fab fa-linkedin fa-2x" />
+                            <input
+                                type="text"
+                                placeholder="Linkedin URL"
+                                name="linkedin"
+                                value={linkedin}
+                                onChange={onChange}
+                            />
+                        </div>
 
-                            <div className="form-group social-input">
-                                <i className="fab fa-instagram fa-2x" />
-                                <input
-                                    type="text"
-                                    placeholder="Instagram URL"
-                                    name="instagram"
-                                    value={instagram}
-                                    onChange={onChange}
-                                />
-                            </div>
-                        </Fragment>
-                    )
+                        <div className="form-group social-input">
+                            <i className="fab fa-instagram fa-2x" />
+                            <input
+                                type="text"
+                                placeholder="Instagram URL"
+                                name="instagram"
+                                value={instagram}
+                                onChange={onChange}
+                            />
+                        </div>
+                    </Fragment>
                 }
 
 

@@ -62,7 +62,7 @@ router.post("/",
 
 
         try {
-            //  Build profile object (It looks confusing i know, but it's actually fairly simple)
+            //  Build profile object (It looks confusing I know, but it's actually fairly simple)
             const profileFields = {
                 user: userId,
                 company,
@@ -73,7 +73,7 @@ router.post("/",
                 bio,
                 skills: Array.isArray(skills)
                     ? skills
-                    : skills.split(",").map((skill) => " " + skill.trim()),
+                    : skills.split(",").map(skill => " " + skill.trim()),
                 status,
                 githubUsername
             };

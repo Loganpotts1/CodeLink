@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 //  LOCAL
 import { getProfileById } from "../../actions/profile";
 import Spinner from "../util/Spinner";
@@ -15,6 +16,10 @@ export default function Profile(props) {
     const dispatch = useDispatch();
     const state = useSelector(state => state);
     const {
+        auth: {
+            isAuthenticated,
+            user
+        },
         profile: {
             profile,
             loading
@@ -32,7 +37,16 @@ export default function Profile(props) {
                 (!profile) || loading ?
                 <Spinner /> :
                 <Fragment>
-                    Profile
+                    {
+                        isAuthenticated &&
+                        user._id === profile.user._id &&
+                        <Link to="/edit-profile" className="btn btn-dark">
+                            This is my Profile
+                        </Link>
+                    }
+                    <Link to="/profiles" className="btn btn-light">
+                        Back to Developers
+                    </Link>
                 </Fragment>
             }
         </Fragment>

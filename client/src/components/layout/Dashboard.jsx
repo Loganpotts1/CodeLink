@@ -17,7 +17,8 @@ export default function Dashboard() {
             user
         },
         profile: {
-            profile
+            profile,
+            loading
         }
     } = state;
 
@@ -39,7 +40,7 @@ export default function Dashboard() {
             </p>
 
             {
-                profile ? 
+                profile && (!loading) ? 
                 (
                     <Fragment>
                         <DashboardActions/>
@@ -58,7 +59,7 @@ export default function Dashboard() {
                         <p>
                             Why not set up a profile?
                         </p>
-                        <Link to="/create-profile" className="btn btn-primary my-1">
+                        <Link to="/edit-profile" className="btn btn-primary my-1">
                             Create Profile
                         </Link>
                     </Fragment>
