@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 //  LOCAL
 import { getProfileById } from "../../actions/profile";
 import Spinner from "../util/Spinner";
+import ProfileTop from "./ProfileTop";
 
 export default function Profile(props) {
     const {
@@ -37,16 +38,19 @@ export default function Profile(props) {
                 (!profile) || loading ?
                 <Spinner /> :
                 <Fragment>
+                    <Link to="/profiles" className="btn btn-light">
+                        Back to Developers
+                    </Link>
                     {
                         isAuthenticated &&
                         user._id === profile.user._id &&
                         <Link to="/edit-profile" className="btn btn-dark">
-                            This is my Profile
+                            Edit Profile
                         </Link>
                     }
-                    <Link to="/profiles" className="btn btn-light">
-                        Back to Developers
-                    </Link>
+                    <div className="profile-grid my-1">
+                        <ProfileTop profile={profile} />
+                    </div>
                 </Fragment>
             }
         </Fragment>
