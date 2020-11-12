@@ -36,6 +36,7 @@ export default function ProfileAbout(props) {
                     </div>
                 ))}
             </div>
+            
         </div>
     );
 }
