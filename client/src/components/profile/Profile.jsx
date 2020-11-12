@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { getProfileById } from "../../actions/profile";
 import Spinner from "../util/Spinner";
 import ProfileTop from "./ProfileTop";
+import ProfileAbout from "./ProfileAbout";
 
 export default function Profile(props) {
     const {
@@ -50,6 +51,7 @@ export default function Profile(props) {
                     }
                     <div className="profile-grid my-1">
                         <ProfileTop profile={profile} />
+                        <ProfileAbout profile={profile} />
                     </div>
                 </Fragment>
             }
