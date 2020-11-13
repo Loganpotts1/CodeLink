@@ -5,8 +5,13 @@ import { getAllProfiles } from "../../actions/profile";
 import Spinner from "../util/Spinner";
 import ProfileItem from "./ProfileItem";
 
-export default function Profiles(props) {
-    const { profiles, loading } = useSelector(state => state.profile);
+export default function Profiles() {
+    const {
+        profile: {
+            profiles,
+            loading
+        }
+    } = useSelector(state => state);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -32,7 +37,7 @@ export default function Profiles(props) {
 
                     <div className="profiles">
                         {
-                            profiles ?
+                            profiles.length ?
                             profiles.map(profile => (
                                 <ProfileItem key={profile._id} profile={profile} />
                             )) :

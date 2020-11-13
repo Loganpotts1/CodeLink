@@ -8,11 +8,11 @@ import ProfileTop from "./ProfileTop";
 import ProfileAbout from "./ProfileAbout";
 import ProfileExperience from "./ProfileExperience";
 import ProfileEducation from "./ProfileEducation";
+import ProfileGithub from "./ProfileGithub";
+
 
 export default function Profile(props) {
-    const { match: { params: { id } } } = props;
-    const dispatch = useDispatch();
-    const state = useSelector(state => state);
+    const { id } = props.match.params;
     const {
         auth: {
             isAuthenticated,
@@ -22,7 +22,8 @@ export default function Profile(props) {
             profile,
             loading
         }
-    } = state;
+    } = useSelector(state => state);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getProfileById(id));
@@ -30,59 +31,70 @@ export default function Profile(props) {
     },[]);
 
     return (
+        
+        (!profile) || loading ?
+        <Spinner /> :
         <Fragment>
+
+
+            <Link to="/profiles" className="btn btn-light">
+                Back to Developers
+            </Link>
+
+
             {
-                (!profile) || loading ?
-                <Spinner /> :
-                <Fragment>
-
-                    <Link to="/profiles" className="btn btn-light">
-                        Back to Developers
-                    </Link>
-
-                    {
-                        isAuthenticated &&
-                        user._id === profile.user._id &&
-                        <Link to="/edit-profile" className="btn btn-dark">
-                            Edit Profile
-                        </Link>
-                    }
-
-                    <div className="profile-grid my-1">
-                        <ProfileTop profile={profile} />
-                        <ProfileAbout profile={profile} />
-                        <div className="profile-exp bg-white p-2">
-                            <h2 className="text-primary">
-                                Experience
-                            </h2>
-                            {
-                                profile.experience.length ?
-                                profile.experience.map(exp => (
-                                    <ProfileExperience key={exp._id} experience={exp} />
-                                )) :
-                                <h4>
-                                    No Experience
-                                </h4>
-                            }
-                        </div>
-                        <div className="profile-edu bg-white p-2">
-                            <h2 className="text-primary">
-                                Education
-                            </h2>
-                            {
-                                profile.education.length ?
-                                profile.education.map(exp => (
-                                    <ProfileEducation key={exp._id} education={exp} />
-                                )) :
-                                <h4>
-                                    No Education
-                                </h4>
-                            }
-                        </div>
-                    </div>
-
-                </Fragment>
+                isAuthenticated &&
+                user._id === profile.user._id &&
+                <Link to="/edit-profile" className="btn btn-dark">
+                    Edit Profile
+                </Link>
             }
+
+
+            <div className="profile-grid my-1">
+
+                <ProfileTop profile={profile} />
+
+                <ProfileAbout profile={profile} />
+
+                <div className="profile-exp bg-white p-2">
+                    <h2 className="text-primary">
+                        Experience
+                    </h2>
+                    {
+                        profile.experience.length ?
+                        profile.experience.map(exp => (
+                            <ProfileExperience key={exp._id} experience={exp} />
+                        )) :
+                        <h4>
+                            No Experience
+                        </h4>
+                    }
+                </div>
+
+                <div className="profile-edu bg-white p-2">
+                    <h2 className="text-primary">
+                        Education
+                    </h2>
+                    {
+                        profile.education.length ?
+                        profile.education.map(exp => (
+                            <ProfileEducation key={exp._id} education={exp} />
+                        )) :
+                        <h4>
+                            No Education
+                        </h4>
+                    }
+                </div>
+
+                {
+                    profile.githubusername && <ProfileGithub username={profile.githubusername} />
+                }
+                
+            </div>
+
+
         </Fragment>
+            
     );
 }
