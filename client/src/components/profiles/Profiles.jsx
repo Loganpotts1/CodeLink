@@ -37,13 +37,9 @@ export default function Profiles() {
 
                     <div className="profiles">
                         {
-                            profiles.length ?
                             profiles.map(profile => (
                                 <ProfileItem key={profile._id} profile={profile} />
-                            )) :
-                            <h4>
-                                No Profiles Found :(
-                            </h4>
+                            )) 
                         }
                     </div>
 

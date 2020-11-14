@@ -1,5 +1,5 @@
-import { setAlert } from "./alert";
 import api from "../utils/api";
+import { setAlert } from "./alert";
 import {
     REGISTER_SUCCESS,
 	REGISTER_FAIL,
@@ -13,7 +13,6 @@ import {
 } from "./types";
 
 
-//	Register User
 export const register = formData => async dispatch => {
 
     try {
@@ -41,7 +40,7 @@ export const register = formData => async dispatch => {
     }
 };
 
-//	Login User
+
 export const login = formData => async dispatch => {
 
 	try {
@@ -69,7 +68,7 @@ export const login = formData => async dispatch => {
 	}
 };
 
-//	Load User
+
 export const loadUser = () => async dispatch => {
 
 	try {
@@ -81,20 +80,19 @@ export const loadUser = () => async dispatch => {
 		});
 
 	} catch (err) {
-
 		dispatch({
 			type: AUTH_ERROR
 		});
 	}
 };
 
-//	Logout
+
 export const logout = () => dispatch => {
 	dispatch({ type: CLEAR_PROFILE });
 	dispatch({ type: LOGOUT });
 };
 
-//	Delete Account
+
 export const deleteAccount = () => async dispatch => {
 
 	if (window.confirm("Are you sure? This can't be undone.")) {

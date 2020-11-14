@@ -216,6 +216,7 @@ export default function CreateProfile() {
                 {
                     displaySocialInputs && 
                     <Fragment>
+
                         <div className="form-group social-input">
                             <i className="fab fa-twitter fa-2x" />
                             <input
@@ -270,6 +271,7 @@ export default function CreateProfile() {
                                 onChange={onChange}
                             />
                         </div>
+                        
                     </Fragment>
                 }
 
