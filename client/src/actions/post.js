@@ -4,10 +4,11 @@ import {
     POST_ERROR
 } from "./types";
 
+
 export const getAllPosts = () => async dispatch => {
 
     try {
-        const res = await api.get("/");
+        const res = await api.get("/posts");
 
         dispatch({
             type: GET_POSTS,

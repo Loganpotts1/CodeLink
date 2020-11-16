@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 
+
 export default function ProfileAbout(props) {
     const {
         profile: {
