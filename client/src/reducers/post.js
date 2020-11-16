@@ -1,6 +1,7 @@
 import {
     GET_POSTS,
-    POST_ERROR
+    POST_ERROR,
+    UPDATE_LIKES
 } from "../actions/types";
 
 const initialState = {
@@ -19,6 +20,15 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 posts: payload,
+                loading: false
+            };
+
+        case UPDATE_LIKES:
+            return {
+                ...state,
+                post: {
+                    likes: payload
+                },
                 loading: false
             };
 

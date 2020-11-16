@@ -23,6 +23,7 @@ export default function ProfileGithub(props) {
 
             {repos.map(repo => (
                 <div key={repo.id} className="repo bg-white p-1 my-1">
+
                     <div>
                         <h4>
                             <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
@@ -33,6 +34,7 @@ export default function ProfileGithub(props) {
                             {repo.description}
                         </p>
                     </div>
+                    
                     <div>
                         <ul>
                             <li className="badge badge-primary">
@@ -46,6 +48,7 @@ export default function ProfileGithub(props) {
                             </li>
                         </ul>
                     </div>
+                    
                 </div>
             ))}
 
