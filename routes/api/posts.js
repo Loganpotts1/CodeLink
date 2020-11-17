@@ -90,7 +90,7 @@ router.post("/",
             await post.remove();
 
 
-            return res.json({ msg: "Post deleted" });
+            return res.json({ msg: "Post Deleted" });
 
 
         } catch (err) {

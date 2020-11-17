@@ -2,6 +2,8 @@
 import api from "../utils/api";
 import { setAlert } from "./alert";
 import {
+    ADD_POST,
+    DELETE_POST,
     GET_POSTS,
     POST_ERROR,
     UPDATE_LIKES
@@ -30,16 +32,16 @@ export const getAllPosts = () => async dispatch => {
 };
 
 
-export const likePost = (post_id) => async dispatch => {
+export const likePost = (postId) => async dispatch => {
 
     try {
-        const res = await api.put(`posts/like/${post_id}`);
+        const res = await api.put(`posts/like/${postId}`);
 
         dispatch({
             type: UPDATE_LIKES,
             payload: {
                 likes: res.data,
-                post_id
+                postId
             }
         });
         
@@ -55,12 +57,41 @@ export const likePost = (post_id) => async dispatch => {
 };
 
 
-export const deletePost = (post_id) => async dispatch => {
+export const createPost = formData => async dispatch => {
 
     try {
-        const res = await api.delete(`/posts/${post_id}`);
+        const res = await api.post("/posts", formData);
 
-        dispatch(setAlert(res.data.msg, "success"));
+        dispatch({
+            type: ADD_POST,
+            payload: res.data
+        });
+
+        dispatch(setAlert("Post Created", "success"));
+
+    } catch (err) {
+        dispatch({
+            type: POST_ERROR,
+            payload: {
+                msg: err.response.statusText,
+                status: err.response.status 
+            }
+        });
+    }
+}
+
+
+export const deletePost = (postId) => async dispatch => {
+
+    try {
+        const res = await api.delete(`/posts/${postId}`);
+
+        dispatch(setAlert(res.data.msg));
+
+        dispatch({
+            type: DELETE_POST,
+            payload: postId
+        });
 
     } catch (err) {
         const errors = err.response.data.errors;

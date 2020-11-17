@@ -1,4 +1,6 @@
 import {
+    ADD_POST,
+    DELETE_POST,
     GET_POSTS,
     POST_ERROR,
     UPDATE_LIKES
@@ -24,18 +26,30 @@ export default function(state = initialState, action) {
             };
 
         case UPDATE_LIKES:
-            const updatedPosts = state.posts.map(post => {
-                if (post._id === payload.post_id) {
-                    post.likes = payload.likes;
-                }
-                return post;
-            });
-
             return {
                 ...state,
-                posts: updatedPosts,
+                posts: state.posts.map(post => {
+                    if (post._id === payload.postId) {
+                        post.likes = payload.likes;
+                    }
+                    return post;
+                }),
                 loading: false
             };
+
+        case ADD_POST:
+            return {
+                ...state,
+                posts: [payload, ...state.posts],
+                loading: false
+            };
+
+        case DELETE_POST:
+            return {
+                ...state,
+                posts: state.posts.filter(post => post._id !== payload),
+                loading: false
+            }
 
         case POST_ERROR:
             return {
