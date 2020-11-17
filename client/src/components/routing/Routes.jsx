@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 //  LOCAL
 import PrivateRoute from "./PrivateRoute";
-import Alert from "../util/Alert";
+import Alert from "../utils/Alert";
 import Register from "../auth/Register";
 import Login from "../auth/Login";
 import Profile from "../profile/Profile";

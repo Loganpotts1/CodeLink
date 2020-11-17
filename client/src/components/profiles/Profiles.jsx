@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 //  LOCAL
 import { getAllProfiles } from "../../actions/profile";
-import Spinner from "../util/Spinner";
+import Spinner from "../utils/Spinner";
 import ProfileItem from "./ProfileItem";
 
 export default function Profiles() {

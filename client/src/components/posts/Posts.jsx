@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 //  LOCAL
 import { getAllPosts } from "../../actions/post";
-import Spinner from "../util/Spinner";
+import Spinner from "../utils/Spinner";
 import PostItem from "./PostItem";
 
 
@@ -34,7 +34,7 @@ export default function Posts() {
                 {" Welcome to the community"}
             </p>
 
-            // Post Form
+            {/*Post Form*/}
 
             <div className="posts">
                 {

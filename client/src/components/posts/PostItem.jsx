@@ -1,4 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+// LOCAL
+import formatDate from "../../utils/formatDate";
+import { likePost, deletePost } from "../../actions/post";
 
 
 export default function PostItem(props) {
@@ -14,6 +19,9 @@ export default function PostItem(props) {
             date
         }
     } = props;
+    const { auth } = useSelector(state => state);
+    const dispatch = useDispatch();
+
 
     return (
         <div className="post bg-white p-1 my-1">
@@ -35,26 +43,25 @@ export default function PostItem(props) {
                     Posted on {formatDate(date)}
                 </p>
                 {
-                    showActions &&
+                    //showActions &&
                     <Fragment>
 
-                        <button onClick={() => addLike(_id)} type="button" className="btn btn-light">
+                        <button onClick={() => dispatch(likePost(_id))} type="button" className="btn btn-light">
                             <i className="fas fa-thumbs-up" />
-                            {' '}
                             <span>
-                                {likes.length > 0 && <span>{likes.length}</span>}
+                                {likes.length > 0 && <span> {likes.length}</span>}
                             </span>
                         </button>
 
                         <Link to={`/posts/${_id}`} className="btn btn-primary">
                             Discussion
-                            {' '}
+                            {" "}
                             {comments.length > 0 && <span className="comment-count">{comments.length}</span>}
                         </Link>
 
                         {
                             !auth.loading && user === auth.user._id &&
-                            <button onClick={() => deletePost(_id)} type="button" className="btn btn-danger">
+                            <button onClick={() => dispatch(deletePost(_id))} type="button" className="btn btn-danger">
                                 <i className="fas fa-times" />
                             </button>
                         }

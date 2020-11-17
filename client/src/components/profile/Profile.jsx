@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 //  LOCAL
 import { getProfileById } from "../../actions/profile";
-import Spinner from "../util/Spinner";
+import Spinner from "../utils/Spinner";
 import ProfileTop from "./ProfileTop";
 import ProfileAbout from "./ProfileAbout";
 import ProfileExperience from "./ProfileExperience";

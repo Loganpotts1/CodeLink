@@ -1,5 +1,6 @@
 import React from "react";
-import Moment from "react-moment";
+// LOCAL
+import formatDate from "../../utils/formatDate";
 
 
 export default function ProfileExperience(props) {
@@ -21,13 +22,7 @@ export default function ProfileExperience(props) {
                 {company}
             </h3>
             <p>
-                <Moment format="YYYY/MM/DD">{from}</Moment>
-                {" - "}
-                {
-                    current ?
-                    ("Current") :
-                    <Moment format="YYYY/MM/DD">{to}</Moment>
-                }
+                {formatDate(from)} - {current ? "Current" : formatDate(to)}
             </p>
             <p>
                 <strong>Position: </strong> {title}

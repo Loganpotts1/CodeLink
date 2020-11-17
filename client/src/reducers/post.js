@@ -24,11 +24,16 @@ export default function(state = initialState, action) {
             };
 
         case UPDATE_LIKES:
+            const updatedPosts = state.posts.map(post => {
+                if (post._id === payload.post_id) {
+                    post.likes = payload.likes;
+                }
+                return post;
+            });
+
             return {
                 ...state,
-                post: {
-                    likes: payload
-                },
+                posts: updatedPosts,
                 loading: false
             };
 
