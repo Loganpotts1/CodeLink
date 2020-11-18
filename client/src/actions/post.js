@@ -2,6 +2,7 @@
 import api from "../utils/api";
 import { setAlert } from "./alert";
 import {
+    ADD_COMMENT,
     ADD_POST,
     DELETE_POST,
     GET_POST,
@@ -14,6 +15,7 @@ import {
 export const getPost = postId => async dispatch => {
 
     try {
+
         const res = await api.get(`/posts/${postId}`);
 
         dispatch({
@@ -80,6 +82,30 @@ export const likePost = (postId) => async dispatch => {
 };
 
 
+export const createComment = (postId, formData) => async dispatch => {
+
+    try {
+        const res = await api.post(`/posts/comment/${postId}`, formData);
+
+        dispatch({
+            type: ADD_COMMENT,
+            payload: res.data
+        });
+
+        dispatch(setAlert("Comment Created", "success"));
+
+    } catch (err) {
+        dispatch({
+            type: POST_ERROR,
+            payload: {
+                msg: err.response.statusText,
+                status: err.response.status 
+            }
+        });
+    }
+};
+
+
 export const createPost = formData => async dispatch => {
 
     try {
@@ -101,7 +127,7 @@ export const createPost = formData => async dispatch => {
             }
         });
     }
-}
+};
 
 
 export const deletePost = (postId) => async dispatch => {

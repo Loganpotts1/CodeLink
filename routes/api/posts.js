@@ -14,7 +14,8 @@ const router = express.Router();
     Create Post - POST
     Delete Post - DELETE
     Like/Unlike Post - PUT
-    Comment on Post - PUT
+    Comment on Post - POST
+    Delete Comment - DELETE
     Get Post by ID - GET
     Get All Posts - GET
 */
@@ -151,10 +152,10 @@ router.post("/",
 
 
 
-//  @router     PUT api/posts/comment/:post_id
+//  @router     POST api/posts/comment/:post_id
 //  @desc       Create a post comment
 //  @access     Private
-.put("/comment/:post_id",
+.post("/comment/:post_id",
     [
         auth,
         checkObjectId("post_id"),
@@ -201,7 +202,7 @@ router.post("/",
 )
 
 
-//  @router     PUT api/posts/comment/:post_id/:comment_id
+//  @router     DELETE api/posts/comment/:post_id/:comment_id
 //  @desc       Delete a post comment
 //  @access     Private
 .delete("/comment/:post_id/:comment_id",

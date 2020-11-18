@@ -1,4 +1,5 @@
 import {
+    ADD_COMMENT,
     ADD_POST,
     DELETE_POST,
     GET_POST,
@@ -42,6 +43,13 @@ export default function(state = initialState, action) {
                     }
                     return post;
                 }),
+                loading: false
+            };
+
+        case ADD_COMMENT:
+            return {
+                ...state,
+                post: payload,
                 loading: false
             };
 

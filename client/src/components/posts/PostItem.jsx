@@ -17,7 +17,8 @@ export default function PostItem(props) {
             likes,
             comments,
             date
-        }
+        },
+        showActions = true
     } = props;
     const { auth } = useSelector(state => state);
     const dispatch = useDispatch();
@@ -43,7 +44,7 @@ export default function PostItem(props) {
                     Posted on {formatDate(date)}
                 </p>
                 {
-                    //showActions &&
+                    showActions &&
                     <Fragment>
 
                         <button onClick={() => dispatch(likePost(_id))} type="button" className="btn btn-light">
