@@ -19,7 +19,7 @@ export default function PostForm() {
 
             <div className='bg-primary p'>
                 <h3>
-                    Say Something...
+                    Join the Conversation!
                 </h3>
             </div>
 
