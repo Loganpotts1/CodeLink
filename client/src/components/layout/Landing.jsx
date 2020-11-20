@@ -17,7 +17,7 @@ export default function Landing() {
             <div className="dark-overlay">
 
 
-                <div className="landing-inner">
+                <div className="landing__inner">
 
                     <h1 className="x-large">
                         Developer Connector

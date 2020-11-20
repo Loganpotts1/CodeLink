@@ -16,7 +16,7 @@ export default function CommentForm(props) {
     }
 
     return (
-        <div className='post-form'>
+        <div className='post__form'>
 
             <div className='bg-primary p'>
                 <h3>

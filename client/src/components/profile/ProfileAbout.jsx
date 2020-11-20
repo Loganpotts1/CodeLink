@@ -13,7 +13,7 @@ export default function ProfileAbout(props) {
     } = props;
 
     return (
-        <div className='profile-about bg-light p-2'>
+        <div className='profile__about bg-light p-2'>
 
             {bio && (
                 <Fragment>

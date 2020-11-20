@@ -15,7 +15,7 @@ export default function ProfileGithub(props) {
     }, []);
 
     return (
-        <div className="profile-github">
+        <div className="profile__github">
 
             <h2 className="text-primary my-1">
                 Github Repos

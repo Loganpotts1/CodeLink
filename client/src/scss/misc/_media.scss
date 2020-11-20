@@ -51,13 +51,13 @@
 
   /* Profile Page */
 
-  .profile-top img,
+  .profile__top img,
   .profile img {
     width: 200px;
     margin: auto;
   }
 
-  .profile-grid {
+  .profile__grid {
     grid-template-areas:
       'top'
       'about'
@@ -66,7 +66,7 @@
       'github';
   }
 
-  .profile-about .skills {
+  .profile__about .skills {
     flex-direction: column;
   }
 

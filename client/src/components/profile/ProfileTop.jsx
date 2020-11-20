@@ -17,7 +17,7 @@ export default function ProfileTop(props) {
     } = props;
 
     return (
-        <div className="profile-top bg-primary p-2">
+        <div className="profile__top bg-primary p-2">
 
             <img className="round-img my-1" src={avatar} alt="user avatar" />
 

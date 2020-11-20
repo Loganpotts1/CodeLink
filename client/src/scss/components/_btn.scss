@@ -10,16 +10,28 @@
     margin-right: 0.5rem;
     transition: opacity 0.2s ease-in;
     outline: none;
-}
 
-.btn-white {
-    color: var(--light-color);
-}
+    &:hover {
+        opacity: 0.8;
+    }
 
-.btn-dark {
-  color: var(--dark-color);
-}
+    &-primary {
+        color: var(--primary-color);
+    }
 
-.btn:hover {
-    opacity: 0.8;
+    &-white {
+        color: var(--light-color);
+    }
+
+    &-dark {
+        color: var(--dark-color);
+    }
+
+    &-success {
+        color: var(--success-color);
+    }
+
+    &-danger {
+        color: var(--danger-color);
+    }
 }
