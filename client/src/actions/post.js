@@ -3,6 +3,7 @@ import api from "../utils/api";
 import { setAlert } from "./alert";
 import {
     ADD_COMMENT,
+    DELETE_COMMENT,
     ADD_POST,
     DELETE_POST,
     GET_POST,
@@ -93,6 +94,30 @@ export const createComment = (postId, formData) => async dispatch => {
         });
 
         dispatch(setAlert("Comment Created", "success"));
+
+    } catch (err) {
+        dispatch({
+            type: POST_ERROR,
+            payload: {
+                msg: err.response.statusText,
+                status: err.response.status 
+            }
+        });
+    }
+};
+
+
+export const deleteComment = (postId, commentId) => async dispatch => {
+
+    try {
+        const res = await api.delete(`/posts/comment/${postId}/${commentId}`);
+
+        dispatch({
+            type: DELETE_COMMENT,
+            payload: res.data
+        });
+
+        dispatch(setAlert("Comment Deleted"));
 
     } catch (err) {
         dispatch({

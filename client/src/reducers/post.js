@@ -1,6 +1,7 @@
 import {
     ADD_COMMENT,
     ADD_POST,
+    DELETE_COMMENT,
     DELETE_POST,
     GET_POST,
     GET_POSTS,
@@ -47,9 +48,13 @@ export default function(state = initialState, action) {
             };
 
         case ADD_COMMENT:
+        case DELETE_COMMENT:
             return {
                 ...state,
-                post: payload,
+                post: {
+                    ...state.post,
+                    comments: payload
+                },
                 loading: false
             };
 
