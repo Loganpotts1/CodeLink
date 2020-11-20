@@ -8,7 +8,7 @@ import { LOGOUT } from "./actions/types";
 import Routes from "./components/routing/Routes";
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
-import "./App.css";
+import "./scss/main.min.css";
 
 
 export default function App() {

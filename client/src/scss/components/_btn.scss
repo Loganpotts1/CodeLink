@@ -1,0 +1,25 @@
+.btn {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0);
+    color: #333;
+    padding: 0.4rem 1.3rem;
+    font-size: 1rem;
+    border: 1px solid currentColor;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    transition: opacity 0.2s ease-in;
+    outline: none;
+}
+
+.btn-white {
+    color: var(--light-color);
+}
+
+.btn-dark {
+  color: var(--dark-color);
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
