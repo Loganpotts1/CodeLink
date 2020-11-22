@@ -1,3 +1,7 @@
+.test {
+  font-family: var(--font-display);
+}
+
 .badge {
   font-size: 0.8rem;
   padding: 0.1rem;
@@ -18,7 +22,7 @@
 .badge-primary,
 .alert-primary {
   background: rgba(var(--primary-color), 1);
-  color: rgba(var(--primary-color), 1);
+  color: rgba(var(--dark-color), 1);
 }
 
 .bg-light,

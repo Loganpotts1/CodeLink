@@ -10,7 +10,7 @@ import {
 
 const initialState = {
     token: localStorage.getItem("token"),
-    isAuthenticated: null,
+    isAuthenticated: false,
     loading: true,
     user: null
 };
@@ -43,7 +43,7 @@ export default function(state = initialState, action) {
         case ACCOUNT_DELETED:
             return {
                 token: null,
-                isAuthenticated: null,
+                isAuthenticated: false,
                 loading: false,
                 user: null
             };

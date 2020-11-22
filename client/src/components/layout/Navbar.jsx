@@ -77,7 +77,7 @@ export default function Navbar() {
     return (
         <nav className="navbar bg-dark">
 
-            <h1>
+            <h1 className="logo">
                 <Link to="/">
                     <i className="fas fa-code"/>
                     {" CODELINK"}

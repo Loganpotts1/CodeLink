@@ -38,11 +38,17 @@
         color: rgba(var(--dark-color), 1);
       }
     }
+
+    .fas,
+    .fab {
+      color: rgba(var(--dark-color), .8);
+    }
   }
 
   &__about {
     grid-area: about;
     text-align: center;
+    border-radius: 3px;
 
     .skills {
       display: flex;

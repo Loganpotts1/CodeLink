@@ -14,6 +14,8 @@ $colors: (
     @each $name, $color in $colors {
         --#{$name}: #{hexToRGB($color)};
     }
+    --font-display: "Teko", sans-sarif;
+    --font-primary: "Poppins", sans-sarif;
 }
 
 .container {

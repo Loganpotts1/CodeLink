@@ -204,7 +204,7 @@ export default function CreateProfile() {
                     <button
                         onClick={() => setDisplaySocialInputs(!displaySocialInputs)}
                         type="button"
-                        className="btn btn-light"
+                        className="btn btn-dark"
                     >
                         Add Social Network Links
                     </button>

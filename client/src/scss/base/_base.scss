@@ -7,7 +7,7 @@
 }
   
 body {
-    font-family: 'Raleway', sans-serif;
+    font-family: var(--font-primary);
     font-size: 1rem;
     line-height: 1.6;
     background-color: rgba(var(--light-color), 1);

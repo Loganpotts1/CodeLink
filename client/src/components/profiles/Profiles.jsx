@@ -26,7 +26,7 @@ export default function Profiles() {
                 <Spinner/> :
                 <Fragment>
 
-                    <h1 className="large text-primary">
+                    <h1 className="large text-primary test">
                         Developers
                     </h1>
 

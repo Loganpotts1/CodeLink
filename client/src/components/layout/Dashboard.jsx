@@ -36,7 +36,7 @@ export default function Dashboard() {
 
             <p className="lead">
                 <i className="fas fa-user" />
-                {` Welcome ${user && user.name}`}
+                {` Welcome ${user && user.name.trim().split(" ")[0]}`}
             </p>
 
             {

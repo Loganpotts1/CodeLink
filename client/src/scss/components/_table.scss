@@ -1,6 +1,8 @@
 .table {
   th {
     background: rgba(var(--dark-color), 1);
+    color: rgba(var(--light-color), 1);
+    border-radius: 3px;
   }
   th,td {
     padding: 1rem;
