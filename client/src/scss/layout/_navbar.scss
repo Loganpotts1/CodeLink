@@ -7,7 +7,7 @@
   z-index: 1;
   width: 100%;
   top: 0;
-  border-bottom: solid 1px var(--primary-color);
+  border-bottom: solid 1px rgba(var(--primary-color), 1);
   opacity: 0.9;
 
   ul {
@@ -20,7 +20,7 @@
     margin: 0 0.25rem;
 
     &:hover {
-      color: var(--primary-color);
+      color: rgba(var(--primary-color), 1);
     }
   }
 

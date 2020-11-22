@@ -37,7 +37,7 @@ export default function Profile(props) {
         <Fragment>
 
 
-            <Link to="/profiles" className="btn btn-light">
+            <Link to="/profiles" className="btn btn-dark">
                 Back to Developers
             </Link>
 

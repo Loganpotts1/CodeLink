@@ -20,7 +20,7 @@ export default function Landing() {
                 <div className="landing__inner">
 
                     <h1 className="x-large">
-                        Developer Connector
+                        CODELINK
                     </h1>
 
                     <p className="lead">

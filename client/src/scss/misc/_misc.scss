@@ -3,7 +3,7 @@
   padding: 0.1rem;
   text-align: center;
   margin: 0.3rem;
-  background: var(--light-color);
+  background: rgba(var(--light-color), 1);
   color: #333;
 }
 
@@ -11,28 +11,28 @@
   padding: 0.8rem;
   margin: 1rem 0;
   opacity: 0.9;
-  background: var(--light-color);
+  background: rgba(var(--light-color), 1);
   color: #333;
 }
 
 .badge-primary,
 .alert-primary {
-  background: var(--primary-color);
-  color: var(--primary-color);
+  background: rgba(var(--primary-color), 1);
+  color: rgba(var(--primary-color), 1);
 }
 
 .bg-light,
 .badge-light,
 .alert-light {
-  background: var(--dark-color);
-  color: var(--light-color);
+  background: rgba(var(--dark-color), .8);
+  color: rgba(var(--light-color), 1);
 }
 
 .bg-dark,
 .badge-dark,
 .alert-dark {
-  background: var(--dark-color);
-  color: var(--light-color);
+  background: rgba(var(--dark-color), 1);
+  color: rgba(var(--light-color), 1);
 }
 
 
@@ -40,22 +40,22 @@
 .bg-danger,
 .badge-danger,
 .alert-danger {
-  background: var(--danger-color);
-  color: var(--light-color);
+  background: rgba(var(--danger-color), 1);
+  color: rgba(var(--light-color), 1);
 }
 
 .bg-success,
 .badge-success,
 .alert-success {
-  background: var(--success-color);
-  color: var(--success-color);
+  background: rgba(var(--success-color), 1);
+  color: rgba(var(--success-color), 1);
 }
 
 .bg-white,
 .badge-white,
 .alert-white {
-  background: var(--light-color);
-  color: var(--dark-color);
+  background: rgba(var(--light-color), 1);
+  color: rgba(var(--dark-color), 1);
 }
 
 .round-img {

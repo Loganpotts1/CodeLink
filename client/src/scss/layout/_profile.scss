@@ -6,6 +6,7 @@
   padding: 1rem;
   line-height: 1.8;
   margin-bottom: 1rem;
+  border-radius: 3px;
 
   &__grid {
     display: grid;
@@ -34,7 +35,7 @@
       margin: 0 0.3rem;
 
       &:hover {
-        color: var(--dark-color);
+        color: rgba(var(--dark-color), 1);
       }
     }
   }

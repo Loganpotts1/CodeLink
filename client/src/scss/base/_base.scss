@@ -10,12 +10,12 @@ body {
     font-family: 'Raleway', sans-serif;
     font-size: 1rem;
     line-height: 1.6;
-    background-color: #fff;
-    color: #333;
+    background-color: rgba(var(--light-color), 1);
+    color: rgba(var(--dark-color), 1);
 }
 
 a {
-    color: var(--primary-color);
+    color: rgba(var(--primary-color), 1);
     text-decoration: none;
 }
 

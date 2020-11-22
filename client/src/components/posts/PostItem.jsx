@@ -47,18 +47,18 @@ export default function PostItem(props) {
                     showActions &&
                     <Fragment>
 
-                        <button onClick={() => dispatch(likePost(_id))} type="button" className="btn btn-light">
+                        <Link to={`/posts/${_id}`} className="btn btn-dark">
+                            Discussion
+                            {" "}
+                            {comments.length > 0 && <span className="comment-count">{comments.length}</span>}
+                        </Link>
+
+                        <button onClick={() => dispatch(likePost(_id))} type="button" className="btn btn-dark">
                             <i className="fas fa-thumbs-up" />
                             <span>
                                 {likes.length > 0 && <span> {likes.length}</span>}
                             </span>
                         </button>
-
-                        <Link to={`/posts/${_id}`} className="btn btn-primary">
-                            Discussion
-                            {" "}
-                            {comments.length > 0 && <span className="comment-count">{comments.length}</span>}
-                        </Link>
 
                         {
                             !auth.loading && user === auth.user._id &&

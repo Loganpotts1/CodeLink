@@ -80,7 +80,7 @@ export default function Navbar() {
             <h1>
                 <Link to="/">
                     <i className="fas fa-code"/>
-                    {" DevConnector"}
+                    {" CODELINK"}
                 </Link>
             </h1>
 

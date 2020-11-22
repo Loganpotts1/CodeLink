@@ -20,9 +20,9 @@
 }
   
 .text-primary {
-    color: var(--primary-color);
+    color: rgba(var(--primary-color), 1);
 }
   
 .text-dark {
-    color: var(--dark-color);
+    color: rgba(var(--dark-color), 1);
 }

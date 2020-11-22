@@ -48,7 +48,8 @@
     width: 100%;
     padding: 0.4rem;
     font-size: 1.2rem;
-    border: 1px solid #ccc;
+    border: 1px solid rgba(var(--dark-color), 1);
+    border-radius: 3px;
   }
 
   input[type='submit'],
