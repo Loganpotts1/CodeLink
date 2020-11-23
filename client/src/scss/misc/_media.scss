@@ -24,50 +24,52 @@
   .navbar {
     display: block;
     text-align: center;
-  }
 
-  .navbar ul {
-    text-align: center;
-    justify-content: center;
-  }
+    h1 {
+      margin-bottom: 1rem;
+    }
 
-  .navbar h1 {
-    margin-bottom: 1rem;
-  }
+    ul {
+      text-align: center;
+      justify-content: center;
+    }
 
-  .navbar .welcome {
-    display: none;
+    .welcome {
+      display: none;
+    }
   }
 
   /* Profiles Page */
   .profile {
     grid-template-columns: 1fr;
     text-align: center;
-  }
 
-  .profile ul {
-    display: none;
+    ul {
+      display: none;
+    }
   }
 
   /* Profile Page */
 
-  .profile__top img,
-  .profile img {
-    width: 200px;
-    margin: auto;
-  }
+  .profile {
 
-  .profile__grid {
-    grid-template-areas:
+    img {
+      width: 200px;
+      margin: auto;
+    }
+
+    &__grid {
+      grid-template-areas:
       'top'
       'about'
       'exp'
       'edu'
       'github';
-  }
+    }
 
-  .profile__about .skills {
-    flex-direction: column;
+    &__about .skills {
+      flex-direction: column;
+    }
   }
 
   .dash-buttons a {
@@ -78,9 +80,10 @@
 
   .post {
     grid-template-columns: 1fr;
-  }
-  .post a,
-  .post button {
-    padding: 0.3rem 0.4rem;
+
+    a,
+    button {
+      padding: 0.3rem 0.4rem;
+    }
   }
 }
