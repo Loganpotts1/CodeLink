@@ -46,7 +46,7 @@ export default function Dashboard() {
                         <DashboardActions/>
                         {profile.experience.length > 0 && <Experience experience={profile.experience} />}
                         {profile.education.length > 0 && <Education education={profile.education} />}
-                        <div className="my-2">
+                        <div className="my-2 account-delete">
                             <button className="btn btn-danger" onClick={() => dispatch(deleteAccount())}>
                                 <i className="fas fa-user-minus" />
                                 {" Delete My Account"}

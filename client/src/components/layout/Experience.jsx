@@ -32,7 +32,7 @@ export default function Experience(props) {
 
             <td>
                 <button className="btn btn-danger" onClick={() => dispatch(deleteExperience(exp._id))}>
-                    Delete
+                    <i className="fas fa-times"></i>
                 </button>
             </td>
 

@@ -39,7 +39,8 @@
     }
   }
 
-  /* Profiles Page */
+  /* Profile Page */
+
   .profile {
     grid-template-columns: 1fr;
     text-align: center;
@@ -47,11 +48,6 @@
     ul {
       display: none;
     }
-  }
-
-  /* Profile Page */
-
-  .profile {
 
     img {
       width: 200px;
@@ -70,6 +66,15 @@
     &__about .skills {
       flex-direction: column;
     }
+
+    &__github h2 {
+      text-align: center;
+    }
+  }
+
+  .account-delete {
+    display: flex;
+    justify-content: center;
   }
 
   .dash-buttons a {

@@ -41,7 +41,7 @@ export default function PostItem(props) {
                     {text}
                 </p>
                 <p className="post-date">
-                    Posted on {formatDate(date)}
+                    Posted on {formatDate(date, true)}
                 </p>
                 {
                     showActions &&

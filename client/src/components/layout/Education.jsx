@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import Moment from "react-moment";
 //  LOCAL
 import { deleteEducation } from "../../actions/profile";
+import formatDate from "../../utils/formatDate";
 
 
 export default function Education(props) {
@@ -21,18 +22,12 @@ export default function Education(props) {
             </td>
 
             <td>
-                <Moment format="YYYY/MM/DD">
-                    {edu.from}
-                </Moment> {"- "}{edu.to ? 
-                (<Moment format="YYYY/MM/DD">
-                    {edu.to}
-                </Moment>) :
-                ("Current") }
+                { formatDate(edu.from) + " - " + (edu.to ? formatDate(edu.to) : "Current") }
             </td>
 
             <td>
                 <button className="btn btn-danger" onClick={() => dispatch(deleteEducation(edu._id))}>
-                    Delete
+                    <i className="fas fa-times"></i>
                 </button>
             </td>
 
@@ -55,7 +50,7 @@ export default function Education(props) {
                         <th className="hide-sm">
                             Degree
                         </th>
-                        <th className="hide-sm">
+                        <th>
                             Years
                         </th>
                         <th>
