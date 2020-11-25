@@ -8,17 +8,26 @@ export default function DashboardActions() {
 
             <Link to='/edit-profile' className='btn btn-dark'>
                 <i className='fas fa-user-circle text-dark'/>
-                {` Edit Profile`}
+                {" "}
+                <span className="hide-sm">
+                    Edit Profile
+                </span>
             </Link>
 
             <Link to='/add-experience' className='btn btn-dark'>
                 <i className='fab fa-black-tie text-primary'/>
-                {` Add Experience`}
+                {" "}
+                <span className="hide-sm">
+                    Add Experience
+                </span>
             </Link>
 
             <Link to='/add-education' className='btn btn-dark'>
                 <i className='fas fa-graduation-cap text-primary'/>
-                {` Add Education`}
+                {" "}
+                <span className="hide-sm">
+                    Add Education
+                </span>
             </Link>
 
         </div>

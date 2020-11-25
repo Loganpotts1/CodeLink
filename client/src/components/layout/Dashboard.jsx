@@ -30,11 +30,11 @@ export default function Dashboard() {
     return (
         <Fragment>
 
-            <h1 className="large text-primary">
+            <h1 className="large text-primary header">
                 Dashboard
             </h1>
 
-            <p className="lead">
+            <p className="lead header">
                 <i className="fas fa-user" />
                 {` Welcome ${user && user.name.trim().split(" ")[0]}`}
             </p>

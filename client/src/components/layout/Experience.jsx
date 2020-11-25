@@ -43,7 +43,7 @@ export default function Experience(props) {
     return (
         <Fragment>
 
-            <h2 className="my-2">
+            <h2 className="my-2 header">
                 Experience
             </h2>
 
@@ -56,7 +56,7 @@ export default function Experience(props) {
                         <th className="hide-sm">
                             Title
                         </th>
-                        <th className="hide-sm">
+                        <th>
                             Years
                         </th>
                         <th>

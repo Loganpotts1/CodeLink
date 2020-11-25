@@ -37,7 +37,7 @@ export default function Education(props) {
     return (
         <Fragment>
 
-            <h2 className="my-2">
+            <h2 className="my-2 header">
                 Education
             </h2>
 

@@ -20,6 +20,16 @@
     font-size: 1rem;
   }
 
+  .header {
+    text-align: center;
+  }
+
+  .fa-user-circle,
+  .fa-black-tie,
+  .fa-graduation-cap {
+    margin-right: 0;
+  }
+
   /* Navbar */
   .navbar {
     display: block;
@@ -77,10 +87,9 @@
     justify-content: center;
   }
 
-  .dash-buttons a {
-    display: block;
-    width: 100%;
-    margin-bottom: 0.2rem;
+  .dash-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .post {
