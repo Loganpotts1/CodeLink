@@ -11,7 +11,7 @@ export default function Navbar() {
 
 
     const authLinks = (
-        <ul>
+        <ul className="nav__links">
 
             <li>
                 <Link to="/profiles">
@@ -50,7 +50,7 @@ export default function Navbar() {
 
 
     const guestLinks = (
-        <ul>
+        <ul className="nav__links">
 
             <li>
                 <Link to="/profiles">
@@ -75,23 +75,19 @@ export default function Navbar() {
 
 
     return (
-        <nav className="navbar bg-dark">
+        <nav className="nav">
 
-            <h1 className="logo">
+            <div className="nav__logo">
                 <Link to="/">
                     <i className="fas fa-code"/>
                     {" CODELINK"}
                 </Link>
-            </h1>
+            </div>
 
-
-            <Fragment>
-                {
-                    isAuthenticated ?
-                    authLinks : guestLinks
-                }
-            </Fragment>
-
+            {
+                isAuthenticated ?
+                authLinks : guestLinks
+            }
 
         </nav>
     );

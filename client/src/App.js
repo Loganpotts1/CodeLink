@@ -37,12 +37,18 @@ export default function App() {
 
   return (
 	  <Router>
+		<div className="page">
+
 			<Navbar />
 
-			<Switch>
-				<Route exact path="/" component={Landing} />
-				<Route component={Routes} />
-			</Switch>
+			<div className="page__content">
+				<Switch>
+					<Route exact path="/" component={Landing} />
+					<Route component={Routes} />
+				</Switch>
+			</div>
+
+		</div>
 	</Router>
   );
 };

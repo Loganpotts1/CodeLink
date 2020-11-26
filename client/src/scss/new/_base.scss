@@ -1,0 +1,53 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    box-sizing: border-box;
+}
+
+.page {
+    display: grid;
+    grid-template-rows: 80px 1fr;
+
+    &__content {
+        grid-column: 2 / -1;
+        grid-template-columns: 
+        [full-start] 1fr [center-start] 
+        repeat(8, [col-start] minmax(min-content, 16rem) [col-end] ) 
+        [center-end] 1fr [full-end];
+    }
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__logo {
+        a {
+            text-decoration: none;
+        }
+    }
+
+    &__links {
+        display: flex;
+        justify-content: space-between;
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    }
+}
