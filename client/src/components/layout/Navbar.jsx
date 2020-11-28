@@ -27,8 +27,8 @@ export default function Navbar() {
 
             <li>
                 <Link to="/dashboard">
-                    <i className="fas fa-user" />
-                    {' '}
+                    {/* <i className="fas fa-user" />
+                    {' '} */}
                     <span className="hide-sm">
                         Dashboard
                     </span>
@@ -39,9 +39,9 @@ export default function Navbar() {
                 <a onClick={() => dispatch(logout())} href="#!">
                     <i className="fas fa-sign-out-alt" />
                     {' '}
-                    <span className="hide-sm">
+                    {/* <span className="hide-sm">
                         Logout
-                    </span>
+                    </span> */}
                 </a>
             </li>
 
@@ -80,7 +80,6 @@ export default function Navbar() {
             <div className="nav__logo">
                 <Link to="/">
                     <i className="fas fa-code"/>
-                    {" CODELINK"}
                 </Link>
             </div>
 
