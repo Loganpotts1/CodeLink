@@ -6,7 +6,6 @@ import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./actions/auth";
 import { LOGOUT } from "./actions/types";
 import Routes from "./components/routing/Routes";
-import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
 import "./scss/main.min.css";
 
@@ -36,18 +35,12 @@ export default function App() {
 
 
   return (
-	  <Router>
+	<Router>
 		<div className="page">
-
-			<Navbar />
-
-			<div className="page__content">
-				<Switch>
-					<Route exact path="/" component={Landing} />
-					<Route component={Routes} />
-				</Switch>
-			</div>
-
+			<Switch>
+				<Route exact path="/" component={Landing} />
+				<Route component={Routes} />
+			</Switch>
 		</div>
 	</Router>
   );
