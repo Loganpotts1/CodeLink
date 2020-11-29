@@ -21,7 +21,8 @@ body {
 
 .page {
     display: grid;
-    grid-template-rows: 80px 1fr;
+    grid-template-rows: 60px 1fr;
+    background: linear-gradient(to bottom left, #323F4B 0%, #1F2933 100%);
 
     &__content {
         grid-column: 2 / -1;
@@ -36,12 +37,19 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 3%;
+    padding: 0 1.5%;
 
     &__logo {
 
         .fa-code {
-            font-size: 1.6rem;
+            font-size: 2.2rem;
+            color: #9AA5B1;
+            transition: all .2s;
+            // text-shadow: -1px -1px 1px #000, 1px 1px 1px #323F4B;
+            
+            &:hover {
+                color: #F9703E;
+            }
         }
     }
 
@@ -53,12 +61,18 @@ body {
             list-style: none;
 
             &:not(:last-child) {
-                margin-right: 1rem;
+                margin-right: 1.4rem;
             }
         }
 
         a {
+            font-size: 1.6rem;
             text-decoration: none;
+            color: #9AA5B1;
+
+            &:hover {
+                color: #F9703E;
+            }
         }
     }
 }
