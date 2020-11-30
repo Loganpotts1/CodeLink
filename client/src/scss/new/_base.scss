@@ -1,5 +1,6 @@
 :root {
     --font-primary: "Titillium", sans-serif;
+    --font-display: "Syne Mono", monospace;
 }
 
 *,
@@ -99,6 +100,11 @@ p {
         grid-column: 1 / 2;
         align-self: center;
         text-align: center;
+
+        h1 {
+            font-family: var(--font-display);
+            letter-spacing: 20px;
+        }
 
         p {
             margin: 4rem 0 5rem;
