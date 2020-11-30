@@ -1,6 +1,6 @@
 :root {
     --font-primary: "Titillium", sans-serif;
-    --font-display: "Syne Mono", monospace;
+    --font-display: "Barlow", sans-serif;
 }
 
 *,
@@ -103,6 +103,7 @@ p {
 
         h1 {
             font-family: var(--font-display);
+            font-style: italic;
             letter-spacing: 20px;
         }
 

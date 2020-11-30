@@ -24,7 +24,10 @@ export default function Landing() {
                     landingElement === "Login" ?
                     <Login /> :
                     <Fragment>
+                        
                         <h1 className="x-large">
+                            <i className="fas fa-code"/>
+                            {" "}
                             CODELINK
                         </h1>
 
@@ -34,13 +37,20 @@ export default function Landing() {
                         </p>
 
                         <div className="buttons">
-                            <button onClick={() => setLandingElement("Register")}>
+                            <button onClick={() => setLandingElement("Register")} className="btn-thick">
                                 Sign Up
                             </button>
-                            <button onClick={() => setLandingElement("Login")}>
+                            <button onClick={() => setLandingElement("Login")} className="btn-thick">
                                 Login
                             </button>
                         </div>
+
+                        <div className="line"/>
+
+                        <a href="#!">
+                            Alternatively, click here to sign in as a Guest
+                        </a>
+
                     </Fragment>
                 }
             </div>
