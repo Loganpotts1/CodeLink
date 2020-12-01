@@ -8,7 +8,7 @@ import Login from "../auth/Login";
 
 export default function Landing() {
     const { isAuthenticated } = useSelector(state => state.auth);
-    const [landingElement, setLandingElement] = useState("default");
+    const [landingElement, setLandingElement] = useState("Login");
 
     if (isAuthenticated)
     return <Redirect to="/dashboard" />;
@@ -18,41 +18,31 @@ export default function Landing() {
         <section className="landing">
 
             <div className="landing__inner">
-                {
-                    landingElement === "Register" ?
-                    <Register /> :
-                    landingElement === "Login" ?
-                    <Login /> :
-                    <Fragment>
-                        
-                        <h1 className="x-large">
-                            <i className="fas fa-code"/>
-                            {" "}
-                            CODELINK
-                        </h1>
 
-                        <p className="lead">
-                            Create a developer profile/portfolio, share posts and get help from
-                            other developers
-                        </p>
+                <h2 className="codelink">
+                    <i className="fas fa-code"/>
+                    {" "}
+                    CodeLink
+                </h2>
+                
+                <main className="landing__main">
+                    {
+                        landingElement === "Register" ?
+                        <div className="landing__main--register">
+                            <Register />
+                        </div> :
+                        <div className="landing__main--login">
+                            <Login />
+                        </div>          
+                    }
 
-                        <div className="buttons">
-                            <button onClick={() => setLandingElement("Register")} className="btn-thick">
-                                Sign Up
-                            </button>
-                            <button onClick={() => setLandingElement("Login")} className="btn-thick">
-                                Login
-                            </button>
-                        </div>
+                    <div className="line"/>
 
-                        <div className="line"/>
+                    <a href="#!">
+                        Alternatively,<br/> click here to sign in as a Guest
+                    </a>
+                </main>
 
-                        <a href="#!">
-                            Alternatively, click here to sign in as a Guest
-                        </a>
-
-                    </Fragment>
-                }
             </div>
 
             <div className="landing__hero"/>
