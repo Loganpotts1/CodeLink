@@ -28,12 +28,8 @@ export default function Landing() {
                 <main className="landing__main">
                     {
                         landingElement === "Register" ?
-                        <div className="landing__main--register">
-                            <Register />
-                        </div> :
-                        <div className="landing__main--login">
-                            <Login />
-                        </div>          
+                        <Register login={() => setLandingElement("Login")} />:
+                        <Login register={() => setLandingElement("Register")} />       
                     }
 
                     <div className="line"/>

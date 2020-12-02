@@ -6,7 +6,8 @@ import { register } from "../../actions/auth";
 import { setAlert } from "../../actions/alert";
 
 
-export default function Register() {
+export default function Register(props) {
+    const { login } = props;
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
     const dispatch = useDispatch();
     const [formData, setFormData] = React.useState({
@@ -53,23 +54,18 @@ export default function Register() {
 
 
     return (
-        <Fragment>
+        <div className="register">
 
 
-            <h1 className="large text-primary">
-                Sign Up
-            </h1>
-
-
-            <p className="lead">
+            <p className="register__heading">
                 <i className="fas fa-user"></i>
                 {" Create Your Account"}
             </p>
 
 
-            <form className="form" onSubmit={onSubmit}>
+            <form className="register__form" onSubmit={onSubmit}>
 
-                <div className="form-group">
+                <div className="register__form-group">
                     <input 
                         type="text" 
                         placeholder="Name" 
@@ -80,7 +76,7 @@ export default function Register() {
                     />
                 </div>
 
-                <div className="form-group">
+                <div className="register__form-group">
                     <input 
                         type="email" 
                         placeholder="Email Address" 
@@ -88,13 +84,13 @@ export default function Register() {
                         value={email} 
                         onChange={onChange}
                     />
-                    <small className="form-text"
-                        >This site uses Gravatar so if you want a profile image, use a
+                    <small className="register__form-text">
+                        This site uses Gravatar. If you want a profile image, use a
                         Gravatar email
                     </small>
                 </div>
 
-                <div className="form-group">
+                <div className="register__form-group">
                     <input
                         type="password"
                         placeholder="Password"
@@ -105,7 +101,7 @@ export default function Register() {
                     />
                 </div>
 
-                <div className="form-group">
+                <div className="register__form-group">
                     <input
                         type="password"
                         placeholder="Confirm Password"
@@ -118,7 +114,7 @@ export default function Register() {
 
                 <input 
                     type="submit" 
-                    className="btn btn-primary" 
+                    className="register__submit" 
                     value="Register" 
                     onChange={onChange} 
                 />
@@ -126,16 +122,14 @@ export default function Register() {
             </form>
 
 
-            <p className="my-1">
+            <p className="register__switch">
                 Already have an account? 
-
-                <Link to="/login">
+                <a href="#!" onClick={login}>
                     {" Sign In"}
-                </Link>
-                
+                </a>
             </p>
 
 
-        </Fragment>
+        </div>
     );
 }

@@ -5,7 +5,8 @@ import { Link, Redirect } from "react-router-dom";
 import { login } from "../../actions/auth";
 
 
-export default function Login() {
+export default function Login(props) {
+    const { register } = props;
     const { isAuthenticated } = useSelector(state => state.auth);
     const dispatch = useDispatch();
     
@@ -40,23 +41,17 @@ export default function Login() {
 
 
     return(
-        <Fragment>
+        <div className="login">
 
 
-            <h1 className="large text-primary test">
-                Sign In
+            <h1 className="login__heading">
+                Log Into Your Account
             </h1>
 
 
-            <p className="lead">
-                <i className="fas fa-user"></i>
-                {" Log Into Your Account"}
-            </p>
+            <form className="login__form" onSubmit={onSubmit}>
 
-
-            <form className="form" onSubmit={onSubmit}>
-
-                <div className="form-group">
+                <div className="login__form-group">
                     <input 
                         type="email" 
                         placeholder="Email Address" 
@@ -66,7 +61,7 @@ export default function Login() {
                     />
                 </div>
 
-                <div className="form-group">
+                <div className="login__form-group">
                     <input
                         type="password"
                         placeholder="Password"
@@ -79,7 +74,7 @@ export default function Login() {
 
                 <input 
                     type="submit" 
-                    className="btn btn-primary" 
+                    className="login__submit" 
                     value="Login" 
                     onChange={onChange} 
                 />
@@ -87,16 +82,14 @@ export default function Login() {
             </form>
 
 
-            <p className="my-1">
+            <p className="login__switch">
                 Don't have an account?
-
-                <Link to="/register">
+                <a href="#!" onClick={register}>
                     {" Sign Up"}
-                </Link>
-                
+                </a>
             </p>
 
 
-        </Fragment>
+        </div>
     );
 };
