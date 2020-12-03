@@ -72,12 +72,9 @@ export default function Login(props) {
                     />
                 </div>
 
-                <input 
-                    type="submit" 
-                    className="login__submit" 
-                    value="Login" 
-                    onChange={onChange} 
-                />
+                <button type="submit" className="login__submit" onChange={onChange}>
+                    Login
+                </button>
 
             </form>
 

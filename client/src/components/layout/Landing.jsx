@@ -1,17 +1,26 @@
-import React, { Fragment, useState } from "react";
-import { Link, Redirect } from "react-router-dom";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 // LOCAL
+import { login } from "../../actions/auth";
 import Register from "../auth/Register";
 import Login from "../auth/Login";
 
 
 export default function Landing() {
     const { isAuthenticated } = useSelector(state => state.auth);
+    const dispatch = useDispatch();
     const [landingElement, setLandingElement] = useState("Login");
 
     if (isAuthenticated)
     return <Redirect to="/dashboard" />;
+
+    const loginGuest = () => {
+        dispatch(login({
+            email: "guest@gmail.com",
+            password: "123456"
+        }));
+    }
 
 
     return (
@@ -34,7 +43,7 @@ export default function Landing() {
 
                     <div className="line"/>
 
-                    <a href="#!">
+                    <a href="#!" onClick={loginGuest}>
                         Alternatively,<br/> click here to sign in as a Guest
                     </a>
                 </main>
