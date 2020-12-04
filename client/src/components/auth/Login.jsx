@@ -73,7 +73,7 @@ export default function Login(props) {
                 </div>
 
                 <button type="submit" className="login__submit" onChange={onChange}>
-                    Login
+                    Login <i className="fa fa-chevron-right"/>
                 </button>
 
             </form>

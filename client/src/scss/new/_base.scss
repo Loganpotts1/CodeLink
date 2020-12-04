@@ -38,10 +38,11 @@ p {
 
 .line {
     width: 88%;
-    height: 1px;
+    height: 5px;
     margin: 3rem auto;
-    background-color: hsl(16, 94%, 61%);
-    opacity: .5;
+    // background: linear-gradient(to bottom, rgba(0, 0, 0, .5), rgba(255, 255, 255, 0));
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, .6), transparent);
+    opacity: .15;
 }
 
 .page {
@@ -117,7 +118,7 @@ p {
         .codelink {
             align-self: flex-start;
             font-size: 2rem;
-            margin: 6% 6% 30vh;
+            margin: 6% 6% 20vh;
 
             i {
                 color: #F9703E;
@@ -142,7 +143,7 @@ p {
 .login {
 
     &__heading {
-        margin-bottom: 4%;
+        margin-bottom: 6%;
         font-weight: 200;
         color: #F9703E;
     }
@@ -150,7 +151,7 @@ p {
     &__form-group {
 
         &:not(:last-child) {
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
         }
 
         input {
@@ -162,7 +163,68 @@ p {
         }
     }
 
+    &__submit {
+        width: 10rem;
+        height: 4rem;
+        border-radius: 3px;
+        border: none;
+        padding: 0 1.8rem;
+        background-color: #F9703E;
+        font-family: var(--font-primary);
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #1F2933;
+        text-align: left;
+
+        i {
+            font-size: 1.3rem;
+            transform: translate(1rem, -1px);
+        }
+    }
+
     &__switch {
         margin-top: 6%;
+        
+        a {
+            text-decoration: none;
+            color: #F9703E;
+        }
+    }
+}
+
+.register {
+    
+    &__heading {
+        @extend .login__heading;
+    }
+
+    &__form-group {
+        @extend .login__form-group;
+    }
+
+    &__form-text {
+        display: block;
+        padding: 0 6%;
+        text-align: left;
+        font-size: 1.4rem;
+    }
+
+    &__submit {
+        @extend .login__submit;
+        width: 11rem;
+    }
+
+    &__switch {
+        @extend .login__switch;
+    }
+}
+
+.guest {
+    text-decoration: none;
+    color: #7B8794;
+    font-size: 1.2rem;
+    
+    span {
+        color: #F9703E;
     }
 }

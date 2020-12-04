@@ -57,10 +57,9 @@ export default function Register(props) {
         <div className="register">
 
 
-            <p className="register__heading">
-                <i className="fas fa-user"></i>
-                {" Create Your Account"}
-            </p>
+            <h1 className="register__heading">
+                Create an Account
+            </h1>
 
 
             <form className="register__form" onSubmit={onSubmit}>
@@ -85,7 +84,7 @@ export default function Register(props) {
                         onChange={onChange}
                     />
                     <small className="register__form-text">
-                        This site uses Gravatar. If you want a profile image, use a
+                        <i className="fa fa-info-circle"/> This site uses Gravatar. If you want a profile image, use a
                         Gravatar email
                     </small>
                 </div>
@@ -112,12 +111,9 @@ export default function Register(props) {
                     />
                 </div>
 
-                <input 
-                    type="submit" 
-                    className="register__submit" 
-                    value="Register" 
-                    onChange={onChange} 
-                />
+                <button type="submit" className="register__submit" onChange={onChange}>
+                    Submit <i className="fa fa-chevron-right"/>
+                </button>
 
             </form>
 
