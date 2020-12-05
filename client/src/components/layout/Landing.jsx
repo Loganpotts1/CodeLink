@@ -27,6 +27,7 @@ export default function Landing() {
     return (
         <section className="landing">
 
+
             <div className="landing__inner">
 
                 <h2 className="codelink">
@@ -53,8 +54,10 @@ export default function Landing() {
 
             </div>
 
+
             <div className="landing__hero"/>
             
+
         </section>
     );
 }

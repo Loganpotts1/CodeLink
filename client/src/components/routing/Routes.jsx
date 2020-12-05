@@ -4,8 +4,6 @@ import { Switch, Route } from "react-router-dom";
 import Navbar from "../layout/Navbar";
 import PrivateRoute from "./PrivateRoute";
 import Alert from "../utils/Alert";
-import Register from "../auth/Register";
-import Login from "../auth/Login";
 import Profile from "../profile/Profile";
 import Profiles from "../profiles/Profiles";
 import Dashboard from "../layout/Dashboard";
@@ -27,8 +25,6 @@ export default function Routes() {
                 <Alert />
 
                 <Switch>
-                    <Route exact path="/register" component={Register} />
-                    <Route exact path="/login" component={Login} />
                     <Route exact path="/profiles" component={Profiles} />
                     <Route exact path="/profile/:id" component={Profile} />
                     <PrivateRoute exact path="/dashboard" component={Dashboard} />

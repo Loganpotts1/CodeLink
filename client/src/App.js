@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./actions/auth";
 import { LOGOUT } from "./actions/types";
+import Alert from "./components/utils/Alert";
 import Routes from "./components/routing/Routes";
 import Landing from "./components/layout/Landing";
 import "./scss/main.min.css";
@@ -37,6 +38,9 @@ export default function App() {
   return (
 	<Router>
 		<div className="page">
+
+			<Alert />
+
 			<Switch>
 				<Route exact path="/" component={Landing} />
 				<Route component={Routes} />
