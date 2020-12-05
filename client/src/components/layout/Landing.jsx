@@ -18,7 +18,7 @@ export default function Landing() {
     const loginGuest = () => {
         dispatch(register({
             name: "Guest",
-            email: `guest${Math.floor(Math.random() * 100)}@gmail.com`,
+            email: `guest${Math.floor(Math.random() * 10000)}@gmail.com`,
             password: "123456"
         }));
     }
@@ -32,10 +32,11 @@ export default function Landing() {
                 <h2 className="codelink">
                     <i className="fas fa-code"/>
                     {" "}
-                    CodeLink
+                    Code<span>Link</span>
                 </h2>
                 
                 <main className="landing__main">
+
                     {
                         landingElement === "Register" ?
                         <Register login={() => setLandingElement("Login")} />:
@@ -47,6 +48,7 @@ export default function Landing() {
                     <a className="guest" href="#!" onClick={loginGuest}>
                         Alternatively,<br/> click here to sign in as a <span>Guest</span>
                     </a>
+
                 </main>
 
             </div>
