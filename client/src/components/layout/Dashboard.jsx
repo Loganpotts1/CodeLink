@@ -28,15 +28,14 @@ export default function Dashboard() {
     }, [dispatch]);
 
     return (
-        <Fragment>
+        <div className="dashboard">
 
             <h1 className="large text-primary header">
                 Dashboard
             </h1>
 
             <p className="lead header">
-                <i className="fas fa-user" />
-                {` Welcome ${user && user.name.trim().split(" ")[0]}`}
+                {`Welcome ${user && user.name.trim().split(" ")[0]}!`}
             </p>
 
             {
@@ -66,6 +65,6 @@ export default function Dashboard() {
                 )
             }
 
-        </Fragment>
+        </div>
     );
 }

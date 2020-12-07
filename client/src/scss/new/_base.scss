@@ -30,6 +30,8 @@ h1,h2,h3,h4 {
 
 h1 {
     font-size: 4rem;
+    font-weight: 200;
+    color: #F9703E;
 }
 
 p {
@@ -52,9 +54,10 @@ p {
 
     &__content {
         grid-column: 2 / -1;
+        display: grid;
         grid-template-columns: 
         [full-start] 1fr [center-start] 
-        repeat(8, [col-start] minmax(min-content, 16rem) [col-end] ) 
+        repeat(8, [col-start] minmax(min-content, 14rem) [col-end] ) 
         [center-end] 1fr [full-end];
     }
 }
@@ -91,7 +94,7 @@ p {
         }
 
         a {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             text-decoration: none;
             color: #7B8794;
             transition: all .2s;
@@ -108,22 +111,30 @@ p {
         height: 0;
     }
     100% {
-        height: 4rem;
+        height: 40px;
     }
 }
 
 .alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     width: 100vw;
-    height: 4rem;
+    height: 40px;
+    font-size: 18px;
+    font-weight: 500;
+    font-style: italic;
+    color: #1F2933;
     animation: alert .3s ease;
 
     &--success {
-        background-color: green;
+        background-color: #57AE5B;
     }
 
     &--danger {
-        background-color: red;
+        background-color: #F29B9B;
+        border-bottom: 3px solid #D64545;
     }
 }
 
@@ -179,8 +190,6 @@ p {
 
     &__heading {
         margin-bottom: 5rem;
-        font-weight: 200;
-        color: #F9703E;
     }
 
     &__form-group {
@@ -275,4 +284,9 @@ p {
     span {
         color: #F9703E;
     }
+}
+
+.dashboard {
+    grid-column: center-start / center-end;
+    text-align: center;
 }

@@ -22,8 +22,6 @@ export default function Routes() {
 			<Navbar />
 
 			<div className="page__content">
-                <Alert />
-
                 <Switch>
                     <Route exact path="/profiles" component={Profiles} />
                     <Route exact path="/profile/:id" component={Profile} />
