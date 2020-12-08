@@ -11,7 +11,7 @@ export default function PrivateRoute({ component: Component, ...rest }) {
         <Route {...rest}>
             {
                 props => !isAuthenticated ?
-                <Redirect to="/login" /> :
+                <Redirect to="/" /> :
                 loading ?
                 <Spinner /> :
                 <Component {...props} />

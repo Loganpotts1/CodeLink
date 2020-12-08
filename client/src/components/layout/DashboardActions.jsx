@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function DashboardActions() {
 
     return (
-        <div className='dash-buttons'>
+        <div className='dashboard__actions'>
 
             <Link to='/edit-profile' className='btn btn-dark'>
                 <i className='fas fa-user-circle text-dark'/>

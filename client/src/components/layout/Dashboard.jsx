@@ -30,37 +30,43 @@ export default function Dashboard() {
     return (
         <div className="dashboard">
 
-            <h1 className="large text-primary header">
-                Dashboard
-            </h1>
-
-            <p className="lead header">
-                {`Welcome ${user && user.name.trim().split(" ")[0]}!`}
-            </p>
+            <div className="dashboard__welcome">
+                <h1 className="dashboard__heading">
+                    Dashboard
+                </h1>
+                <h3>
+                    {`Welcome ${profile && "back, "} ${user && user.name.trim().split(" ")[0]}!`}
+                </h3>
+            </div>
+            
 
             {
                 profile && (!loading) ? 
                 (
                     <Fragment>
-                        <DashboardActions/>
+                            
+                            <DashboardActions/>
                         {profile.experience.length > 0 && <Experience experience={profile.experience} />}
                         {profile.education.length > 0 && <Education education={profile.education} />}
-                        <div className="my-2 account-delete">
-                            <button className="btn btn-danger" onClick={() => dispatch(deleteAccount())}>
-                                <i className="fas fa-user-minus" />
-                                {" Delete My Account"}
-                            </button>
-                        </div>
+                        <button className="dashboard__delete-account" onClick={() => dispatch(deleteAccount())}>
+                            <i className="fas fa-user-minus" />
+                            {" Delete My Account"}
+                        </button>
                     </Fragment>
                 ) : 
                 (
                     <Fragment>
-                        <p>
-                            Why not set up a profile?
-                        </p>
-                        <Link to="/edit-profile" className="btn btn-primary my-1">
-                            Create Profile
-                        </Link>
+                        <div className="dashboard__welcome">
+                            <h3>
+                                {`Welcome ${user && user.name.trim().split(" ")[0]}!`}
+                            </h3>
+                            <p className="dashboard__welcome dashboard__welcome--new">
+                                Why not set up a profile?
+                            </p>
+                            <Link to="/edit-profile">
+                                Create Profile
+                            </Link>
+                        </div>
                     </Fragment>
                 )
             }

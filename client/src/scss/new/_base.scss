@@ -22,10 +22,12 @@ html {
 
 body {
     box-sizing: border-box;
+    color: #7B8794;
 }
 
 h1,h2,h3,h4 {
     font-family: var(--font-display);
+    font-weight: 300;
 }
 
 h1 {
@@ -36,6 +38,15 @@ h1 {
 
 p {
     font-size: 1.6rem;
+}
+
+a {
+    text-decoration: none;
+    color: #7B8794;
+
+    &:hover {
+        color: #F9703E;
+    }
 }
 
 .line {
@@ -50,7 +61,8 @@ p {
 .page {
     display: grid;
     grid-template-rows: 60px minmax(calc(100vh - 60px), min-content);
-    background: linear-gradient(to bottom left, #323F4B 0%, #1F2933 100%);
+    //background: linear-gradient(to bottom left, #323F4B 0%, #1F2933 100%);
+    background-color: #1F2933;
 
     &__content {
         grid-column: 2 / -1;
@@ -66,18 +78,13 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 1.5%;
+    padding: 0 2.2rem;
 
     &__logo {
 
         .fa-code {
             font-size: 2.2rem;
-            color: #7B8794;
             transition: all .2s;
-            
-            &:hover {
-                color: #F9703E;
-            }
         }
     }
 
@@ -95,13 +102,7 @@ p {
 
         a {
             font-size: 1.8rem;
-            text-decoration: none;
-            color: #7B8794;
             transition: all .2s;
-
-            &:hover {
-                color: #F9703E;
-            }
         }
     }
 }
@@ -130,6 +131,7 @@ p {
 
     &--success {
         background-color: #57AE5B;
+        border-bottom: 3px solid #2F8132;
     }
 
     &--danger {
@@ -145,10 +147,10 @@ p {
     height: 100%;
 
     &__inner {
-        color: #7B8794;
         grid-column: 1 / 2;
         display: flex;
         flex-direction: column;
+        background: linear-gradient(to bottom left, #323F4B -20%, #1F2933 100%);
 
         @media screen and (max-width: 700px) {
             grid-column: 1 / -1;
@@ -243,7 +245,6 @@ p {
         margin-top: 4rem;
         
         a {
-            text-decoration: none;
             color: #F9703E;
         }
     }
@@ -278,7 +279,6 @@ p {
 
 .guest {
     text-decoration: none;
-    color: #7B8794;
     font-size: 1.2rem;
     
     span {
@@ -287,6 +287,122 @@ p {
 }
 
 .dashboard {
-    grid-column: center-start / center-end;
+    grid-column: full-start / full-end;
+    display: grid;
+    grid-template-columns: 1fr minmax(min-content, calc(14rem * 8)) 1fr;
+    grid-auto-rows: min-content;
+    align-items: center;
     text-align: center;
+
+    & > * {
+        grid-column: 2 / 3;
+    }
+
+    &__heading {
+        color: #9AA5B1;
+        margin-bottom: 1rem;
+    }
+
+    &__welcome {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10rem;
+        font-size: 1.6rem;
+        color: #1F2933;
+        background: url("../img/banner.jpg");
+        background-size: cover;
+        //background-color: rgba(255, 176, 136, .4);
+    }
+
+    &__actions {
+
+    }
+
+    &__delete-account {
+        justify-self: left;
+        width: 16rem;
+        height: 4rem;
+        margin-left: 6%;
+        background-color: #1F2933;
+        border: none;
+        border-radius: 3px;
+        color: #FACDCD;
+    }
+
+    &__new {
+
+    }
+
+    &__new-button {
+
+    }
+}
+
+.experience {
+    margin: 6rem;
+    font-size: 1.6rem;
+
+    &__heading {
+        text-align: left;
+        margin-bottom: 1rem;
+    }
+
+    &__table {
+        width: 100%;
+
+        th {
+            color: rgba(0, 0, 0, .8);
+            background: rgba(255, 176, 136, .6);
+            box-shadow: -2px 2px 6px rgba(0, 0, 0, .4);
+            border-radius: 3px;
+        }
+
+        td {
+            color:rgba(255, 176, 136, .6);
+            text-shadow: -2px 2px 6px rgba(0, 0, 0, .4);
+        }
+
+        th,td {
+            padding: 1rem;
+            text-align: left;
+        }
+    }
+
+    &__delete-item {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background-color: transparent;
+        border: none;
+
+        i {
+            font-size: 1.6rem;
+            color: #7B8794;
+        }
+
+        &:hover i {
+            color: #D64545;
+        }
+    }
+}
+
+.education {
+    @extend .experience;
+
+    &__heading {
+        @extend .experience__heading;
+    }
+
+    &__table {
+        @extend .experience__table;
+    }
+
+    &__delete-item {
+        @extend .experience__delete-item;
+    }
 }

@@ -26,8 +26,8 @@ export default function Education(props) {
             </td>
 
             <td>
-                <button className="btn btn-danger" onClick={() => dispatch(deleteEducation(edu._id))}>
-                    <i className="fas fa-times"></i>
+                <button className="education__delete-item" onClick={() => dispatch(deleteEducation(edu._id))}>
+                    <i className="fas fa-backspace"></i>
                 </button>
             </td>
 
@@ -35,13 +35,13 @@ export default function Education(props) {
     ));
 
     return (
-        <Fragment>
+        <div className="education">
 
-            <h2 className="my-2 header">
+            <h2 className="education__heading">
                 Education
             </h2>
 
-            <table className="table">
+            <table className="education__table">
                 <thead>
                     <tr>
                         <th>
@@ -63,6 +63,6 @@ export default function Education(props) {
                 </tbody>
             </table>
 
-        </Fragment>
+        </div>
     );
 }

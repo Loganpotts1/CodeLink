@@ -31,8 +31,8 @@ export default function Experience(props) {
             </td>
 
             <td>
-                <button className="btn btn-danger" onClick={() => dispatch(deleteExperience(exp._id))}>
-                    <i className="fas fa-times"></i>
+                <button className="experience__delete-item" onClick={() => dispatch(deleteExperience(exp._id))}>
+                    <i className="fas fa-backspace"></i>
                 </button>
             </td>
 
@@ -41,13 +41,16 @@ export default function Experience(props) {
 
 
     return (
-        <Fragment>
+        <div className="experience">
 
-            <h2 className="my-2 header">
+
+            <h2 className="experience__heading">
                 Experience
             </h2>
 
-            <table className="table">
+
+            <table className="experience__table">
+
                 <thead>
                     <tr>
                         <th>
@@ -64,11 +67,14 @@ export default function Experience(props) {
                         </th>
                     </tr>
                 </thead>
+
                 <tbody>
                     {experiences}
                 </tbody>
+
             </table>
 
-        </Fragment>
+
+        </div>
     );
 }
