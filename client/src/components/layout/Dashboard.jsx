@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 //  LOCAL
 import { getCurrentProfile } from "../../actions/profile";
 import { deleteAccount } from "../../actions/auth";
-import DashboardActions from "./DashboardActions";
 import Experience from "./Experience";
 import Education from "./Education";
 
@@ -35,7 +34,7 @@ export default function Dashboard() {
                     Dashboard
                 </h1>
                 <h3>
-                    {`Welcome ${profile && "back, "} ${user && user.name.trim().split(" ")[0]}!`}
+                    {`Welcome ${profile ? "back, ": ""} ${user && user.name.trim().split(" ")[0]}!`}
                 </h3>
             </div>
             
@@ -46,21 +45,22 @@ export default function Dashboard() {
                     <Fragment>
                         <Experience />
                         <Education />
-                        <button className="dashboard__delete-account" onClick={() => dispatch(deleteAccount())}>
-                            <i className="fas fa-user-minus" />
-                            {" Delete My Account"}
-                        </button>
+                        <div className="dashboard__actions">
+                            <Link className="dashboard__edit-profile" to="/edit-profile">
+                                Edit Profile
+                            </Link>
+                            <button className="dashboard__delete-account" onClick={() => dispatch(deleteAccount())}>
+                                Delete Account
+                            </button>
+                        </div>
                     </Fragment>
                 ) : 
                 (
                     <Fragment>
-                        <div className="dashboard__welcome">
-                            <h3>
-                                {`Welcome ${user && user.name.trim().split(" ")[0]}!`}
-                            </h3>
-                            <p className="dashboard__welcome dashboard__welcome--new">
+                        <div className="dashboard--new">
+                            <h2>
                                 Why not set up a profile?
-                            </p>
+                            </h2>
                             <Link to="/edit-profile">
                                 Create Profile
                             </Link>
@@ -68,6 +68,7 @@ export default function Dashboard() {
                     </Fragment>
                 )
             }
+
 
         </div>
     );

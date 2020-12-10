@@ -313,6 +313,7 @@ a {
         //font-weight: 600;
         //background-color: rgba(0, 0, 0, .4);
         color: #F9703E;
+        text-shadow: -2px 2px 2px rgba(0, 0, 0, .4);
         border-radius: 3px;
         margin-bottom: 1rem;
     }
@@ -338,31 +339,60 @@ a {
     }
 
     &__actions {
+        display: flex;
+        justify-content: start;
+        margin: 3rem 6.5%;
+    }
 
+    &__edit-profile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.6rem;
+        background-color: transparent;
+        color: #F9703E;
+        border: 1px solid #F9703E;
+        border-radius: 3px;
+        padding: 1rem 2rem;
     }
 
     &__delete-account {
+        cursor: pointer;
         justify-self: left;
-        width: 16rem;
-        height: 4rem;
-        margin-left: 6%;
+        padding: 1rem 2rem;
+        font-size: 1.4rem;
         background-color: #1F2933;
         color: #7B8794;
         border: none;
         border-radius: 3px;
+        margin-left: 1rem;
     }
 
-    &__new {
+    &--new {
+        display: flex;
+        flex-direction: column;
+        margin-top: 4rem;
 
-    }
+        h2 {
+            font-size: 3rem;
+            color: #9AA5B1;
+        }
 
-    &__new-button {
-
+        a {
+            font-size: 1.6rem;
+            font-weight: 600;
+            background-color: #F9703E;
+            color: #1F2933;
+            border-radius: 3px;
+            box-shadow: -2px 2px 6px rgba(0, 0, 0, .4);
+            padding: 1rem 2rem;
+            margin: 1.5rem auto;
+        }
     }
 }
 
 .experience {
-    margin: 6rem;
+    margin: 6rem 6%;
     font-size: 1.6rem;
 
     &__heading {
@@ -390,7 +420,7 @@ a {
 
         td {
             color: #CBD2D9;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, .4);
+            text-shadow: -2px 2px 2px rgba(0, 0, 0, .4);
         }
 
         th,td {
