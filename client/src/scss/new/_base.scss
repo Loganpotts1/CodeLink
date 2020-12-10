@@ -86,6 +86,10 @@ a {
             font-size: 2.2rem;
             color: #CBD2D9;
             transition: all .2s;
+
+            &:hover {
+                color: #F9703E;
+            }
         }
     }
 
@@ -321,13 +325,13 @@ a {
         align-items: start;
         padding: 8rem 17% 12rem;
         font-size: 1.6rem;
-        color: #7B8794;
+        color: #9AA5B1;
         background: url("../img/banner.jpg");
         background-size: cover;
         //background-color: rgba(255, 176, 136, .4);
 
         h3 {
-            font-weight: 500;
+            //font-weight: 500;
             //background-color: rgba(0, 0, 0, .4);
             border-radius: 3px;
         }
@@ -362,9 +366,16 @@ a {
     font-size: 1.6rem;
 
     &__heading {
-        text-align: left;
+        display: flex;
+        justify-content: start;
+        align-items: center;
         margin-bottom: 1rem;
-        color: #7B8794;
+        color: #9AA5B1;
+
+        a {
+            padding: .8rem;
+            color: #57AE5B;
+        }
     }
 
     &__table {
@@ -399,7 +410,7 @@ a {
 
         i {
             font-size: 1.6rem;
-            color: #7B8794;
+            color: #D64545;
         }
 
         &:hover i {
