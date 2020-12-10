@@ -61,8 +61,8 @@ a {
 .page {
     display: grid;
     grid-template-rows: 60px minmax(calc(100vh - 60px), min-content);
-    //background: linear-gradient(to bottom left, #323F4B 0%, #1F2933 100%);
-    background-color: #1F2933;
+    background: linear-gradient(to bottom left, #323F4B 0%, #1F2933 100%);
+    //background-color: #1F2933;
 
     &__content {
         grid-column: 2 / -1;
@@ -84,6 +84,7 @@ a {
 
         .fa-code {
             font-size: 2.2rem;
+            color: #CBD2D9;
             transition: all .2s;
         }
     }
@@ -102,7 +103,12 @@ a {
 
         a {
             font-size: 1.8rem;
+            color: #CBD2D9;
             transition: all .2s;
+
+            &:hover {
+                color: #F9703E;
+            }
         }
     }
 }
@@ -299,7 +305,11 @@ a {
     }
 
     &__heading {
-        color: #9AA5B1;
+        font-size: 5.5rem;
+        //font-weight: 600;
+        //background-color: rgba(0, 0, 0, .4);
+        color: #F9703E;
+        border-radius: 3px;
         margin-bottom: 1rem;
     }
 
@@ -308,13 +318,19 @@ a {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
-        padding: 10rem;
+        align-items: start;
+        padding: 8rem 17% 12rem;
         font-size: 1.6rem;
-        color: #1F2933;
+        color: #7B8794;
         background: url("../img/banner.jpg");
         background-size: cover;
         //background-color: rgba(255, 176, 136, .4);
+
+        h3 {
+            font-weight: 500;
+            //background-color: rgba(0, 0, 0, .4);
+            border-radius: 3px;
+        }
     }
 
     &__actions {
@@ -327,9 +343,9 @@ a {
         height: 4rem;
         margin-left: 6%;
         background-color: #1F2933;
+        color: #7B8794;
         border: none;
         border-radius: 3px;
-        color: #FACDCD;
     }
 
     &__new {
@@ -348,6 +364,7 @@ a {
     &__heading {
         text-align: left;
         margin-bottom: 1rem;
+        color: #7B8794;
     }
 
     &__table {
@@ -355,14 +372,14 @@ a {
 
         th {
             color: rgba(0, 0, 0, .8);
-            background: rgba(255, 176, 136, .6);
-            box-shadow: -2px 2px 6px rgba(0, 0, 0, .4);
+            background: #CBD2D9;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .4);
             border-radius: 3px;
         }
 
         td {
-            color:rgba(255, 176, 136, .6);
-            text-shadow: -2px 2px 6px rgba(0, 0, 0, .4);
+            color: #CBD2D9;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, .4);
         }
 
         th,td {
