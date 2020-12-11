@@ -41,15 +41,15 @@ export default function AddEducation(props) {
 
 
     return (
-        <Fragment>
+        <section className="profile">
 
 
-            <h1 className="large text-primary">
+            <h1 className="profile__heading">
                 Add Your Education
             </h1>
 
 
-            <p className="lead">
+            <p className="profile__desc">
                 <i className="fas fa-code-branch" /> 
                 Add any school or bootcamp that you
                 have attended
@@ -61,12 +61,9 @@ export default function AddEducation(props) {
             </small>
 
 
-            <form
-                className="form"
-                onSubmit={onSubmit}
-            >
+            <form className="form" onSubmit={onSubmit}>
 
-                <div className="form-group">
+                <div className="form__group">
                     <input
                         type="text"
                         placeholder="* School or Bootcamp"
@@ -77,7 +74,7 @@ export default function AddEducation(props) {
                     />
                 </div>
 
-                <div className="form-group">
+                <div className="form__group">
                     <input
                         type="text"
                         placeholder="* Degree or Certificate"
@@ -88,7 +85,7 @@ export default function AddEducation(props) {
                     />
                 </div>
 
-                <div className="form-group">
+                <div className="form__group">
                     <input
                         type="text"
                         placeholder="* Field of Study"
@@ -98,9 +95,9 @@ export default function AddEducation(props) {
                     />
                 </div>
 
-                <div className="form-group">
+                <div className="form__group">
                     <h4>
-                        From Date
+                        From Date:
                     </h4>
                     <input 
                         type="date" 
@@ -110,7 +107,7 @@ export default function AddEducation(props) {
                     />
                 </div>
 
-                <div className="form-group">
+                <div className="form__group">
                     <p>
                         <input
                             type="checkbox"
@@ -124,9 +121,9 @@ export default function AddEducation(props) {
                     </p>
                 </div>
 
-                <div className="form-group">
+                <div className="form__group">
                     <h4>
-                        To Date
+                        To Date:
                     </h4>
                     <input
                         type="date"
@@ -137,7 +134,7 @@ export default function AddEducation(props) {
                     />
                 </div>
 
-                <div className="form-group">
+                <div className="form__group">
                     <textarea
                         name="description"
                         cols="30"
@@ -148,15 +145,15 @@ export default function AddEducation(props) {
                     />
                 </div>
 
-                <input type="submit" className="btn btn-primary my-1" />
+                <input type="submit" className="form__submit btn btn--primary" />
 
-                <Link className="btn btn-light my-1" to="/dashboard">
+                <Link className="btn btn--tertiary" to="/dashboard">
                     Go Back
                 </Link>
 
             </form>
 
 
-      </Fragment>
+      </section>
     );
 }

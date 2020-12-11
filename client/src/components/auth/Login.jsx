@@ -49,9 +49,9 @@ export default function Login(props) {
             </h1>
 
 
-            <form className="login__form" onSubmit={onSubmit}>
+            <form className="form" onSubmit={onSubmit}>
 
-                <div className="login__form-group">
+                <div className="form__group">
                     <input 
                         type="email" 
                         placeholder="Email Address" 
@@ -61,7 +61,7 @@ export default function Login(props) {
                     />
                 </div>
 
-                <div className="login__form-group">
+                <div className="form__group">
                     <input
                         type="password"
                         placeholder="Password"
@@ -72,7 +72,7 @@ export default function Login(props) {
                     />
                 </div>
 
-                <button type="submit" className="login__submit" onChange={onChange}>
+                <button type="submit" className="form__submit btn btn--login" onChange={onChange}>
                     Login <i className="fa fa-chevron-right"/>
                 </button>
 

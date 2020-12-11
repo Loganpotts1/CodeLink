@@ -62,9 +62,9 @@ export default function Register(props) {
             </h1>
 
 
-            <form className="register__form" onSubmit={onSubmit}>
+            <form className="form" onSubmit={onSubmit}>
 
-                <div className="register__form-group">
+                <div className="form__group">
                     <input 
                         type="text" 
                         placeholder="Name" 
@@ -75,7 +75,7 @@ export default function Register(props) {
                     />
                 </div>
 
-                <div className="register__form-group">
+                <div className="form__group">
                     <input 
                         type="email" 
                         placeholder="Email Address" 
@@ -83,13 +83,13 @@ export default function Register(props) {
                         value={email} 
                         onChange={onChange}
                     />
-                    <small className="register__form-text">
+                    <small className="form__text">
                         <i className="fa fa-info-circle"/> This site uses Gravatar. If you want a profile image, use a
                         Gravatar email
                     </small>
                 </div>
 
-                <div className="register__form-group">
+                <div className="form__group">
                     <input
                         type="password"
                         placeholder="Password"
@@ -100,7 +100,7 @@ export default function Register(props) {
                     />
                 </div>
 
-                <div className="register__form-group">
+                <div className="form__group">
                     <input
                         type="password"
                         placeholder="Confirm Password"
@@ -111,7 +111,7 @@ export default function Register(props) {
                     />
                 </div>
 
-                <button type="submit" className="register__submit" onChange={onChange}>
+                <button type="submit" className="form__submit btn btn--login" onChange={onChange}>
                     Submit <i className="fa fa-chevron-right"/>
                 </button>
 
