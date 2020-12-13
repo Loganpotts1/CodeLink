@@ -44,8 +44,8 @@ export default function AddEducation(props) {
         <section className="profile">
 
 
-            <Link className="btn btn--tertiary" to="/dashboard">
-                Go Back
+            <Link className="profile__return btn" to="/dashboard">
+                <i className="fas fa-arrow-left"/>
             </Link>
 
 

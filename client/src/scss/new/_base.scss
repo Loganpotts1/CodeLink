@@ -13,7 +13,6 @@
 
 html {
     font-size: 10px;
-    font-family: var(--font-primary);
 
     @media screen and (max-width: 900px) {
         font-size: 8px;
@@ -22,6 +21,8 @@ html {
 
 body {
     box-sizing: border-box;
+    font-family: var(--font-primary);
+    font-size: 1.6rem;
     color: #7B8794;
 }
 
@@ -263,13 +264,27 @@ a {
         input[type="text"],
         input[type="email"],
         input[type="password"],
+        input[type="date"],
         textarea {
+            font-family: var(--font-primary);
             width: 100%;
             height: 4rem;
             padding: .5rem;
             margin: 0 auto;
             border-radius: 3px;
             border: none;
+        }
+
+        input[type="date"] {
+            width: auto;
+            height: 3rem;
+            margin: 0;
+        }
+
+        input[type="checkbox"] {
+            width: .5rem;
+            height: .5rem;
+            border-radius: 3px;
         }
 
         textarea {
@@ -498,6 +513,9 @@ a {
 }
 
 .profile {
+    display: flex;
+    flex-direction: column;
+    color: #CBD2D9;
 
     & > *:not(.form) {
         margin-left: 6%;
@@ -514,6 +532,20 @@ a {
     input[type="submit"] {
         display: block;
         margin-left: auto;
+    }
+
+    &__return {
+        margin: 0 auto 3rem 0;
+
+        i {
+            border: 1px solid #9AA5B1;
+            border-radius: 50%;
+            padding: .5rem;
+
+            &:hover {
+                border: 1px solid #F9703E;
+            }
+        }
     }
 
     &__heading {

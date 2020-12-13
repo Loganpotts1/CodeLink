@@ -41,32 +41,29 @@ export default function Dashboard() {
 
             {
                 profile && (!loading) ? 
-                (
-                    <Fragment>
-                        <Experience />
-                        <Education />
-                        <div className="dashboard__actions">
-                            <Link className="dashboard__edit-profile" to="/edit-profile">
-                                Edit Profile
-                            </Link>
-                            <button className="dashboard__delete-account" onClick={() => dispatch(deleteAccount())}>
-                                Delete Account
-                            </button>
-                        </div>
-                    </Fragment>
-                ) : 
-                (
-                    <Fragment>
-                        <div className="dashboard--new">
-                            <h2>
-                                Why not set up a profile?
-                            </h2>
-                            <Link to="/edit-profile">
-                                Create Profile
-                            </Link>
-                        </div>
-                    </Fragment>
-                )
+                
+                <Fragment>
+                    <Experience />
+                    <Education />
+                    <div className="dashboard__actions">
+                        <Link className="dashboard__edit-profile" to="/edit-profile">
+                            Edit Profile
+                        </Link>
+                        <button className="dashboard__delete-account" onClick={() => dispatch(deleteAccount())}>
+                            Delete Account
+                        </button>
+                    </div>
+                </Fragment> :
+                
+                <div className="dashboard--new">
+                    <h2>
+                        Why not set up a profile?
+                    </h2>
+                    <Link to="/edit-profile">
+                        Create Profile
+                    </Link>
+                </div>
+                
             }
 
 
