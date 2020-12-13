@@ -44,6 +44,11 @@ export default function AddEducation(props) {
         <section className="profile">
 
 
+            <Link className="btn btn--tertiary" to="/dashboard">
+                Go Back
+            </Link>
+
+
             <h1 className="profile__heading">
                 Add Your Education
             </h1>
@@ -145,11 +150,7 @@ export default function AddEducation(props) {
                     />
                 </div>
 
-                <input type="submit" className="form__submit btn btn--primary" />
-
-                <Link className="btn btn--tertiary" to="/dashboard">
-                    Go Back
-                </Link>
+                <input type="submit" value="Submit" className="form__submit btn btn--primary" />
 
             </form>
 
