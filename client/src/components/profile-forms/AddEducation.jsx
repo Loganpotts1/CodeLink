@@ -54,13 +54,6 @@ export default function AddEducation(props) {
             </h1>
 
 
-            <p className="profile__desc">
-                <i className="fas fa-code-branch" /> 
-                Add any school or bootcamp that you
-                have attended
-            </p>
-
-
             <small>
                 * = required field
             </small>
@@ -113,17 +106,20 @@ export default function AddEducation(props) {
                 </div>
 
                 <div className="form__group">
-                    <p>
-                        <input
-                            type="checkbox"
-                            name="current"
-                            checked={current}
-                            value={current}
-                            onChange={() => setFormData({ ...formData, current: !current })}
-                        />
-                        {' '}
-                        Current School
-                    </p>
+                        <span className="checkbox">
+                            <input
+                                className="checkbox__input"
+                                type="checkbox"
+                                name="current"
+                                checked={current}
+                                value={current}
+                                onChange={() => setFormData({ ...formData, current: !current })}
+                            />
+                            <i className="checkbox__check fas fa-check"/>
+                        </span>
+                        <p className="checkbox__label">
+                            Current School
+                        </p>
                 </div>
 
                 <div className="form__group">

@@ -42,20 +42,17 @@ export default function AddExperience() {
 
 
     return (
-        <Fragment>
+        <div className="profile">
 
 
-            <h1 className="large text-primary">
+            <Link className="profile__return" to="/dashboard">
+                <i className="fas fa-arrow-left"/>
+            </Link>
+
+
+            <h1 className="profile__heading">
                 Add An Experience
             </h1>
-
-
-            <p className="lead">
-                <i className="fas fa-code-branch" />
-                {' '}
-                Add any developer/programming
-                positions that you have had in the past
-            </p>
 
 
             <small>
@@ -63,12 +60,9 @@ export default function AddExperience() {
             </small>
 
 
-            <form
-                className="form"
-                onSubmit={onSubmit}
-            >
+            <form className="form" onSubmit={onSubmit}>
 
-                <div className="form-group">
+                <div className="form__group">
                     <input
                         type="text"
                         placeholder="* Job Title"
@@ -79,7 +73,7 @@ export default function AddExperience() {
                     />
                 </div>
 
-                <div className="form-group">
+                <div className="form__group">
                     <input
                         type="text"
                         placeholder="* Company"
@@ -90,7 +84,7 @@ export default function AddExperience() {
                     />
                 </div>
 
-                <div className="form-group">
+                <div className="form__group">
                     <input
                         type="text"
                         placeholder="Location"
@@ -100,9 +94,9 @@ export default function AddExperience() {
                     />
                 </div>
 
-                <div className="form-group">
+                <div className="form__group">
                     <h4>
-                        From Date
+                        From Date:
                     </h4>
                     <input 
                         type="date" 
@@ -112,9 +106,10 @@ export default function AddExperience() {
                     />
                 </div>
 
-                <div className="form-group">
-                    <p>
+                <div className="form__group">
+                    <span className="checkbox">
                         <input
+                            className="checkbox__input"
                             type="checkbox"
                             name="current"
                             checked={current}
@@ -123,14 +118,16 @@ export default function AddExperience() {
                                 setFormData({ ...formData, current: !current });
                             }}
                         />
-                        {' '}
+                        <i className="checkbox__check fas fa-check"/>
+                    </span>
+                    <p className="checkbox__label">
                         Current Job
                     </p>
                 </div>
 
-                <div className="form-group">
+                <div className="form__group">
                     <h4>
-                        To Date
+                        To Date:
                     </h4>
                     <input
                         type="date"
@@ -141,7 +138,7 @@ export default function AddExperience() {
                     />
                 </div>
 
-                <div className="form-group">
+                <div className="form__group">
                     <textarea
                         name="description"
                         cols="30"
@@ -152,15 +149,11 @@ export default function AddExperience() {
                     />
                 </div>
 
-                <input type="submit" className="btn btn-primary my-1" />
-
-                <Link className="btn btn-light my-1" to="/dashboard">
-                    Go Back
-                </Link>
+                <input className="form__submit btn btn--secondary" type="submit" value="Submit" />
 
             </form>
 
 
-        </Fragment>
+        </div>
     );
 }
