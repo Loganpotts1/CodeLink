@@ -246,7 +246,6 @@ a {
 
     &--secondary {
         font-size: 1.6rem;
-        font-weight: 600;
         color: #F9703E;
         background-color: transparent;
         border: 1px solid currentColor;
@@ -255,7 +254,6 @@ a {
 
         &:hover,
         &:focus {
-            // padding: 1rem 2rem;
             transform: scale(1.05);
             box-shadow: 0 0 0 1px #1F2933, 0 0 0 2px currentColor;
         }
@@ -263,6 +261,20 @@ a {
         &:active {
             transform: scale(1);
             box-shadow: 0 0 0 1px #1F2933, 0 0 4px 2px currentColor;
+        }
+    }
+
+    &--tertiary {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #7B8794;
+        background-color: rgba(0, 0, 0, .2);
+        border: none;
+        padding: 1rem 1.8rem;
+        transition: all .2s;
+
+        &:hover {
+            color: #F9703E;
         }
     }
 }
@@ -319,9 +331,10 @@ a {
     display: inline-grid;
     justify-items: center;
     align-items: center;
-    border: 1px solid #F9703E;
-    border-radius: 3px;
-    padding: .2rem;
+
+    &:hover &__check {
+        box-shadow: 0 0 0 1px #1F2933, 0 0 0 2px #F9703E;
+    }
 
     > * {
         grid-column: 1 / -1;
@@ -333,13 +346,26 @@ a {
         z-index: 1;
 
         &:checked + .checkbox__check {
-            transform: scale(1);
+            box-shadow: 0 0 0 1px #1F2933, 0 0 0 2px #F9703E;
+
+            i {
+                transform: scale(.8);
+            }
         }
     }
 
     &__check {
+        width: 2rem;
+        height: 2rem;
         color: #F9703E;
-        transform: scale(0);
+        border: 1px solid #F9703E;
+        border-radius: 3px;
+        transition: all .2s;
+
+        i {
+            transform: scale(0);
+            transition: all .2s;
+        }
     }
 
     &__label {
@@ -439,28 +465,12 @@ a {
         margin: 3rem 6.5%;
     }
 
-    &__edit-profile {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.6rem;
-        background-color: transparent;
-        color: #F9703E;
-        border: 1px solid #F9703E;
-        border-radius: 3px;
-        padding: 1rem 2rem;
-    }
-
     &__delete-account {
-        cursor: pointer;
-        justify-self: left;
-        padding: 1rem 2rem;
-        font-size: 1.4rem;
-        background-color: #1F2933;
-        color: #7B8794;
-        border: none;
-        border-radius: 3px;
         margin-left: 1rem;
+
+        &:hover {
+            color: #D64545;
+        }
     }
 
     &--new {
@@ -580,18 +590,13 @@ a {
     }
 
     &__return {
+        font-size: 1.6rem;
+        border-radius: 50%;
+        padding: 0;
         margin: 0 auto 3rem 0;
 
         i {
-            @extend .btn--secondary;
-            color: #9AA5B1;
-            border: 1px solid currentColor;
-            border-radius: 50%;
-            padding: .5rem;
-
-            &:hover {
-                color: #F9703E;
-            }
+            padding: 1rem;
         }
     }
 

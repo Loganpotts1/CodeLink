@@ -46,10 +46,10 @@ export default function Dashboard() {
                     <Experience />
                     <Education />
                     <div className="dashboard__actions">
-                        <Link className="dashboard__edit-profile" to="/edit-profile">
+                        <Link className="btn btn--secondary" to="/edit-profile">
                             Edit Profile
                         </Link>
-                        <button className="dashboard__delete-account" onClick={() => dispatch(deleteAccount())}>
+                        <button className="btn btn--tertiary dashboard__delete-account" onClick={() => dispatch(deleteAccount())}>
                             Delete Account
                         </button>
                     </div>

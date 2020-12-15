@@ -45,7 +45,7 @@ export default function AddExperience() {
         <div className="profile">
 
 
-            <Link className="profile__return" to="/dashboard">
+            <Link className="btn btn--tertiary profile__return" to="/dashboard">
                 <i className="fas fa-arrow-left"/>
             </Link>
 
@@ -118,7 +118,9 @@ export default function AddExperience() {
                                 setFormData({ ...formData, current: !current });
                             }}
                         />
-                        <i className="checkbox__check fas fa-check"/>
+                        <span className="checkbox__check">
+                            <i className="fas fa-check"/>
+                        </span>
                     </span>
                     <p className="checkbox__label">
                         Current Job
@@ -149,7 +151,7 @@ export default function AddExperience() {
                     />
                 </div>
 
-                <input className="form__submit btn btn--secondary" type="submit" value="Submit" />
+                <input className="form__submit btn btn--primary" type="submit" value="Submit" />
 
             </form>
 

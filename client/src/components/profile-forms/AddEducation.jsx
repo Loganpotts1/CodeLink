@@ -44,7 +44,7 @@ export default function AddEducation(props) {
         <section className="profile">
 
 
-            <Link className="profile__return btn" to="/dashboard">
+            <Link className="btn btn--tertiary profile__return" to="/dashboard">
                 <i className="fas fa-arrow-left"/>
             </Link>
 
@@ -115,7 +115,9 @@ export default function AddEducation(props) {
                                 value={current}
                                 onChange={() => setFormData({ ...formData, current: !current })}
                             />
-                            <i className="checkbox__check fas fa-check"/>
+                            <span className="checkbox__check">
+                                <i className="fas fa-check"/>
+                            </span>
                         </span>
                         <p className="checkbox__label">
                             Current School
