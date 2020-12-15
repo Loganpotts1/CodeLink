@@ -44,10 +44,6 @@ p {
 a {
     text-decoration: none;
     color: #7B8794;
-
-    &:hover {
-        color: #F9703E;
-    }
 }
 
 .line {
@@ -248,18 +244,17 @@ a {
         font-size: 1.6rem;
         color: #F9703E;
         background-color: transparent;
-        border: 1px solid currentColor;
+        border: 1px solid #F9703E;
         padding: 1rem 1.8rem;
-        transition: scale .3s ease-in-out, box-shadow .1s ease-in-out;
+        transition: box-shadow .1s ease-in-out;
 
         &:hover,
         &:focus {
-            transform: scale(1.05);
+            color: #FF9466;
             box-shadow: 0 0 0 1px #1F2933, 0 0 0 2px currentColor;
         }
 
         &:active {
-            transform: scale(1);
             box-shadow: 0 0 0 1px #1F2933, 0 0 4px 2px currentColor;
         }
     }
@@ -299,7 +294,8 @@ a {
         input[type="email"],
         input[type="password"],
         input[type="date"],
-        textarea {
+        textarea,
+        select {
             font-family: var(--font-primary);
             width: 100%;
             height: 4rem;
@@ -317,6 +313,29 @@ a {
 
         textarea {
             height: 10rem;
+        }
+
+        select {
+            margin-left: 0;
+            width: 20rem;
+
+            option {
+                font-family: var(--font-primary);
+            }
+        }
+
+        &--social {
+            display: grid;
+            grid-template-columns: min-content auto;
+            grid-gap: 1rem;
+
+            i {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 3rem;
+                color: #4C63B6;
+            }
         }
     }
 
@@ -484,14 +503,7 @@ a {
         }
 
         a {
-            font-size: 1.6rem;
-            font-weight: 600;
-            background-color: #F9703E;
-            color: #1F2933;
-            border-radius: 3px;
-            box-shadow: -2px 2px 6px rgba(0, 0, 0, .4);
-            padding: 1rem 2rem;
-            margin: 1.5rem auto;
+            margin: 2rem auto;
         }
     }
 }
@@ -510,6 +522,11 @@ a {
         a {
             padding: .8rem;
             color: #57AE5B;
+            transition: all .2s;
+
+            &:hover {
+                text-shadow: 0 0 3px currentColor;
+            }
         }
     }
 
@@ -546,10 +563,11 @@ a {
         i {
             font-size: 1.6rem;
             color: #D64545;
+            transition: all .2s;
         }
 
         &:hover i {
-            color: #D64545;
+            text-shadow: 0 0 3px currentColor;
         }
     }
 }
@@ -596,12 +614,16 @@ a {
         margin: 0 auto 3rem 0;
 
         i {
-            padding: 1rem;
+            padding: 1rem 1.1rem;
         }
     }
 
     &__heading {
         text-shadow: -2px 2px 2px rgba(0, 0, 0, .4);
         margin-bottom: 3rem;
+    }
+
+    &__social {
+        margin-bottom: 2rem;
     }
 }

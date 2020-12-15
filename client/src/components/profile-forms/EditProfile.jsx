@@ -84,18 +84,17 @@ export default function CreateProfile() {
 
 
     return (
-        <Fragment>
+        <section className="profile">
 
 
-            <h1 className="large text-primary">
+            <Link className="btn btn--tertiary profile__return" to="/dashboard">
+                <i className="fas fa-arrow-left"/>
+            </Link>
+
+
+            <h1 className="profile__heading">
                 Edit Your Profile
             </h1>
-
-
-            <p className="lead">
-                <i className="fas fa-user" />
-                {" Add some changes to your profile"}
-            </p>
 
 
             <small>
@@ -105,7 +104,7 @@ export default function CreateProfile() {
 
             <form className="form" onSubmit={onSubmit}>
 
-                <div className="form-group">
+                <div className="form__group">
                     <select name="status" value={status} onChange={onChange}>
                         <option>* Select Professional Status</option>
                         <option value="Developer">Developer</option>
@@ -117,12 +116,9 @@ export default function CreateProfile() {
                         <option value="Intern">Intern</option>
                         <option value="Other">Other</option>
                     </select>
-                    <small className="form-text">
-                        Give us an idea of where you are at in your career
-                    </small>
                 </div>
 
-                <div className="form-group">
+                <div className="form__group">
                     <input
                         type="text"
                         placeholder="Company"
@@ -130,12 +126,9 @@ export default function CreateProfile() {
                         value={company}
                         onChange={onChange}
                     />
-                    <small className="form-text">
-                        Could be your own company or one you work for
-                    </small>
                 </div>
 
-                <div className="form-group">
+                <div className="form__group">
                     <input
                         type="text"
                         placeholder="Website"
@@ -143,12 +136,9 @@ export default function CreateProfile() {
                         value={website}
                         onChange={onChange}
                     />
-                    <small className="form-text">
-                        Could be your own or a company website
-                    </small>
                 </div>
 
-                <div className="form-group">
+                <div className="form__group">
                     <input
                         type="text"
                         placeholder="Location"
@@ -156,12 +146,12 @@ export default function CreateProfile() {
                         value={location}
                         onChange={onChange}
                     />
-                    <small className="form-text">
+                    <small className="form__text">
                         City & state suggested (eg. Boston, MA)
                     </small>
                 </div>
 
-                <div className="form-group">
+                <div className="form__group">
                     <input
                         type="text"
                         placeholder="* Skills"
@@ -169,12 +159,12 @@ export default function CreateProfile() {
                         value={skills}
                         onChange={onChange}
                     />
-                    <small className="form-text">
+                    <small className="form__text">
                         Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
                     </small>
                 </div>
 
-                <div className="form-group">
+                <div className="form__group">
                     <input
                         type="text"
                         placeholder="Github Username"
@@ -182,42 +172,36 @@ export default function CreateProfile() {
                         value={githubusername}
                         onChange={onChange}
                     />
-                    <small className="form-text">
+                    <small className="form__text">
                         If you want your latest repos and a Github link, include your
                         username
                     </small>
                 </div>
 
-                <div className="form-group">
+                <div className="form__group">
                     <textarea
                         placeholder="A short bio of yourself"
                         name="bio"
                         value={bio}
                         onChange={onChange}
                     />
-                    <small className="form-text">
-                        Tell us a little bit about yourself
-                    </small>
                 </div>
 
-                <div className="my-2">
+                <div className="profile__social">
                     <button
                         onClick={() => setDisplaySocialInputs(!displaySocialInputs)}
                         type="button"
-                        className="btn btn-dark"
+                        className="btn btn--tertiary"
                     >
-                        Add Social Network Links
+                        Add Social Links
                     </button>
-                    <span>
-                        Optional
-                    </span>
                 </div>
 
                 {
                     displaySocialInputs && 
                     <Fragment>
 
-                        <div className="form-group social-input">
+                        <div className="form__group form__group--social">
                             <i className="fab fa-twitter fa-2x" />
                             <input
                                 type="text"
@@ -228,7 +212,7 @@ export default function CreateProfile() {
                             />
                         </div>
 
-                        <div className="form-group social-input">
+                        <div className="form__group form__group--social">
                             <i className="fab fa-facebook fa-2x" />
                             <input
                                 type="text"
@@ -239,7 +223,7 @@ export default function CreateProfile() {
                             />
                         </div>
 
-                        <div className="form-group social-input">
+                        <div className="form__group form__group--social">
                             <i className="fab fa-youtube fa-2x" />
                             <input
                                 type="text"
@@ -250,7 +234,7 @@ export default function CreateProfile() {
                             />
                         </div>
 
-                        <div className="form-group social-input">
+                        <div className="form__group form__group--social">
                             <i className="fab fa-linkedin fa-2x" />
                             <input
                                 type="text"
@@ -261,7 +245,7 @@ export default function CreateProfile() {
                             />
                         </div>
 
-                        <div className="form-group social-input">
+                        <div className="form__group form__group--social">
                             <i className="fab fa-instagram fa-2x" />
                             <input
                                 type="text"
@@ -275,16 +259,11 @@ export default function CreateProfile() {
                     </Fragment>
                 }
 
-
-                <input type="submit" className="btn btn-primary my-1"/>
-
-                <Link className="btn btn-light my-1" to="/dashboard">
-                    Go Back
-                </Link>
+                <input type="submit" value="Submit" className="btn btn--primary form__submit"/>
 
             </form>
 
 
-        </Fragment>
+        </section>
     );
 }

@@ -42,7 +42,7 @@ export default function AddExperience() {
 
 
     return (
-        <div className="profile">
+        <section className="profile">
 
 
             <Link className="btn btn--tertiary profile__return" to="/dashboard">
@@ -156,6 +156,6 @@ export default function AddExperience() {
             </form>
 
 
-        </div>
+        </section>
     );
 }

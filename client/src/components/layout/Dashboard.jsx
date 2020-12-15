@@ -59,7 +59,7 @@ export default function Dashboard() {
                     <h2>
                         Why not set up a profile?
                     </h2>
-                    <Link to="/edit-profile">
+                    <Link className="btn btn--primary" to="/edit-profile">
                         Create Profile
                     </Link>
                 </div>
