@@ -10,6 +10,10 @@ const ProfileSchema = new Schema({
         ref: "user" // Tells mongoose that this is an "_id:" from the "user" model
     },
 
+    avatar: {
+        type: String
+    },
+
     company: {
         type: String
     },

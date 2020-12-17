@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 //  LOCAL
 import { getProfileById } from "../../actions/profile";
 import Spinner from "../utils/Spinner";
@@ -24,6 +24,7 @@ export default function Profile(props) {
         }
     } = useSelector(state => state);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     useEffect(() => {
         dispatch(getProfileById(id));
@@ -37,9 +38,9 @@ export default function Profile(props) {
         <Fragment>
 
 
-            <Link to="/profiles" className="btn btn-dark">
+            <button onClick={() => {window.history.back()}} className="btn btn--tertiary">
                 Back to Developers
-            </Link>
+            </button>
 
 
             {

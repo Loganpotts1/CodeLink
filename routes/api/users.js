@@ -46,20 +46,10 @@ router.post("/",
             return res.status(400).json({ errors: [{ msg: "Email address is already in use" }] });
 
 
-            // Use gravatar to get avatar from email
-            const avatar = gravatar.url(
-                email, 
-                {
-                s: "200", // size
-                r: "pg", // rating
-                d: "mm" // default
-            });
-
             const user = new User({
                 name,
                 email,
-                password,
-                avatar
+                password
             });
 
 
@@ -76,7 +66,7 @@ router.post("/",
                 user: {
                     userId: user.id
                 }
-            }
+            };
 
             const secret = config.get("jwtSecret");
 

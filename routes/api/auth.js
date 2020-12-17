@@ -12,7 +12,7 @@ const router = express.Router();
 
 
 /*  ROUTES LAYOUT:
-    Test Route, Get User Id - GET
+    Get User Id - GET
     Login User - PUT
 */
 

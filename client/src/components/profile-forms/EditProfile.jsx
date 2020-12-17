@@ -11,6 +11,7 @@ export default function CreateProfile() {
     const history = useHistory();
 
     const [ formData, setFormData ] = useState({
+        avatar: "",
         company: "",
         website: "",
         location: "",
@@ -55,6 +56,7 @@ export default function CreateProfile() {
 
 
     const {
+        avatar,
         company,
         website,
         location,
@@ -116,6 +118,16 @@ export default function CreateProfile() {
                         <option value="Intern">Intern</option>
                         <option value="Other">Other</option>
                     </select>
+                </div>
+
+                <div className="form__group">
+                    <input
+                        type="text"
+                        placeholder="Avatar Image"
+                        name="avatar"
+                        value={avatar}
+                        onChange={onChange}
+                    />
                 </div>
 
                 <div className="form__group">

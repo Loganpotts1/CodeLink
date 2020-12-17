@@ -51,7 +51,7 @@ export default function AddExperience() {
 
 
             <h1 className="edit__heading">
-                Add An Experience
+                Add Your Experience
             </h1>
 
 

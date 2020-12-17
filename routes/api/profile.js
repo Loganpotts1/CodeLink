@@ -46,6 +46,7 @@ router.post("/",
 
         const { userId } = req.user;
         const {
+            avatar,
             company,
             website,
             location,
@@ -65,6 +66,7 @@ router.post("/",
             //  Build profile object (It looks confusing I know, but it's actually fairly simple)
             const profileFields = {
                 user: userId,
+                avatar,
                 company,
                 location,
                 website: website && website !== ""
@@ -89,7 +91,7 @@ router.post("/",
             profileFields.social = socialfields;
 
 
-            //  Updates profile, and creates on if one is not found
+            //  Updates profile, and creates one if one is not found
             let profile = await Profile.findOneAndUpdate(
                 { user: userId },
                 { ...profileFields },

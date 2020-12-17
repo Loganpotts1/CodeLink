@@ -5,6 +5,7 @@ const auth = require("../../middleware/auth");
 const checkObjectId = require("../../middleware/checkObjectId");
 const User = require("../../models/User");
 const Post = require("../../models/Post");
+const Profile = require("../../models/Profile");
 
 const router = express.Router();
 
@@ -45,12 +46,13 @@ router.post("/",
 
         try {
             const user = await User.findById(userId).select("-password");
+            const profile = await Profile.findOne({ user: userId});
 
             const newPost = new Post({
                 text,
                 user: userId,
                 name: user.name,
-                avatar: user.avatar
+                avatar: profile.avatar || ""
             });
 
             post = await newPost.save();
@@ -177,13 +179,14 @@ router.post("/",
 
         try {
             const user = await User.findById(userId).select("-password");
+            const profile = await Profile.find({ user: userId });
             const post = await Post.findById(post_id);
 
             const newComment = {
                 text,
                 user: userId,
                 name: user.name,
-                avatar: user.avatar
+                avatar: profile.avatar || ""
             };
 
             post.comments.unshift(newComment);

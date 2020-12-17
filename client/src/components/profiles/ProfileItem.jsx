@@ -6,9 +6,9 @@ export default function ProfileItem(props) {
         profile: {
             user: {
                 _id,
-                name,
-                avatar
+                name
             },
+            avatar,
             status,
             company,
             location,
@@ -17,33 +17,42 @@ export default function ProfileItem(props) {
     } = props;
 
     return (
-        <div className="profiles__item">
+        <div className="card">
 
-            <img src={avatar} alt="avatar" className="profiles__avatar"/>
-
-            <div>
-                <h2>
-                    {name}
-                </h2>
-                <p>
-                    {status} {company && <span> at {company}</span>}
-                </p>
-                <p className="my-1">
-                    {location && <span>{location}</span>}
-                </p>
-                <Link to={`/profile/${_id}`} className="btn btn--secondary">
-                    View Profile
-                </Link>
+            <div className="card__avatar">
+                {
+                    avatar.length > 0 ?
+                    <img src={avatar} alt="avatar"/> :
+                    <i className="fas fa-user-ninja"/>
+                }
             </div>
 
-            <ul>
-                {skills.slice(0,4).map((skill, index) => (
-                    <li key={index} className="text-primary">
-                        <i className="fas fa-check"></i>
-                        {" " + skill}
-                    </li>
-                ))}
-            </ul>
+            <div className="card__content">
+                <h2 className="card__name">
+                    {name}
+                </h2>
+
+                <p className="card__company">
+                    {status} {company && <span> at {company}</span>}
+                </p>
+
+                <p  className="card__location">
+                    {location && <span>{location}</span>}
+                </p>
+
+                <Link to={`/profile/${_id}`} className="card__button">
+                    View Profile
+                </Link>
+
+                <ul className="card__skills">
+                    {skills.slice(0,4).map((skill, index) => (
+                        <li key={index} className="text-primary">
+                            <i className="fas fa-check"></i>
+                            {" " + skill}
+                        </li>
+                    ))}
+                </ul>
+            </div>
 
         </div>
     );
