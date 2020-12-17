@@ -84,15 +84,15 @@ export default function CreateProfile() {
 
 
     return (
-        <section className="profile">
+        <section className="edit">
 
 
-            <Link className="btn btn--tertiary profile__return" to="/dashboard">
+            <Link className="btn btn--tertiary return" to="/dashboard">
                 <i className="fas fa-arrow-left"/>
             </Link>
 
 
-            <h1 className="profile__heading">
+            <h1 className="edit__heading">
                 Edit Your Profile
             </h1>
 
@@ -187,7 +187,7 @@ export default function CreateProfile() {
                     />
                 </div>
 
-                <div className="profile__social">
+                <div className="edit__social">
                     <button
                         onClick={() => setDisplaySocialInputs(!displaySocialInputs)}
                         type="button"

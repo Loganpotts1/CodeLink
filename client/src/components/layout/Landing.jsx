@@ -15,14 +15,6 @@ export default function Landing() {
     if (isAuthenticated)
     return <Redirect to="/dashboard" />;
 
-    const loginGuest = () => {
-        dispatch(register({
-            name: "Guest",
-            email: `guest${Math.floor(Math.random() * 10000)}@gmail.com`,
-            password: "123456"
-        }));
-    }
-
 
     return (
         <section className="landing">
@@ -37,19 +29,11 @@ export default function Landing() {
                 </h2>
                 
                 <main className="landing__main">
-
                     {
                         landingElement === "Register" ?
                         <Register login={() => setLandingElement("Login")} />:
                         <Login register={() => setLandingElement("Register")} />       
                     }
-
-                    <div className="line"/>
-
-                    <a className="guest" href="#!" onClick={loginGuest}>
-                        Alternatively,<br/> click here to sign in as a <span>Guest</span>
-                    </a>
-
                 </main>
 
             </div>

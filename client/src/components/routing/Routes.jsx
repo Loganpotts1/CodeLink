@@ -23,8 +23,8 @@ export default function Routes() {
 
 			<div className="page__content">
                 <Switch>
-                    <Route exact path="/profiles" component={Profiles} />
-                    <Route exact path="/profile/:id" component={Profile} />
+                    <PrivateRoute exact path="/profiles" component={Profiles} />
+                    <PrivateRoute exact path="/profile/:id" component={Profile} />
                     <PrivateRoute exact path="/dashboard" component={Dashboard} />
                     <PrivateRoute exact path="/edit-profile" component={EditProfile} />
                     <PrivateRoute exact path="/add-education" component={AddEducation} />

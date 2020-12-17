@@ -24,18 +24,13 @@ export default function Profiles() {
             {
                 loading ?
                 <Spinner/> :
-                <Fragment>
+                <section className="profiles">
 
-                    <h1 className="large text-primary test">
+                    <h1 className="profiles__heading">
                         Developers
                     </h1>
 
-                    <p className="lead">
-                        <i className="fab fa-connectdevelop"></i>
-                        {" Browse and Connect with Developers"}
-                    </p>
-
-                    <div className="profiles">
+                    <div className="profiles__container">
                         {
                             profiles.map(profile => (
                                 <ProfileItem key={profile._id} profile={profile} />
@@ -43,7 +38,7 @@ export default function Profiles() {
                         }
                     </div>
 
-                </Fragment>
+                </section>
             }
         </Fragment>
     );

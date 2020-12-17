@@ -17,9 +17,9 @@ export default function ProfileItem(props) {
     } = props;
 
     return (
-        <div className="profile bg-light">
+        <div className="profiles__item">
 
-            <img src={avatar} alt="avatar" className="round-img"/>
+            <img src={avatar} alt="avatar" className="profiles__avatar"/>
 
             <div>
                 <h2>
@@ -31,7 +31,7 @@ export default function ProfileItem(props) {
                 <p className="my-1">
                     {location && <span>{location}</span>}
                 </p>
-                <Link to={`/profile/${_id}`} className="btn btn-primary">
+                <Link to={`/profile/${_id}`} className="btn btn--secondary">
                     View Profile
                 </Link>
             </div>

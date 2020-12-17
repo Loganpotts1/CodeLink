@@ -41,15 +41,15 @@ export default function AddEducation(props) {
 
 
     return (
-        <section className="profile">
+        <section className="edit">
 
 
-            <Link className="btn btn--tertiary profile__return" to="/dashboard">
+            <Link className="btn btn--tertiary return" to="/dashboard">
                 <i className="fas fa-arrow-left"/>
             </Link>
 
 
-            <h1 className="profile__heading">
+            <h1 className="edit__heading">
                 Add Your Education
             </h1>
 
