@@ -17,7 +17,7 @@ export default function ProfileItem(props) {
     } = props;
 
     return (
-        <div className="card">
+        <section className="card">
 
             <div className="card__avatar">
                 {
@@ -32,28 +32,30 @@ export default function ProfileItem(props) {
                     {name}
                 </h2>
 
-                <p className="card__company">
-                    {status} {company && <span> at {company}</span>}
-                </p>
-
-                <p  className="card__location">
-                    {location && <span>{location}</span>}
-                </p>
-
-                <Link to={`/profile/${_id}`} className="card__button">
+                <Link to={`/profile/${_id}`} className="btn btn--tertiary card__button">
                     View Profile
                 </Link>
+
+                <div className="card__details">
+                    <small className="card__company">
+                        {status} {company && <span> at {company}</span>}
+                    </small>
+
+                    <small  className="card__location">
+                        {location && <span>{location}</span>}
+                    </small>
+                </div>
 
                 <ul className="card__skills">
                     {skills.slice(0,4).map((skill, index) => (
                         <li key={index} className="text-primary">
-                            <i className="fas fa-check"></i>
+                            {/* <i className="fas fa-check"></i> */}
                             {" " + skill}
                         </li>
                     ))}
                 </ul>
             </div>
 
-        </div>
+        </section>
     );
 }

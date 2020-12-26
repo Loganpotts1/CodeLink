@@ -34,7 +34,7 @@ export default function Dashboard() {
                     Dashboard
                 </h1>
                 <h3>
-                    {`Welcome ${profile ? "back, ": ""} ${user && user.name.trim().split(" ")[0]}!`}
+                    {`Welcome ${profile ? "back, " : ""} ${user && user.name.trim().split(" ")[0]}!`}
                 </h3>
             </div>
             

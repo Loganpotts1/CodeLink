@@ -24,7 +24,7 @@ export default function Profiles() {
             {
                 loading ?
                 <Spinner/> :
-                <section className="profiles">
+                <main className="profiles">
 
                     <h1 className="profiles__heading">
                         Developers
@@ -38,7 +38,7 @@ export default function Profiles() {
                         }
                     </div>
 
-                </section>
+                </main>
             }
         </Fragment>
     );
