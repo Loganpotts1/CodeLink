@@ -4,7 +4,8 @@
 }
 
 $bp-medium: 900px;
-$bp-small: 500px;
+$bp-small: 700px;
+$bp-mobile: 500px;
 
 *,
 *::before,
@@ -18,11 +19,11 @@ html {
     font-size: 10px;
 
     @media screen and (max-width: $bp-medium) {
-        font-size: 8px;
+        font-size: 9px;
     }
 
-    @media screen and (max-width: $bp-small) {
-        font-size: 7px;
+    @media screen and (max-width: $bp-mobile) {
+        font-size: 8px;
     }
 }
 
@@ -31,6 +32,8 @@ body {
     font-family: var(--font-primary);
     font-size: 1.6rem;
     color: #7B8794;
+    width: 100vw;
+    overflow-x: hidden;
 }
 
 h1,h2,h3,h4 {
@@ -76,9 +79,9 @@ a {
     &__content {
         grid-column: 2 / -1;
         display: grid;
-        grid-template-columns: 
-        [full-start] 1fr [center-start] 
-        repeat(8, [col-start] minmax(min-content, 14rem) [col-end] ) 
+        grid-template-columns:
+        [full-start] 1fr [center-start]
+        repeat(8, [col-start] minmax(min-content, 14rem) [col-end] )
         [center-end] 1fr [full-end];
 
         > * {
@@ -87,47 +90,48 @@ a {
     }
 }
 
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2.2rem;
+// .nav {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     background-color: rgba(0, 0, 0, .4);
+//     padding: 0 2.2rem;
 
-    &__logo {
+//     &__logo {
 
-        .fa-code {
-            font-size: 22px;
-            color: #CBD2D9;
-            transition: all .2s;
+//         .fa-code {
+//             font-size: 22px;
+//             color: #CBD2D9;
+//             transition: all .2s;
 
-            &:hover {
-                color: #F9703E;
-            }
-        }
-    }
+//             &:hover {
+//                 color: #F9703E;
+//             }
+//         }
+//     }
 
-    &__links {
-        display: flex;
-        justify-content: space-between;
+//     &__links {
+//         display: flex;
+//         justify-content: space-between;
 
-        li {
+//         li {
 
-            &:not(:last-child) {
-                margin-right: 2.5rem;
-            }
-        }
+//             &:not(:last-child) {
+//                 margin-right: 2.5rem;
+//             }
+//         }
 
-        a {
-            font-size: 18px;
-            color: #CBD2D9;
-            transition: all .2s;
+//         a {
+//             font-size: 18px;
+//             color: #CBD2D9;
+//             transition: all .2s;
 
-            &:hover {
-                color: #F9703E;
-            }
-        }
-    }
-}
+//             &:hover {
+//                 color: #F9703E;
+//             }
+//         }
+//     }
+// }
 
 @keyframes alert {
     0% {
@@ -271,7 +275,7 @@ a {
     }
 
     &--tertiary {
-        display: flex;
+        display: inline-flex;
         justify-content: center;
         align-items: center;
         font-size: 1.4rem;
@@ -495,6 +499,10 @@ a {
         display: flex;
         justify-content: start;
         margin: 3rem 6.5%;
+
+        @media screen and (max-width: $bp-mobile) {
+            justify-content: center;
+        }
     }
 
     &__delete-account {
@@ -531,6 +539,10 @@ a {
         align-items: center;
         margin-bottom: 1rem;
         color: #9AA5B1;
+
+        @media screen and (max-width: $bp-mobile) {
+            justify-content: center;
+        }
 
         a {
             padding: .8rem;
@@ -631,6 +643,7 @@ a {
 }
 
 .profiles {
+    margin-top: 3rem;
 
     &__heading {
         text-align: center;
@@ -650,6 +663,10 @@ a {
         }
 
         @media screen and (max-width: $bp-small) {
+            padding: 0 8vw;
+        }
+
+        @media screen and (max-width: $bp-mobile) {
             padding: 0 6vw;
         }
 
@@ -682,7 +699,7 @@ a {
         clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
 
         @media screen and (max-width: $bp-medium) {
-            height: 60rem;
+            height: 50rem;
         }
 
         img, i {
@@ -710,6 +727,11 @@ a {
                 padding: 8rem 0 0;
                 font-size: 55rem;
             }
+
+            @media screen and (max-width: $bp-mobile) {
+                padding: 12rem 0 0;
+                font-size: 40rem;
+            }
         }
     }
 
@@ -717,8 +739,9 @@ a {
         display: grid;
         grid-template-columns: max-content 1fr max-content;
         grid-template-rows: min-content min-content 1fr;
-        height: 100%;
-        max-height: 250px;
+        height: 230px;
+        // min-height: 220px;
+        // max-height: 250px;
         padding: 2rem;
     }
 
@@ -738,10 +761,7 @@ a {
     &__details {
         display: flex;
         flex-direction: column;
-
-        @media screen and (min-width: $bp-small) {
-            font-size: 16px;
-        }
+        font-size: 16px;
     }
 
     &__company {
@@ -758,16 +778,13 @@ a {
         align-self: end;
         display: flex;
         justify-content: space-around;
+        font-size: 16px;
         font-style: italic;
         color: #3F9142;
         background-color: rgba(0, 0, 0, .1);
         border-radius: 3px;
         padding: 2rem;
         margin-top: 5rem;
-
-        @media screen and (min-width: $bp-small) {
-            font-size: 16px;
-        }
     }
 }
 
@@ -779,5 +796,13 @@ a {
 
     i {
         padding: 1rem 1.1rem;
+    }
+}
+
+.hide {
+    &--sm {
+        @media screen and (max-width: $bp-mobile) {
+            display: none;
+        }
     }
 }

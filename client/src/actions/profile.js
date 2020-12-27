@@ -80,7 +80,7 @@ export const getAllProfiles = () => async dispatch => {
 };
 
 
-export const createProfile = (formData, history, edit = false) => async dispatch => {
+export const createProfile = (formData, edit = false) => async dispatch => {
 
     try {
         const res = await api.post("/profile", formData);
@@ -95,8 +95,6 @@ export const createProfile = (formData, history, edit = false) => async dispatch
             "success"
         ));
 
-        history.push("/dashboard");
-
     } catch (err) {
         const errors = err.response.data.errors;
 
@@ -116,7 +114,7 @@ export const createProfile = (formData, history, edit = false) => async dispatch
 };
 
 
-export const addEducation = (formData, history) => async dispatch => {
+export const addEducation = (formData) => async dispatch => {
 
     try {
         const res = await api.put("/profile/education", formData);
@@ -128,8 +126,6 @@ export const addEducation = (formData, history) => async dispatch => {
 
         dispatch(setAlert("Education Added", "success"));
 
-        history.goBack();
-
     } catch (err) {
         const errors = err.response.data.errors;
 
@@ -149,7 +145,7 @@ export const addEducation = (formData, history) => async dispatch => {
 };
 
 
-export const addExperience = (formData, history) => async dispatch => {
+export const addExperience = (formData) => async dispatch => {
 
     try {
         const res = await api.put("/profile/experience", formData);
@@ -160,8 +156,6 @@ export const addExperience = (formData, history) => async dispatch => {
         });
 
         dispatch(setAlert("Experience Added", "success"));
-
-        history.push("/dashboard");
 
     } catch (err) {
         const errors = err.response.data.errors;

@@ -24,29 +24,29 @@ export default function Profile(props) {
         }
     } = useSelector(state => state);
     const dispatch = useDispatch();
-    const history = useHistory();
 
     useEffect(() => {
         dispatch(getProfileById(id));
         // eslint-disable-next-line
     },[]);
 
+
     return (
         
         (!profile) || loading ?
         <Spinner /> :
-        <Fragment>
+        <main className="profile">
 
 
-            <button onClick={() => {window.history.back()}} className="btn btn--tertiary">
-                Back to Developers
+            <button className="btn btn--tertiary return" onClick={() => {window.history.back()}}>
+                <i className="fas fa-arrow-left"/>
             </button>
 
 
             {
                 isAuthenticated &&
                 user._id === profile.user._id &&
-                <Link to="/edit-profile" className="btn btn-dark">
+                <Link to="/edit-profile" className="btn btn--secondary">
                     Edit Profile
                 </Link>
             }
@@ -95,7 +95,7 @@ export default function Profile(props) {
             </div>
 
 
-        </Fragment>
+        </main>
             
     );
 }

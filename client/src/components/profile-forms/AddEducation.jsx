@@ -1,5 +1,4 @@
-import React, { useState, Fragment } from "react";
-import { useHistory, Link } from "react-router-dom";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 //  LOCAL
 import { addEducation } from "../../actions/profile";
@@ -7,7 +6,6 @@ import { addEducation } from "../../actions/profile";
 
 export default function AddEducation(props) {
     const dispatch = useDispatch();
-    const history = useHistory();
     const initialState = {
         school: "",
         degree: "",
@@ -36,7 +34,8 @@ export default function AddEducation(props) {
     
     const onSubmit = event => {
         event.preventDefault();
-        dispatch(addEducation(formData, history));
+        dispatch(addEducation(formData));
+        window.history.back();
     }
 
 
@@ -44,9 +43,9 @@ export default function AddEducation(props) {
         <section className="edit">
 
 
-            <Link className="btn btn--tertiary return" to="/dashboard">
+            <button className="btn btn--tertiary return" onClick={() => {window.history.back()}}>
                 <i className="fas fa-arrow-left"/>
-            </Link>
+            </button>
 
 
             <h1 className="edit__heading">

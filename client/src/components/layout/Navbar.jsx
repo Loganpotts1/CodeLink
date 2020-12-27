@@ -8,6 +8,11 @@ import { logout } from "../../actions/auth";
 export default function Navbar() {
     const dispatch = useDispatch();
 
+    function dropDown() {
+        const navItems = document.querySelector(".nav__links");
+        navItems.classList.toggle("nav__links--active");
+    }
+
 
     return (
         <nav className="nav">
@@ -36,9 +41,7 @@ export default function Navbar() {
                     <Link to="/dashboard">
                         {/* <i className="fas fa-user" />
                         {' '} */}
-                        <span className="hide-sm">
-                            Dashboard
-                        </span>
+                        Dashboard
                     </Link>
                 </li>
 
@@ -53,6 +56,10 @@ export default function Navbar() {
                 </li>
 
             </ul>
+            
+            <button className="btn nav__hamburger" onClick={dropDown}>
+                <i className="fas fa-bars"></i>
+            </button>
 
         </nav>
     );

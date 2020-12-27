@@ -1,0 +1,108 @@
+@keyframes hamburger {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(118px);
+    }
+}
+
+.nav {
+    // grid-column: 1 / -1;
+    // grid-row: 1 / 2;
+    // justify-self: center;
+    display: grid;
+    grid-template-columns: min-content 1fr min-content;
+    grid-column-gap: 1rem;
+    width: 100vw;
+    // grid-template-rows: 80px;
+    align-items: center;
+    background-color: #1F2933;
+    // padding: 0 2.5%;
+
+    &__logo {
+        margin-left: calc(20px + 1vw);
+        // font-family: var(--font-display);
+        font-size: 22px;
+        // text-decoration: none;
+
+        @media screen and (max-width: $bp-mobile) {
+            // color: rgba(var(--font-color-alt), 1);
+            z-index: 2;
+        }
+
+        i {
+            color: #CBD2D9;
+        }
+    }
+
+    &__links {
+        display: grid;
+        grid-template-columns: repeat(4, min-content);
+        grid-column-gap: 2rem;
+        grid-column: 3 / 4;
+        // justify-content: space-between;
+        // align-items: center;
+        margin-right: calc(20px + 1vw);
+        transition: all .3s;
+        // transform-origin: bottom;
+        // font-family: var(--font-primary);
+        // font-weight: 300;
+        // list-style: none;
+
+        @media screen and (max-width: $bp-mobile) {
+            grid-template-columns: max-content;
+            grid-row-gap: 2rem;
+            justify-content: center;
+            padding: 3rem 0;
+            display: none;
+
+            &--active {
+                display: grid;
+                position: absolute;
+                width: 100%;
+                // padding: 80px 0;
+                border-bottom-left-radius: 3px;
+                border-bottom-right-radius: 3px;
+                z-index: 1;
+                background-color: #1F2933;
+                animation: hamburger .8s cubic-bezier(0.175, 0.885, 0.320, 1) both;
+            }
+        }
+
+        li {
+            text-align: center;
+        }
+
+        a {
+            font-size: 18px;
+            color: #CBD2D9;
+            transition: all .2s;
+
+            &:hover {
+                color: #F9703E;
+            }
+        }
+    }
+
+    &__hamburger {
+        cursor: pointer;
+        display: none;
+        border: none;
+        font-size: 22px;
+        color: #CBD2D9;
+        background: none;
+        margin-right: calc(20px + 1vw);
+        transition: all .8s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+        z-index: 2;
+    
+        @media screen and (max-width: $bp-mobile) {
+            grid-column: 3 / 4;
+            display: initial;
+    
+            &:active {
+                transform: scale(.8);
+            }
+        }
+    }
+}

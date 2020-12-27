@@ -13,11 +13,11 @@ export default function Education() {
     const educations = education.map(edu => (
         <tr key={edu._id}>
             
-            <td>
+            <td className="hide--sm">
                 {edu.school}
             </td>
 
-            <td className="hide-sm">
+            <td>
                 {edu.degree}
             </td>
 
@@ -55,10 +55,10 @@ export default function Education() {
 
                     <thead>
                         <tr>
-                            <th>
+                            <th className="hide--sm">
                                 School
                             </th>
-                            <th className="hide-sm">
+                            <th>
                                 Degree
                             </th>
                             <th>

@@ -1,5 +1,5 @@
-import React, { useState, Fragment } from "react";
-import { useHistory, Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 //  LOCAL
 import { addExperience } from "../../actions/profile";
@@ -7,7 +7,6 @@ import { addExperience } from "../../actions/profile";
 
 export default function AddExperience() {
     const dispatch = useDispatch();
-    const history = useHistory();
     const initialState = {
         company: "",
         title: "",
@@ -37,7 +36,8 @@ export default function AddExperience() {
 
     const onSubmit = event => {
         event.preventDefault();
-        dispatch(addExperience(formData, history));
+        dispatch(addExperience(formData));
+        window.history.back();
     }
 
 
@@ -45,9 +45,9 @@ export default function AddExperience() {
         <section className="edit">
 
 
-            <Link className="btn btn--tertiary return" to="/dashboard">
+            <button className="btn btn--tertiary return" onClick={() => {window.history.back()}}>
                 <i className="fas fa-arrow-left"/>
-            </Link>
+            </button>
 
 
             <h1 className="edit__heading">

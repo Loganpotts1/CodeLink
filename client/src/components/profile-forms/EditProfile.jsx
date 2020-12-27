@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 //  LOCAL
 import { getCurrentProfile, createProfile } from "../../actions/profile";
@@ -8,7 +8,6 @@ import { getCurrentProfile, createProfile } from "../../actions/profile";
 export default function CreateProfile() {
     const { profile, loading } = useSelector(state => state.profile);
     const dispatch = useDispatch();
-    const history = useHistory();
 
     const [ formData, setFormData ] = useState({
         avatar: "",
@@ -81,7 +80,8 @@ export default function CreateProfile() {
 
     const onSubmit = event => {
         event.preventDefault();
-        dispatch(createProfile(formData, history, profile ? true : false));
+        dispatch(createProfile(formData, profile ? true : false));
+        window.history.back();
     };
 
 
@@ -89,9 +89,9 @@ export default function CreateProfile() {
         <section className="edit">
 
 
-            <Link className="btn btn--tertiary return" to="/dashboard">
+            <button className="btn btn--tertiary return" onClick={() => {window.history.back()}}>
                 <i className="fas fa-arrow-left"/>
-            </Link>
+            </button>
 
 
             <h1 className="edit__heading">

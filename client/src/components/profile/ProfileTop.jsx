@@ -4,36 +4,36 @@ import React from "react";
 export default function ProfileTop(props) {
     const {
         profile: {
+            avatar,
             status,
             company,
             location,
             website,
             social,
             user: {
-                name,
-                avatar
+                name
             }
         }
     } = props;
 
     return (
-        <div className="profile__top bg-primary p-2">
+        <section className="profile__top">
 
-            <img className="round-img my-1" src={avatar} alt="user avatar" />
+            <img className="profile__avatar" src={avatar} alt="user avatar" />
 
-            <h1 className="large">
+            <h1 className="profile__name">
                 {name}
             </h1>
 
-            <p className="lead">
+            <small className="profile__details">
                 {status} {company && <span> at {company}</span>}
-            </p>
+            </small>
 
-            <p>
+            <small>
                 {location && <span>{location}</span>}
-            </p>
+            </small>
 
-            <div className='icons my-1'>
+            <div className="profile__links">
                 {website && (
                     <a href={website} target='_blank' rel='noopener noreferrer'>
                         <i className='fas fa-globe fa-2x' />
@@ -66,6 +66,6 @@ export default function ProfileTop(props) {
                 )}
             </div>
 
-        </div>
+        </section>
     );
 }

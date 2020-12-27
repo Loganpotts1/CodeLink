@@ -13,11 +13,11 @@ export default function Experience() {
     const experiences = experience.map(exp => (
         <tr key={exp._id}>
 
-            <td>
+            <td className="hide--sm">
                 {exp.company}
             </td>
 
-            <td className="hide-sm">
+            <td>
                 {exp.title}
             </td>
 
@@ -56,10 +56,10 @@ export default function Experience() {
 
                     <thead>
                         <tr>
-                            <th>
+                            <th className="hide--sm">
                                 Company
                             </th>
-                            <th className="hide-sm">
+                            <th>
                                 Title
                             </th>
                             <th>
