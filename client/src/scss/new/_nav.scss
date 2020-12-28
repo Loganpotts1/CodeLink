@@ -23,7 +23,7 @@
     &__logo {
         margin-left: calc(20px + 1vw);
         // font-family: var(--font-display);
-        font-size: 22px;
+        font-size: 18px;
         // text-decoration: none;
 
         @media screen and (max-width: $bp-mobile) {
@@ -33,6 +33,11 @@
 
         i {
             color: #CBD2D9;
+            transition: all .3s;
+            
+            &:hover {
+                color: #F9703E;
+            }
         }
     }
 

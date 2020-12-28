@@ -52,41 +52,15 @@ export default function Profile(props) {
             }
 
 
-            <div className="profile__grid my-1">
+            <div className="profile__grid">
 
                 <ProfileTop profile={profile} />
 
                 <ProfileAbout profile={profile} />
 
-                <div className="profile__exp bg-white p-2">
-                    <h2 className="text-primary">
-                        Experience
-                    </h2>
-                    {
-                        profile.experience.length ?
-                        profile.experience.map(exp => (
-                            <ProfileExperience key={exp._id} experience={exp} />
-                        )) :
-                        <h4>
-                            No Experience
-                        </h4>
-                    }
-                </div>
+                <ProfileExperience profile={profile} />
 
-                <div className="profile__edu bg-white p-2">
-                    <h2 className="text-primary">
-                        Education
-                    </h2>
-                    {
-                        profile.education.length ?
-                        profile.education.map(exp => (
-                            <ProfileEducation key={exp._id} education={exp} />
-                        )) :
-                        <h4>
-                            No Education
-                        </h4>
-                    }
-                </div>
+                <ProfileEducation profile={profile} />
 
                 {
                     profile.githubusername && <ProfileGithub username={profile.githubusername} />
