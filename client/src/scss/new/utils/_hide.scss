@@ -1,0 +1,7 @@
+.hide {
+    &--sm {
+        @media screen and (max-width: $bp-mobile) {
+            display: none;
+        }
+    }
+}

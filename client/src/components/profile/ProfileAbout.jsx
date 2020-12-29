@@ -13,7 +13,7 @@ export default function ProfileAbout(props) {
     } = props;
 
     return (
-        <div className='profile__about bg-light p-2'>
+        <section className='profile__about bg-light p-2'>
 
             {bio && (
                 <Fragment>
@@ -38,6 +38,6 @@ export default function ProfileAbout(props) {
                 ))}
             </div>
             
-        </div>
+        </section>
     );
 }

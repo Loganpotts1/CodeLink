@@ -1,0 +1,28 @@
+.edit {
+    display: flex;
+    flex-direction: column;
+    color: #CBD2D9;
+
+    > *:not(.form) {
+        margin-left: 6%;
+    }
+
+    small {
+        margin-bottom: .4rem;
+        color: #9AA5B1;
+    }
+
+    input[type="submit"] {
+        display: block;
+        margin-left: auto;
+    }
+
+    &__heading {
+        text-shadow: -2px 2px 2px rgba(0, 0, 0, .4);
+        margin-bottom: 3rem;
+    }
+
+    &__social {
+        margin-bottom: 2rem;
+    }
+}

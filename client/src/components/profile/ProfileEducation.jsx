@@ -9,6 +9,7 @@ export default function ProfileEducation(props) {
 
     return (
         <section className="profile__edu bg-white p-2">
+            
             <h2 className="text-primary">
                 Education
             </h2>
@@ -51,6 +52,7 @@ export default function ProfileEducation(props) {
                     No Education
                 </h4>
             }
+
         </section>
     );
 }

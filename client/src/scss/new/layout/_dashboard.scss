@@ -1,0 +1,74 @@
+.dashboard {
+    grid-column: full-start / full-end;
+    display: grid;
+    grid-template-columns: 1fr minmax(min-content, calc(14rem * 8)) 1fr;
+    grid-auto-rows: min-content;
+    align-items: center;
+    text-align: center;
+
+    > * {
+        grid-column: 2 / 3;
+    }
+
+    &__header {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        padding: 8rem 17% 12rem;
+        font-size: 1.6rem;
+        color: #9AA5B1;
+        background: url("../img/banner.jpg");
+        background-size: cover;
+        //background-color: rgba(255, 176, 136, .4);
+
+        h3 {
+            //font-weight: 500;
+            //background-color: rgba(0, 0, 0, .4);
+            border-radius: 3px;
+        }
+    }
+
+    &__heading {
+        font-size: 5.5rem;
+        //font-weight: 600;
+        //background-color: rgba(0, 0, 0, .4);
+        color: #F9703E;
+        border-radius: 3px;
+        margin-bottom: 1rem;
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: end;
+        margin: 3rem 6.5%;
+
+        @media screen and (max-width: $bp-mobile) {
+            justify-content: center;
+        }
+    }
+
+    &__delete-account {
+        margin-left: 1rem;
+
+        &:hover {
+            color: #D64545;
+        }
+    }
+
+    &--new {
+        display: flex;
+        flex-direction: column;
+        margin-top: 4rem;
+
+        h2 {
+            font-size: 3rem;
+            color: #9AA5B1;
+        }
+
+        a {
+            margin: 2rem auto;
+        }
+    }
+}

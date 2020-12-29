@@ -41,7 +41,7 @@ export default function Login(props) {
 
 
     return(
-        <div className="login">
+        <section className="login">
 
 
             <h1 className="login__heading">
@@ -87,6 +87,6 @@ export default function Login(props) {
             </p>
 
 
-        </div>
+        </section>
     );
 };

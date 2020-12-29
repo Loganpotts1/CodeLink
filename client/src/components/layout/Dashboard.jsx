@@ -27,46 +27,54 @@ export default function Dashboard() {
     }, [dispatch]);
 
     return (
-        <div className="dashboard">
+        <main className="dashboard">
 
-            <div className="dashboard__welcome">
+
+            <header className="dashboard__header">
                 <h1 className="dashboard__heading">
                     Dashboard
                 </h1>
                 <h3>
                     {`Welcome ${profile ? "back, " : ""} ${user && user.name.trim().split(" ")[0]}!`}
                 </h3>
-            </div>
+            </header>
             
 
             {
                 profile && (!loading) ? 
                 
                 <Fragment>
+
                     <Experience />
+
                     <Education />
-                    <div className="dashboard__actions">
+
+                    <section className="dashboard__actions">
                         <Link className="btn btn--secondary" to="/edit-profile">
                             Edit Profile
                         </Link>
                         <button className="btn btn--tertiary dashboard__delete-account" onClick={() => dispatch(deleteAccount())}>
                             Delete Account
                         </button>
-                    </div>
+                    </section>
+
                 </Fragment> :
                 
-                <div className="dashboard--new">
+                <section className="dashboard--new">
+
                     <h2>
                         Why not set up a profile?
                     </h2>
+
                     <Link className="btn btn--primary" to="/edit-profile">
                         Create Profile
                     </Link>
-                </div>
+
+                </section>
                 
             }
 
 
-        </div>
+        </main>
     );
 }

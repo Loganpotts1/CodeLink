@@ -23,7 +23,7 @@ export default function Post(props) {
     <Spinner /> :
     <main className="discussion">
 
-        <button className="btn btn--tertiary return" onClick={() => {window.history.back()}}>
+        <button className="btn btn--return" onClick={() => {window.history.back()}}>
             <i className="fas fa-arrow-left"/>
         </button>
 

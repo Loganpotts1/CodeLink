@@ -26,7 +26,7 @@ export default function Experience() {
             </td>
 
             <td>
-                <button className="experience__delete-item" onClick={() => dispatch(deleteExperience(exp._id))}>
+                <button className="table__delete-item" onClick={() => dispatch(deleteExperience(exp._id))}>
                     <i className="fas fa-minus"></i>
                 </button>
             </td>
@@ -36,10 +36,10 @@ export default function Experience() {
 
 
     return (
-        <div className="experience">
+        <section className="table">
 
 
-            <div className="experience__heading">
+            <header className="table__header">
                 <h2>
                     Experience
                 </h2>
@@ -47,12 +47,12 @@ export default function Experience() {
                 <Link to="/add-experience">
                     <i className="fas fa-plus"/>
                 </Link>
-            </div>
+            </header>
             
 
             {
                 experience.length > 0 &&
-                <table className="experience__table">
+                <table className="table__content">
 
                     <thead>
                         <tr>
@@ -79,6 +79,6 @@ export default function Experience() {
             }
             
 
-        </div>
+        </section>
     );
 }

@@ -1,0 +1,8 @@
+.line {
+    width: 88%;
+    height: 5px;
+    margin: 3rem auto;
+    // background: linear-gradient(to bottom, rgba(0, 0, 0, .5), rgba(255, 255, 255, 0));
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, .6), transparent);
+    opacity: .15;
+}

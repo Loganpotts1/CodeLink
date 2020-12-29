@@ -1,0 +1,45 @@
+.checkbox {
+    display: inline-grid;
+    justify-items: center;
+    align-items: center;
+
+    &:hover &__check {
+        box-shadow: 0 0 0 1px #1F2933, 0 0 0 2px #F9703E;
+    }
+
+    > * {
+        grid-column: 1 / -1;
+        grid-row: 1 / -1;
+    }
+
+    &__input {
+        opacity: 0;
+        z-index: 1;
+
+        &:checked + .checkbox__check {
+            box-shadow: 0 0 0 1px #1F2933, 0 0 0 2px #F9703E;
+
+            i {
+                transform: scale(.8);
+            }
+        }
+    }
+
+    &__check {
+        width: 2rem;
+        height: 2rem;
+        color: #F9703E;
+        border: 1px solid #F9703E;
+        border-radius: 3px;
+        transition: all .2s;
+
+        i {
+            transform: scale(0);
+            transition: all .2s;
+        }
+    }
+
+    &__label {
+        margin-left: .5rem;
+    }
+}

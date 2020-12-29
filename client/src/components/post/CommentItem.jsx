@@ -22,16 +22,16 @@ export default function CommentItem(props) {
     const dispatch = useDispatch();
     
     return (
-        <div className="post bg-white p-1 my-1">
+        <section className="post bg-white p-1 my-1">
 
-            <div>
+            <header>
                 <Link to={`/profile/${user}`}>
                     <img className="round-img" src={avatar} alt="" />
                     <h4>
                         {name}
                     </h4>
                 </Link>
-            </div>
+            </header>
 
             <div>
                 <p className="my-1">
@@ -53,6 +53,6 @@ export default function CommentItem(props) {
                 }
             </div>
 
-        </div>
+        </section>
     );
 }

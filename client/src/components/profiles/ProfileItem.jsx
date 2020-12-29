@@ -19,13 +19,13 @@ export default function ProfileItem(props) {
     return (
         <section className="card">
 
-            <div className="card__avatar">
+            <figure className="card__avatar">
                 {
                     avatar.length > 0 ?
                     <img src={avatar} alt="avatar"/> :
                     <i className="fas fa-user-ninja"/>
                 }
-            </div>
+            </figure>
 
             <div className="card__content">
                 <h2 className="card__name">
@@ -36,7 +36,7 @@ export default function ProfileItem(props) {
                     View Profile
                 </Link>
 
-                <div className="card__details">
+                <aside className="card__details">
                     <small className="card__company">
                         {status} {company && <span> at {company}</span>}
                     </small>
@@ -44,7 +44,7 @@ export default function ProfileItem(props) {
                     <small  className="card__location">
                         {location && <span>{location}</span>}
                     </small>
-                </div>
+                </aside>
 
                 <ul className="card__skills">
                     {skills.slice(0,4).map((skill, index) => (

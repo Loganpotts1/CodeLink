@@ -17,8 +17,7 @@ export default function PostItem(props) {
             likes,
             comments,
             date
-        },
-        showActions = true
+        }
     } = props;
     const { auth } = useSelector(state => state);
     const dispatch = useDispatch();
@@ -27,49 +26,51 @@ export default function PostItem(props) {
     return (
         <section className="post">
 
-            <div>
-                <Link to={`/profile/${user}`}>
-                    <img className="posts-item__avatar" src={avatar} alt="" />
+
+            <header className="post__header">
+
+                <Link className="post__user" to={`/profile/${user}`}>
+                    <img src={avatar} alt="user avatar" />
                     <h4>
                         {name}
                     </h4>
                 </Link>
-            </div>
 
-            <div>
-                <p className="my-1">
-                    {text}
-                </p>
-                <p className="posts-item__date">
+                <p className="post__date">
                     Posted on {formatDate(date, true)}
                 </p>
+                
+            </header>
+            
+
+            <p className="post__text">
+                {text}
+            </p>
+                
+
+            <aside className="post__actions">
+
+                <button onClick={() => dispatch(likePost(_id))} className="btn btn--tertiary post__likes">
+                    <i className="fas fa-thumbs-up" />
+                    <span className="post__likes-count">
+                        {likes.length > 0 && <span> {likes.length}</span>}
+                    </span>
+                </button>
+
+                <Link to={`/posts/${_id}`} className="btn btn--tertiary post__discussion">
+                    Discussion
+                    {" "}
+                    {comments.length > 0 && <span className="post__comment-count">{comments.length}</span>}
+                </Link>
+
                 {
-                    showActions &&
-                    <Fragment>
-
-                        <Link to={`/posts/${_id}`} className="btn btn--tertiary">
-                            Discussion
-                            {" "}
-                            {comments.length > 0 && <span className="comment-count">{comments.length}</span>}
-                        </Link>
-
-                        <button onClick={() => dispatch(likePost(_id))} type="button" className="btn btn-dark">
-                            <i className="fas fa-thumbs-up" />
-                            <span>
-                                {likes.length > 0 && <span> {likes.length}</span>}
-                            </span>
-                        </button>
-
-                        {
-                            !auth.loading && user === auth.user._id &&
-                            <button onClick={() => dispatch(deletePost(_id))} type="button" className="btn btn-danger">
-                                <i className="fas fa-times" />
-                            </button>
-                        }
-
-                    </Fragment>
+                    !auth.loading && user === auth.user._id &&
+                    <button onClick={() => dispatch(deletePost(_id))} type="button" className="btn btn--tertiary post__delete">
+                        <i className="fas fa-times" />
+                    </button>
                 }
-            </div>
+
+            </aside>
             
         </section>
     );

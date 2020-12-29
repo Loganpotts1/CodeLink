@@ -26,7 +26,7 @@ export default function Education() {
             </td>
 
             <td>
-                <button className="education__delete-item" onClick={() => dispatch(deleteEducation(edu._id))}>
+                <button className="table__delete-item" onClick={() => dispatch(deleteEducation(edu._id))}>
                     <i className="fas fa-minus"></i>
                 </button>
             </td>
@@ -35,10 +35,10 @@ export default function Education() {
     ));
 
     return (
-        <div className="education">
+        <section className="table">
 
 
-            <div className="education__heading">
+            <header className="table__header">
                 <h2>
                     Education
                 </h2>
@@ -46,12 +46,12 @@ export default function Education() {
                 <Link to="/add-education">
                     <i className="fas fa-plus"/>
                 </Link>
-            </div>
+            </header>
 
 
             {
                 education.length > 0 &&
-                <table className="education__table">
+                <table className="table__content">
 
                     <thead>
                         <tr>
@@ -78,6 +78,6 @@ export default function Education() {
             }
             
 
-        </div>
+        </section>
     );
 }

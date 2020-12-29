@@ -45,7 +45,7 @@ export default function AddExperience() {
         <section className="edit">
 
 
-            <button className="btn btn--tertiary return" onClick={() => {window.history.back()}}>
+            <button className="btn btn--return" onClick={() => {window.history.back()}}>
                 <i className="fas fa-arrow-left"/>
             </button>
 
@@ -107,7 +107,7 @@ export default function AddExperience() {
                 </div>
 
                 <div className="form__group">
-                    <span className="checkbox">
+                    <div className="checkbox">
                         <input
                             className="checkbox__input"
                             type="checkbox"
@@ -121,7 +121,7 @@ export default function AddExperience() {
                         <span className="checkbox__check">
                             <i className="fas fa-check"/>
                         </span>
-                    </span>
+                    </div>
                     <p className="checkbox__label">
                         Current Job
                     </p>

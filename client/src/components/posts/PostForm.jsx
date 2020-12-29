@@ -15,13 +15,13 @@ export default function PostForm() {
     }
 
     return (
-        <div className='post__form'>
+        <section className='post__form'>
 
-            <div className='bg-primary p'>
+            <header className='bg-primary p'>
                 <h3>
                     Join the Conversation!
                 </h3>
-            </div>
+            </header>
 
             <form className='form my-1' onSubmit={event => onSubmit(event)}>
                 <textarea
@@ -36,6 +36,6 @@ export default function PostForm() {
                 <input type='submit' className='btn btn-dark my-1' value='Submit' />
             </form>
 
-        </div>
+        </section>
     );
 }

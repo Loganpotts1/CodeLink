@@ -54,10 +54,10 @@ export default function Register(props) {
 
 
     return (
-        <div className="register">
+        <section className="login">
 
 
-            <h1 className="register__heading">
+            <h1 className="login__heading">
                 Create an Account
             </h1>
 
@@ -118,7 +118,7 @@ export default function Register(props) {
             </form>
 
 
-            <p className="register__switch">
+            <p className="login__switch">
                 Already have an account? 
                 <a href="#!" onClick={login}>
                     {" Sign In"}
@@ -126,6 +126,6 @@ export default function Register(props) {
             </p>
 
 
-        </div>
+        </section>
     );
 }

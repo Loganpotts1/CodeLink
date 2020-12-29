@@ -17,7 +17,7 @@ export default function Landing() {
 
 
     return (
-        <section className="landing">
+        <div className="landing">
 
 
             <div className="landing__inner">
@@ -39,9 +39,9 @@ export default function Landing() {
             </div>
 
 
-            <div className="landing__hero"/>
+            <aside className="landing__hero"/>
             
 
-        </section>
+        </div>
     );
 }

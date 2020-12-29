@@ -15,7 +15,7 @@ export default function ProfileGithub(props) {
     }, []);
 
     return (
-        <div className="profile__github">
+        <section className="profile__github">
 
             <h2 className="text-primary my-1">
                 Github Repos
@@ -52,6 +52,6 @@ export default function ProfileGithub(props) {
                 </div>
             ))}
 
-        </div>
+        </section>
     );
 }

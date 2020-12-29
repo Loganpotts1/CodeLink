@@ -1,0 +1,32 @@
+@keyframes alert {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: 40px;
+    }
+}
+
+.alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100vw;
+    height: 40px;
+    font-size: 18px;
+    font-weight: 500;
+    font-style: italic;
+    color: #1F2933;
+    animation: alert .3s ease;
+
+    &--success {
+        background-color: #57AE5B;
+        border-bottom: 3px solid #2F8132;
+    }
+
+    &--danger {
+        background-color: #F29B9B;
+        border-bottom: 3px solid #D64545;
+    }
+}
