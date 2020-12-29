@@ -25,11 +25,11 @@ export default function PostItem(props) {
 
 
     return (
-        <div className="post bg-white p-1 my-1">
+        <section className="post">
 
             <div>
                 <Link to={`/profile/${user}`}>
-                    <img className="round-img" src={avatar} alt="" />
+                    <img className="posts-item__avatar" src={avatar} alt="" />
                     <h4>
                         {name}
                     </h4>
@@ -40,14 +40,14 @@ export default function PostItem(props) {
                 <p className="my-1">
                     {text}
                 </p>
-                <p className="post-date">
+                <p className="posts-item__date">
                     Posted on {formatDate(date, true)}
                 </p>
                 {
                     showActions &&
                     <Fragment>
 
-                        <Link to={`/posts/${_id}`} className="btn btn-dark">
+                        <Link to={`/posts/${_id}`} className="btn btn--tertiary">
                             Discussion
                             {" "}
                             {comments.length > 0 && <span className="comment-count">{comments.length}</span>}
@@ -71,6 +71,6 @@ export default function PostItem(props) {
                 }
             </div>
             
-        </div>
+        </section>
     );
 }

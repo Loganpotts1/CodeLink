@@ -24,20 +24,15 @@ export default function Posts() {
     return (
         loading ?
         <Spinner /> :
-        <Fragment>
+        <main className="posts">
 
-            <h1 className="lead text-primary">
+            <h1 className="posts__heading">
                 Posts
             </h1>
 
-            <p className="lead">
-                <i className="fas fa-user"></i>
-                {" Welcome to the community"}
-            </p>
-
             <PostForm />
 
-            <div className="posts">
+            <div className="posts__container">
                 {
                     posts.map(post => (
                         <PostItem key={post._id} post={post} />
@@ -45,6 +40,6 @@ export default function Posts() {
                 }
             </div>
 
-        </Fragment>
+        </main>
     );
 }
