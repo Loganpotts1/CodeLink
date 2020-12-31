@@ -31,9 +31,9 @@ export default function PostItem(props) {
 
                 <Link className="post__user" to={`/profile/${user}`}>
                     <img src={avatar} alt="user avatar" />
-                    <h4>
+                    <p>
                         {name}
-                    </h4>
+                    </p>
                 </Link>
 
                 <p className="post__date">

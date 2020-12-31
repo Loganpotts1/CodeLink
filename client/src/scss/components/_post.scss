@@ -1,0 +1,60 @@
+.post {
+    // border: 1px solid #CBD2D9;
+    background-color: rgba(0, 0, 0, .4);
+    border-radius: 3px;
+    padding: 2rem;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__user {
+        display: grid;
+        grid-auto-flow: column;
+        grid-column-gap: 1rem;
+        align-items: center;
+
+        img {
+            width: 4rem;
+            border-radius: 50%;
+        }
+
+        p {
+            font-size: 2rem;
+        }
+    }
+
+    &__date {
+        color: rgba(0, 0, 0, 1);
+    }
+
+    &__text {
+
+    }
+
+    &__actions {
+
+    }
+
+    &__likes {
+
+    }
+
+    &__likes-count {
+
+    }
+
+    &__discussion {
+
+    }
+
+    &__comment-count {
+
+    }
+
+    &__delete {
+
+    }
+}
