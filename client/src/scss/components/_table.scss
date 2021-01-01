@@ -7,7 +7,7 @@
         justify-content: start;
         align-items: center;
         margin-bottom: 1rem;
-        color: #9AA5B1;
+        color: var(--color-neutral-alt);
 
         @media screen and (max-width: $bp-mobile) {
             justify-content: center;
@@ -15,7 +15,7 @@
 
         a {
             padding: .8rem;
-            color: #57AE5B;
+            color: var(--color-success-alt);
             transition: all .2s;
 
             &:hover {
@@ -29,13 +29,13 @@
 
         th {
             color: rgba(0, 0, 0, .8);
-            background: #CBD2D9;
+            background: var(--color-neutral);
             box-shadow: 0 2px 6px rgba(0, 0, 0, .4);
             border-radius: 3px;
         }
 
         td {
-            color: #CBD2D9;
+            color: var(--color-neutral);
             text-shadow: -2px 2px 2px rgba(0, 0, 0, .4);
         }
 
@@ -56,7 +56,7 @@
 
         i {
             font-size: 1.6rem;
-            color: #D64545;
+            color: var(--color-danger);
             transition: all .2s;
         }
 

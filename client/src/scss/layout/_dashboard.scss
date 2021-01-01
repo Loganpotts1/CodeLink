@@ -18,7 +18,7 @@
         align-items: start;
         padding: 8rem 17% 12rem;
         font-size: 1.6rem;
-        color: #9AA5B1;
+        color: var(--color-neutral-alt);
         background: url("../img/banner.jpg");
         background-size: cover;
         //background-color: rgba(255, 176, 136, .4);
@@ -34,7 +34,7 @@
         font-size: 5.5rem;
         //font-weight: 600;
         //background-color: rgba(0, 0, 0, .4);
-        color: #F9703E;
+        color: var(--color-primary);
         border-radius: 3px;
         margin-bottom: 1rem;
     }
@@ -53,7 +53,7 @@
         margin-left: 1rem;
 
         &:hover {
-            color: #D64545;
+            color: var(--color-danger);
         }
     }
 
@@ -64,7 +64,7 @@
 
         h2 {
             font-size: 3rem;
-            color: #9AA5B1;
+            color: var(--color-neutral-alt);
         }
 
         a {

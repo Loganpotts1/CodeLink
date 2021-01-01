@@ -17,16 +17,16 @@
     font-size: 18px;
     font-weight: 500;
     font-style: italic;
-    color: #1F2933;
+    color: var(--color-neutral-alt-4);
     animation: alert .3s ease;
 
     &--success {
-        background-color: #57AE5B;
-        border-bottom: 3px solid #2F8132;
+        background-color: var(--color-success-alt);
+        border-bottom: 3px solid var(--color-success);
     }
 
     &--danger {
-        background-color: #F29B9B;
-        border-bottom: 3px solid #D64545;
+        background-color: var(--color-danger-alt);
+        border-bottom: 3px solid var(--color-danger);
     }
 }

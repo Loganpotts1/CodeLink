@@ -1,7 +1,7 @@
 .edit {
     display: flex;
     flex-direction: column;
-    color: #CBD2D9;
+    color: var(--color-neutral);
 
     > *:not(.form) {
         margin-left: 6%;
@@ -9,7 +9,7 @@
 
     small {
         margin-bottom: .4rem;
-        color: #9AA5B1;
+        color: var(--color-neutral-alt);
     }
 
     input[type="submit"] {

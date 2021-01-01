@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 // LOCAL
@@ -21,6 +21,17 @@ export default function PostItem(props) {
     } = props;
     const { auth } = useSelector(state => state);
     const dispatch = useDispatch();
+
+
+    const [ userLiked, setUserLiked ] = useState(
+        likes.some(({ user }) => user === auth.user._id)
+    );
+
+
+    const likeCurrentPost = () => {
+        dispatch(likePost(_id));
+        setUserLiked(!userLiked);
+    };
 
 
     return (
@@ -50,17 +61,17 @@ export default function PostItem(props) {
 
             <aside className="post__actions">
 
-                <button onClick={() => dispatch(likePost(_id))} className="btn btn--tertiary post__likes">
+                <button onClick={likeCurrentPost} className={`btn btn--tertiary post__likes ${ userLiked ? `post__likes--active` : `` }`}>
                     <i className="fas fa-thumbs-up" />
                     <span className="post__likes-count">
-                        {likes.length > 0 && <span> {likes.length}</span>}
+                        {likes.length > 0 && <sup>{likes.length}</sup>}
                     </span>
                 </button>
 
                 <Link to={`/posts/${_id}`} className="btn btn--tertiary post__discussion">
-                    Discussion
+                    Comments
                     {" "}
-                    {comments.length > 0 && <span className="post__comment-count">{comments.length}</span>}
+                    {comments.length > 0 && <sup className="post__comment-count">{comments.length}</sup>}
                 </Link>
 
                 {
