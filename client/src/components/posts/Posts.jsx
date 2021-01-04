@@ -32,6 +32,8 @@ export default function Posts() {
 
             <PostForm />
 
+            <div className="line"></div>
+
             <div className="posts__container">
                 {
                     posts.map(post => (

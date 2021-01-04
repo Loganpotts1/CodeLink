@@ -99,14 +99,32 @@ export default function CreateProfile() {
             </h1>
 
 
-            <small>
+            {/* <small>
                 * = required field
-            </small>
+            </small> */}
 
 
             <form className="form" onSubmit={onSubmit}>
 
                 <div className="form__group">
+                    <small className="form__text">
+                        Avatar
+                    </small>
+                    <input
+                        type="text"
+                        placeholder="Avatar Image"
+                        name="avatar"
+                        value={avatar}
+                        onChange={onChange}
+                    />
+                </div>
+
+                <div className="line"></div>
+
+                <div className="form__group">
+                    <small className="form__text">
+                        Status
+                    </small>
                     <select name="status" value={status} onChange={onChange}>
                         <option>* Select Professional Status</option>
                         <option value="Developer">Developer</option>
@@ -121,16 +139,9 @@ export default function CreateProfile() {
                 </div>
 
                 <div className="form__group">
-                    <input
-                        type="text"
-                        placeholder="Avatar Image"
-                        name="avatar"
-                        value={avatar}
-                        onChange={onChange}
-                    />
-                </div>
-
-                <div className="form__group">
+                    <small className="form__text">
+                        Company
+                    </small>
                     <input
                         type="text"
                         placeholder="Company"
@@ -141,6 +152,9 @@ export default function CreateProfile() {
                 </div>
 
                 <div className="form__group">
+                    <small className="form__text">
+                        Website
+                    </small>
                     <input
                         type="text"
                         placeholder="Website"
@@ -151,6 +165,9 @@ export default function CreateProfile() {
                 </div>
 
                 <div className="form__group">
+                    <small className="form__text">
+                       Location (eg. Boston, MA)
+                    </small>
                     <input
                         type="text"
                         placeholder="Location"
@@ -158,25 +175,14 @@ export default function CreateProfile() {
                         value={location}
                         onChange={onChange}
                     />
-                    <small className="form__text">
-                        City & state suggested (eg. Boston, MA)
-                    </small>
                 </div>
 
-                <div className="form__group">
-                    <input
-                        type="text"
-                        placeholder="* Skills"
-                        name="skills"
-                        value={skills}
-                        onChange={onChange}
-                    />
-                    <small className="form__text">
-                        Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
-                    </small>
-                </div>
+                <div className="line"></div>
 
                 <div className="form__group">
+                    <small className="form__text">
+                        Github Username
+                    </small>
                     <input
                         type="text"
                         placeholder="Github Username"
@@ -184,13 +190,25 @@ export default function CreateProfile() {
                         value={githubusername}
                         onChange={onChange}
                     />
-                    <small className="form__text">
-                        If you want your latest repos and a Github link, include your
-                        username
-                    </small>
                 </div>
 
                 <div className="form__group">
+                    <small className="form__text">
+                        Skills (eg. HTML, CSS, JavaScript, PHP)
+                    </small>
+                    <input
+                        type="text"
+                        placeholder="* Skills"
+                        name="skills"
+                        value={skills}
+                        onChange={onChange}
+                    />
+                </div>
+
+                <div className="form__group">
+                    <small className="form__text">
+                        Bio
+                    </small>
                     <textarea
                         placeholder="A short bio of yourself"
                         name="bio"
@@ -199,7 +217,10 @@ export default function CreateProfile() {
                     />
                 </div>
 
+                <div className="line"></div>
+
                 <div className="edit__social">
+
                     <button
                         onClick={() => setDisplaySocialInputs(!displaySocialInputs)}
                         type="button"
@@ -207,71 +228,74 @@ export default function CreateProfile() {
                     >
                         Add Social Links
                     </button>
+
+                    {
+                        displaySocialInputs && 
+                        <aside>
+
+                            <div className="form__group form__group--social">
+                                <i className="fab fa-twitter fa-2x" />
+                                <input
+                                    type="text"
+                                    placeholder="Twitter URL"
+                                    name="twitter"
+                                    value={twitter}
+                                    onChange={onChange}
+                                />
+                            </div>
+
+                            <div className="form__group form__group--social">
+                                <i className="fab fa-facebook fa-2x" />
+                                <input
+                                    type="text"
+                                    placeholder="Facebook URL"
+                                    name="facebook"
+                                    value={facebook}
+                                    onChange={onChange}
+                                />
+                            </div>
+
+                            <div className="form__group form__group--social">
+                                <i className="fab fa-youtube fa-2x" />
+                                <input
+                                    type="text"
+                                    placeholder="YouTube URL"
+                                    name="youtube"
+                                    value={youtube}
+                                    onChange={onChange}
+                                />
+                            </div>
+
+                            <div className="form__group form__group--social">
+                                <i className="fab fa-linkedin fa-2x" />
+                                <input
+                                    type="text"
+                                    placeholder="Linkedin URL"
+                                    name="linkedin"
+                                    value={linkedin}
+                                    onChange={onChange}
+                                />
+                            </div>
+
+                            <div className="form__group form__group--social">
+                                <i className="fab fa-instagram fa-2x" />
+                                <input
+                                    type="text"
+                                    placeholder="Instagram URL"
+                                    name="instagram"
+                                    value={instagram}
+                                    onChange={onChange}
+                                />
+                            </div>
+                            
+                        </aside>
+                    }
+
                 </div>
 
-                {
-                    displaySocialInputs && 
-                    <Fragment>
+                <div className="line"></div>
 
-                        <div className="form__group form__group--social">
-                            <i className="fab fa-twitter fa-2x" />
-                            <input
-                                type="text"
-                                placeholder="Twitter URL"
-                                name="twitter"
-                                value={twitter}
-                                onChange={onChange}
-                            />
-                        </div>
-
-                        <div className="form__group form__group--social">
-                            <i className="fab fa-facebook fa-2x" />
-                            <input
-                                type="text"
-                                placeholder="Facebook URL"
-                                name="facebook"
-                                value={facebook}
-                                onChange={onChange}
-                            />
-                        </div>
-
-                        <div className="form__group form__group--social">
-                            <i className="fab fa-youtube fa-2x" />
-                            <input
-                                type="text"
-                                placeholder="YouTube URL"
-                                name="youtube"
-                                value={youtube}
-                                onChange={onChange}
-                            />
-                        </div>
-
-                        <div className="form__group form__group--social">
-                            <i className="fab fa-linkedin fa-2x" />
-                            <input
-                                type="text"
-                                placeholder="Linkedin URL"
-                                name="linkedin"
-                                value={linkedin}
-                                onChange={onChange}
-                            />
-                        </div>
-
-                        <div className="form__group form__group--social">
-                            <i className="fab fa-instagram fa-2x" />
-                            <input
-                                type="text"
-                                placeholder="Instagram URL"
-                                name="instagram"
-                                value={instagram}
-                                onChange={onChange}
-                            />
-                        </div>
-                        
-                    </Fragment>
-                }
-
-                <input type="submit" value="Submit" className="btn btn--primary form__submit"/>
+                <input type="submit" value="Submit" className="btn btn--primary form__submit form__submit--right"/>
 
             </form>
 

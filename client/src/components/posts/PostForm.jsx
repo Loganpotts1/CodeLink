@@ -15,7 +15,7 @@ export default function PostForm() {
     }
 
     return (
-        <section className='post__form'>
+        <form className="form">
 
             <header className='bg-primary p'>
                 <h3>
@@ -23,19 +23,22 @@ export default function PostForm() {
                 </h3>
             </header>
 
-            <form className='form my-1' onSubmit={event => onSubmit(event)}>
+            <div className="form__group" onSubmit={event => onSubmit(event)}>
                 <textarea
                     name='text'
                     cols='30'
-                    rows='5'
+                    rows='1'
                     placeholder='Create a post'
                     value={text}
                     onChange={event => setText(event.target.value)}
                     required
                 />
-                <input type='submit' className='btn btn-dark my-1' value='Submit' />
-            </form>
+            </div>
 
-        </section>
+            <div className="form__group">
+                <input type='submit' className='btn btn--primary form__submit form__submit--right' value='Submit' />
+            </div>
+
+        </form>
     );
 }

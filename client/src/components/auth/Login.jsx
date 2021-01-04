@@ -72,11 +72,14 @@ export default function Login(props) {
                     />
                 </div>
 
-                <button type="submit" className="form__submit btn btn--login" onChange={onChange}>
+                <button type="submit" className="btn btn--login form__submit form__submit--center" onChange={onChange}>
                     Login <i className="fa fa-chevron-right"/>
                 </button>
 
             </form>
+
+            
+            <div className="line"></div>
 
 
             <p className="login__switch">

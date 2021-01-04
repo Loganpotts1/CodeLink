@@ -147,7 +147,7 @@ export default function AddEducation(props) {
                     />
                 </div>
 
-                <input type="submit" value="Submit" className="form__submit btn btn--primary" />
+                <input type="submit" value="Submit" className="btn btn--primary form__submit form__submit--right" />
 
             </form>
 

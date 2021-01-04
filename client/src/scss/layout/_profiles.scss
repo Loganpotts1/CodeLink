@@ -11,6 +11,7 @@
         grid-column-gap: 3rem;
         grid-row-gap: 6rem;
         padding: 0 4rem;
+        margin-bottom: 5rem;
 
         @media screen and (max-width: $bp-medium) {
             grid-template-columns: 1fr;
