@@ -63,8 +63,12 @@
     &__likes {
         justify-self: start;
 
-        &:hover,
-        &--active i {
+        &:hover {
+            color: var(--color-success-alt-2);
+            background-color: var(--color-success-alt);
+        }
+
+        &--active {
             color: var(--color-success);
         }
     }
@@ -88,5 +92,10 @@
 
     &__delete {
         justify-self: end;
+
+        &:hover {
+            color: var(--color-danger-alt-2);
+            background-color: var(--color-danger-alt);
+        }
     }
 }

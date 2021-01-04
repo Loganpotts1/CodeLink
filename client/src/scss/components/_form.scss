@@ -79,6 +79,10 @@
 
         &--right {
             margin-left: auto;
+
+            @media screen and (max-width: $bp-mobile) {
+                margin: 0 auto;
+            }
         }
     }
 }

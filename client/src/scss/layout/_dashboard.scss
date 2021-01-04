@@ -53,7 +53,8 @@
         margin-left: 1rem;
 
         &:hover {
-            color: var(--color-danger);
+            color: var(--color-danger-alt-2);
+            background-color: var(--color-danger-alt);
         }
     }
 

@@ -21,13 +21,13 @@ export default function Experience() {
                 {exp.title}
             </td>
 
-            <td>
+            <td> 
                 { formatDate(exp.from) + " - " + (exp.to ? formatDate(exp.to) : "Current") }
             </td>
 
-            <td>
-                <button className="table__delete-item" onClick={() => dispatch(deleteExperience(exp._id))}>
-                    <i className="fas fa-minus"></i>
+            <td className="table__delete-item">
+                <button className="btn btn--tertiary" onClick={() => dispatch(deleteExperience(exp._id))}>
+                    <i className="fas fa-times"></i>
                 </button>
             </td>
 
@@ -44,7 +44,7 @@ export default function Experience() {
                     Experience
                 </h2>
 
-                <Link to="/add-experience">
+                <Link to="/add-experience" className="btn btn--tertiary">
                     <i className="fas fa-plus"/>
                 </Link>
             </header>

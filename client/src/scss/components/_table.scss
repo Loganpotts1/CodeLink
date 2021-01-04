@@ -14,18 +14,35 @@
         }
 
         a {
-            padding: .8rem;
+            border-radius: 150px;
             color: var(--color-success-alt);
-            transition: all .2s;
+            padding: 1rem;
+            margin-left: 1rem;
 
             &:hover {
-                text-shadow: 0 0 3px currentColor;
+                color: var(--color-success-alt-2);
+                background-color: var(--color-success-alt);
             }
         }
+
+        // a {
+        //     padding: .8rem;
+        //     color: var(--color-success-alt);
+        //     transition: all .2s;
+
+        //     &:hover {
+        //         text-shadow: 0 0 3px currentColor;
+        //     }
+        // }
     }
 
     &__content {
         width: 100%;
+
+        th,td {
+            padding: 1rem;
+            text-align: left;
+        }
 
         th {
             color: rgba(0, 0, 0, .8);
@@ -38,30 +55,39 @@
             color: var(--color-neutral);
             text-shadow: -2px 2px 2px rgba(0, 0, 0, .4);
         }
-
-        th,td {
-            padding: 1rem;
-            text-align: left;
-        }
     }
 
     &__delete-item {
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        background-color: transparent;
-        border: none;
+        text-align: center !important;
 
-        i {
-            font-size: 1.6rem;
-            color: var(--color-danger);
-            transition: all .2s;
-        }
+        button {
+            border-radius: 150px;
+            // background-color: transparent;
 
-        &:hover i {
-            text-shadow: 0 0 3px currentColor;
+            &:hover {
+                color: var(--color-danger-alt-2);
+                background-color: var(--color-danger-alt);
+            }
         }
     }
+
+    // &__delete-item {
+    //     cursor: pointer;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     width: 100%;
+    //     background-color: transparent;
+    //     border: none;
+
+    //     i {
+    //         font-size: 1.6rem;
+    //         color: var(--color-danger);
+    //         transition: all .2s;
+    //     }
+
+    //     &:hover i {
+    //         text-shadow: 0 0 3px currentColor;
+    //     }
+    // }
 }

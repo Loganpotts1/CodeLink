@@ -25,9 +25,9 @@ export default function Education() {
                 { formatDate(edu.from) + " - " + (edu.to ? formatDate(edu.to) : "Current") }
             </td>
 
-            <td>
-                <button className="table__delete-item" onClick={() => dispatch(deleteEducation(edu._id))}>
-                    <i className="fas fa-minus"></i>
+            <td className="table__delete-item">
+                <button className="btn btn--tertiary" onClick={() => dispatch(deleteEducation(edu._id))}>
+                    <i className="fas fa-times"></i>
                 </button>
             </td>
 
@@ -43,7 +43,7 @@ export default function Education() {
                     Education
                 </h2>
 
-                <Link to="/add-education">
+                <Link to="/add-education" className="btn btn--tertiary">
                     <i className="fas fa-plus"/>
                 </Link>
             </header>
