@@ -15,7 +15,7 @@ export default function PostForm() {
     }
 
     return (
-        <form className="form">
+        <form className="form" onSubmit={event => onSubmit(event)}>
 
             <header className='bg-primary p'>
                 <h3>
@@ -23,7 +23,7 @@ export default function PostForm() {
                 </h3>
             </header>
 
-            <div className="form__group" onSubmit={event => onSubmit(event)}>
+            <div className="form__group">
                 <textarea
                     name='text'
                     cols='30'
