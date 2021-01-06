@@ -66,6 +66,10 @@
         &:hover {
             color: var(--color-success-alt-2);
             background-color: var(--color-success-alt);
+
+            .post__likes-count sup {
+                color: var(--color-success-alt-2);
+            }
         }
 
         &--active {
