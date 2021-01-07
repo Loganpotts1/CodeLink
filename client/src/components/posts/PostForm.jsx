@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 // LOCAL
-import { createPost } from "../../actions/post";
+import { createComment, createPost } from "../../actions/post";
 
 
-export default function PostForm() {
+export default function PostForm(props) {
+    const { selected = false, postId } = props;
     const dispatch = useDispatch();
     const [text, setText] = useState("");
 
     const onSubmit = event => {
+        selected ? 
+        dispatch(createComment(postId, { text })) :
         dispatch(createPost({ text }));
+
         setText("");
         event.preventDefault();
     }
@@ -19,7 +23,7 @@ export default function PostForm() {
 
             <header className='bg-primary p'>
                 <h3>
-                    Join the Conversation!
+                    { selected ? "Leave a Comment!" : "Join the Conversation!" }
                 </h3>
             </header>
 

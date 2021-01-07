@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 import { getPost } from "../../actions/post";
 import Spinner from "../utils/Spinner";
 import PostItem from "../posts/PostItem";
-import CommentForm from "./CommentForm";
-import CommentItem from "./CommentItem";
+// import CommentForm from "./CommentForm";
+import PostForm from "../posts/PostForm";
+// import CommentItem from "./CommentItem";
 
 
 export default function Post(props) {
@@ -27,14 +28,16 @@ export default function Post(props) {
             <i className="fas fa-arrow-left"/>
         </button>
 
-        <PostItem post={post} showActions={false} />
+        <PostItem post={post} selected={true} />
 
-        <CommentForm postId={post._id} />
+        <div className="line"></div>
+
+        <PostForm postId={post._id} selected={true} />
 
         <div className="discussion__comments">
             {
                 post.comments.map(comment => (
-                    <CommentItem key={comment._id} comment={comment} postId={post._id} />
+                    <PostItem key={comment._id} comment={true} post={comment} postId={post._id} />
                 ))
             }
         </div>

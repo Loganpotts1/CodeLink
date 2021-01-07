@@ -1,5 +1,4 @@
 .post {
-    // border: 1px solid var(--color-neutral);
     display: flex;
     flex-direction: column;
     background-color: rgba(0, 0, 0, .4);
@@ -67,7 +66,7 @@
             color: var(--color-success-alt-2);
             background-color: var(--color-success-alt);
 
-            .post__likes-count sup {
+            .post__likes-count {
                 color: var(--color-success-alt-2);
             }
         }
@@ -77,29 +76,54 @@
         }
     }
 
-    &__likes-count {
+    &__discussion {
+        justify-self: center;
 
-        sup {
-            font-weight: 700;
-            color: var(--color-success);
-            padding: 0 .5rem;
+        &:hover .post__comment-count {
+            color: var(--color-primary-alt-2);
         }
     }
 
-    &__discussion {
-        justify-self: center;
+    &__likes-count,
+    &__comment-count {
+        font-weight: 700;
+        padding: 0 .5rem;
+    }
+
+    &__likes-count {
+        color: var(--color-success);
     }
 
     &__comment-count {
-
+        color: var(--color-primary);
     }
 
     &__delete {
+        grid-column: 3 / -1;
         justify-self: end;
 
         &:hover {
             color: var(--color-danger-alt-2);
             background-color: var(--color-danger-alt);
+        }
+    }
+
+    &--selected {
+        background: none;
+        box-shadow: none;
+
+        &:hover, &:focus {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .post__date, .post__user p {
+            color: rgba(0, 0, 0, .8);
+        }
+
+        .post__text {
+            text-align: center;
+            font-size: 2.5rem;
         }
     }
 }

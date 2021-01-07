@@ -117,7 +117,7 @@ export const deleteComment = (postId, commentId) => async dispatch => {
             payload: res.data
         });
 
-        dispatch(setAlert("Comment Deleted"));
+        dispatch(setAlert("Comment Deleted", "danger"));
 
     } catch (err) {
         dispatch({
@@ -160,7 +160,7 @@ export const deletePost = (postId) => async dispatch => {
     try {
         const res = await api.delete(`/posts/${postId}`);
 
-        dispatch(setAlert(res.data.msg));
+        dispatch(setAlert(res.data.msg, "danger"));
 
         dispatch({
             type: DELETE_POST,

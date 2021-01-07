@@ -1,24 +1,18 @@
-.posts {
-    display: flex;
-    flex-direction: column;
+.discussion {
 
     @media screen and (max-width: $bp-large) {
         padding: 0 5%;
     }
 
-    &__heading {
-        align-self: center;
+    form {
+        // padding: 0 15%;
         margin-bottom: 3rem;
     }
 
-    &__container {
+    &__comments {
         display: grid;
         grid-auto-flow: row;
         grid-row-gap: 3rem;
         margin-bottom: 5rem;
-    }
-
-    form {
-        padding: 0 15%;
     }
 }

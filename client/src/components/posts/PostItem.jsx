@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 // LOCAL
 import formatDate from "../../utils/formatDate";
-import { likePost, deletePost } from "../../actions/post";
+import { likePost, deletePost, deleteComment } from "../../actions/post";
+import guestIcon from "../../img/CodeLink_Guest_Icon.png";
 
 
 export default function PostItem(props) {
     const {
+        selected = false,
+        comment = false,
+        postId = null,
         post: {
             _id,
             text,
@@ -24,7 +28,7 @@ export default function PostItem(props) {
 
 
     const [ userLiked, setUserLiked ] = useState(
-        likes.some(({ user }) => user === auth.user._id)
+        likes && likes.some(({ user }) => user === auth.user._id)
     );
 
 
@@ -34,14 +38,25 @@ export default function PostItem(props) {
     };
 
 
+    const deleteItem = () => {
+        comment ?
+        dispatch(deleteComment(postId, _id)) :
+        dispatch(deletePost(_id));
+    }
+
+
     return (
-        <section className="post">
+        <section className={`post ${selected && `post--selected`}`}>
 
 
             <header className="post__header">
 
                 <Link className="post__user" to={`/profile/${user}`}>
-                    <img src={avatar} alt="user avatar" />
+                    {
+                        avatar.length > 0 ?
+                        <img src={avatar} alt="avatar"/> :
+                        <img src={guestIcon} alt="Guest Avatar" />
+                    }
                     <p>
                         {name}
                     </p>
@@ -57,31 +72,53 @@ export default function PostItem(props) {
             <p className="post__text">
                 {text}
             </p>
-                
 
-            <aside className="post__actions">
 
-                <button onClick={likeCurrentPost} className={`btn btn--tertiary post__likes ${ userLiked ? `post__likes--active` : `` }`}>
-                    <i className="fas fa-thumbs-up" />
-                    <span className="post__likes-count">
-                        {likes.length > 0 && <sup>{likes.length}</sup>}
-                    </span>
-                </button>
+            {
+                !selected &&
+                <aside className="post__actions">
 
-                <Link to={`/posts/${_id}`} className="btn btn--tertiary post__discussion">
-                    Comments
-                    {" "}
-                    {comments.length > 0 && <sup className="post__comment-count">{comments.length}</sup>}
-                </Link>
+                    {
+                        !comment &&
+                        <Fragment>
 
-                {
-                    !auth.loading && user === auth.user._id &&
-                    <button onClick={() => dispatch(deletePost(_id))} type="button" className="btn btn--tertiary post__delete">
-                        <i className="fas fa-times" />
-                    </button>
-                }
+                            <button onClick={likeCurrentPost} className={`btn btn--tertiary post__likes ${ userLiked ? `post__likes--active` : `` }`}>
+                                <i className="fas fa-thumbs-up" />
+                                <span>
+                                    {
+                                        likes.length > 0 &&
+                                        <sup className="post__likes-count">
+                                            {likes.length}
+                                        </sup>
+                                    }
+                                </span>
+                            </button>
 
-            </aside>
+                            <Link to={`/posts/${_id}`} className="btn btn--tertiary post__discussion">
+                                Comments
+                                <span>
+                                    {
+                                        comments.length > 0 &&
+                                        <sup className="post__comment-count">
+                                            {comments.length}
+                                        </sup>
+                                    }
+                                </span>
+                            </Link>
+
+                        </Fragment>
+                    }
+
+                    {
+                        !auth.loading && user === auth.user._id &&
+                        <button onClick={() => deleteItem()} type="button" className="btn btn--tertiary post__delete">
+                            <i className="fas fa-times" />
+                        </button>
+                    }
+
+                </aside>
+            }
+
             
         </section>
     );

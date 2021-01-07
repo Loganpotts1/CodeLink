@@ -5,6 +5,7 @@ import { getAllProfiles } from "../../actions/profile";
 import Spinner from "../utils/Spinner";
 import ProfileItem from "./ProfileItem";
 
+
 export default function Profiles() {
     const {
         profile: {
@@ -19,27 +20,22 @@ export default function Profiles() {
         // eslint-disable-next-line
     },[]);
 
-    return (
-        <Fragment>
-            {
-                loading ?
-                <Spinner/> :
-                <main className="profiles">
 
-                    <h1 className="profiles__heading">
-                        Developers
-                    </h1>
+    return loading ?
+        <Spinner/> :
+        <main className="profiles">
 
-                    <div className="profiles__container">
-                        {
-                            profiles.map(profile => (
-                                <ProfileItem key={profile._id} profile={profile} />
-                            )) 
-                        }
-                    </div>
+            <h1 className="profiles__heading">
+                Developers
+            </h1>
 
-                </main>
-            }
-        </Fragment>
-    );
+            <div className="profiles__container">
+                {
+                    profiles.map(profile => (
+                        <ProfileItem key={profile._id} profile={profile} />
+                    )) 
+                }
+            </div>
+
+        </main>;
 }
