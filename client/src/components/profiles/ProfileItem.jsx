@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 export default function ProfileItem(props) {
     const {
         profile: {
@@ -48,7 +49,7 @@ export default function ProfileItem(props) {
 
                 <ul className="card__skills">
                     {skills.slice(0,4).map((skill, index) => (
-                        <li key={index} className="text-primary">
+                        <li key={index}>
                             {/* <i className="fas fa-check"></i> */}
                             {" " + skill}
                         </li>

@@ -6,9 +6,16 @@ import formatDate from "../../utils/formatDate";
 import { deleteExperience } from "../../actions/profile";
 
 
-export default function Experience() {
-    const { experience } = useSelector(state => state.profile.profile);
+export default function Experience(props) {
+    const { experience, id } = props;
+    const {
+        loading,
+        user: {
+            _id: userId
+        }
+    } = useSelector(state => state.auth);
     const dispatch = useDispatch();
+
 
     const experiences = experience.map(exp => (
         <tr key={exp._id}>
@@ -25,11 +32,14 @@ export default function Experience() {
                 { formatDate(exp.from) + " - " + (exp.to ? formatDate(exp.to) : "Current") }
             </td>
 
-            <td className="table__delete-item">
-                <button className="btn btn--tertiary" onClick={() => dispatch(deleteExperience(exp._id))}>
-                    <i className="fas fa-times"></i>
-                </button>
-            </td>
+            {
+                !loading && id === userId &&
+                <td className="table__delete-item">
+                    <button className="btn btn--tertiary" onClick={() => dispatch(deleteExperience(exp._id))}>
+                        <i className="fas fa-times"></i>
+                    </button>
+                </td>
+            }
 
         </tr>
     ));
@@ -44,9 +54,13 @@ export default function Experience() {
                     Experience
                 </h2>
 
-                <Link to="/add-experience" className="btn btn--tertiary">
-                    <i className="fas fa-plus"/>
-                </Link>
+                {
+                    !loading && id === userId &&
+                    <Link to="/add-experience" className="btn btn--tertiary">
+                        <i className="fas fa-plus"/>
+                    </Link>
+                }
+                
             </header>
             
 
@@ -65,9 +79,12 @@ export default function Experience() {
                             <th>
                                 Years
                             </th>
-                            <th>
-                                {/* Column for Delete Buttons */}
-                            </th>
+                            {
+                                !loading && id === userId &&
+                                <th>
+                                    {/* Column for Delete Buttons */}
+                                </th>
+                            }
                         </tr>
                     </thead>
 

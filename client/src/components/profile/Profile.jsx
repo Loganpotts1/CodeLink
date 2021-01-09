@@ -6,8 +6,8 @@ import { getProfileById } from "../../actions/profile";
 import Spinner from "../utils/Spinner";
 import ProfileTop from "./ProfileTop";
 import ProfileAbout from "./ProfileAbout";
-import ProfileExperience from "./ProfileExperience";
-import ProfileEducation from "./ProfileEducation";
+import Experience from "../layout/Experience";
+import Education from "../layout/Education";
 import ProfileGithub from "./ProfileGithub";
 
 
@@ -51,23 +51,39 @@ export default function Profile(props) {
                 </Link>
             }
 
+            <ProfileTop profile={profile} />
 
-            <div className="profile__grid">
+            {
+                profile.bio && 
+                <div className="profile__bio">
+                    <h2>
+                        {profile.user.name.trim().split(' ')[0]}'s Bio
+                    </h2>
+                    <p>{profile.bio}</p>
+                </div>
+            }
 
-                <ProfileTop profile={profile} />
+            <div className="line" />
 
-                <ProfileAbout profile={profile} />
-
-                <ProfileExperience profile={profile} />
-
-                <ProfileEducation profile={profile} />
-
-                {
-                    profile.githubusername && <ProfileGithub username={profile.githubusername} />
-                }
-                
+            <div className="profile__skills">
+                {profile.skills.map((skill, index) => (
+                    <span key={index}>
+                        {" " + skill}
+                    </span>
+                ))}
             </div>
 
+            { profile.experience.length > 0 && <Experience experience={profile.experience} id={profile.user._id} /> }
+            
+            { profile.education.length > 0 && <Education education={profile.education} id={profile.user._id} /> }
+
+            {
+                profile.githubusername &&
+                <Fragment>
+                    <div className="line"></div>
+                    <ProfileGithub username={profile.githubusername} />
+                </Fragment>
+            }
 
         </main>
             

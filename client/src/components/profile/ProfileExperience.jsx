@@ -8,9 +8,9 @@ export default function ProfileExperience(props) {
 
 
     return (
-        <section className="profile__exp">
+        <section className="profile-professional">
 
-            <h2 className="text-primary">
+            <h2 className="profile-professional__heading">
                 Experience
             </h2>
 
@@ -29,8 +29,8 @@ export default function ProfileExperience(props) {
                     } = exp;
             
                     return (
-                        <div key={_id}>
-                            <h3 className="text-dark">
+                        <div key={_id} className="profile-professional__item">
+                            <h3>
                                 {company}
                             </h3>
                             <p>

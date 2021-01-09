@@ -46,7 +46,7 @@ export default function PostItem(props) {
 
 
     return (
-        <section className={`post ${selected && `post--selected`}`}>
+        <section className={`post ${selected ? `post--selected` : comment && `post--comment`}`}>
 
 
             <header className="post__header">

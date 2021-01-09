@@ -160,7 +160,7 @@ export const deletePost = (postId) => async dispatch => {
     try {
         const res = await api.delete(`/posts/${postId}`);
 
-        dispatch(setAlert(res.data.msg, "danger"));
+        dispatch(setAlert("Post Deleted", "danger"));
 
         dispatch({
             type: DELETE_POST,

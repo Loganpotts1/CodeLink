@@ -2,11 +2,12 @@
     grid-column: full-start / full-end;
     display: grid;
     grid-template-columns: 1fr minmax(min-content, calc(14rem * 8)) 1fr;
+    grid-column-gap: 6%;
     grid-auto-rows: min-content;
     align-items: center;
     text-align: center;
 
-    > * {
+    > *:not(.dashboard__header) {
         grid-column: 2 / 3;
     }
 
@@ -46,7 +47,7 @@
     &__actions {
         display: flex;
         justify-content: end;
-        margin: 3rem 6.5%;
+        margin: 3rem 0;
 
         @media screen and (max-width: $bp-mobile) {
             justify-content: center;

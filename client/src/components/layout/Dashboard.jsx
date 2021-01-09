@@ -45,18 +45,18 @@ export default function Dashboard() {
                 
                 <Fragment>
 
-                    <Experience />
+                    <Experience experience={profile.experience} id={user._id} />
 
-                    <Education />
+                    <Education education={profile.education} id={user._id} />
 
-                    <section className="dashboard__actions">
+                    <div className="dashboard__actions">
                         <Link className="btn btn--secondary" to="/edit-profile">
                             Edit Profile
                         </Link>
                         <button className="btn btn--tertiary dashboard__delete-account" onClick={() => dispatch(deleteAccount())}>
                             Delete Account
                         </button>
-                    </section>
+                    </div>
 
                 </Fragment> :
                 

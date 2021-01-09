@@ -8,9 +8,9 @@ export default function ProfileEducation(props) {
 
 
     return (
-        <section className="profile__edu bg-white p-2">
+        <section className="profile-professional">
             
-            <h2 className="text-primary">
+            <h2 className="profile-professional__heading">
                 Education
             </h2>
 
@@ -29,8 +29,8 @@ export default function ProfileEducation(props) {
                     } = edu;
 
                     return (
-                        <div key={_id}>
-                            <h3 className="text-dark">
+                        <div key={_id} className="profile-professional__item">
+                            <h3>
                                 {school}
                             </h3>
                             <p>

@@ -15,40 +15,56 @@ export default function ProfileGithub(props) {
     }, []);
 
     return (
-        <section className="profile__github">
+        <section className="github">
 
-            <h2 className="text-primary my-1">
+            {/* <h2 className="github__heading">
                 Github Repos
-            </h2>
+            </h2> */}
+
+            <i className="fab fa-github github__heading"></i>
 
             {repos.map(repo => (
-                <div key={repo.id} className="repo bg-white p-1 my-1">
+                <div key={repo.id} className="github__repo">
 
-                    <div>
-                        <h4>
-                            <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
-                                {repo.name}
-                            </a>
-                        </h4>
-                        <p>
+                    <div className="github__info">
+                        <a href={repo.html_url} rel="noopener noreferrer">
+                            {repo.name.length > 30 ? repo.name.slice(0 , 30).concat("...") : repo.name}
+                        </a>
+                        <small>
                             {repo.description}
-                        </p>
+                        </small>
                     </div>
                     
-                    <div>
-                        <ul>
-                            <li className="badge badge-primary">
-                                Stars: {repo.stargazers_count}
-                            </li>
-                            <li className="badge badge-dark">
-                                Watchers: {repo.watchers_count}
-                            </li>
-                            <li className="badge badge-light">
-                                Forks: {repo.forks_count}
-                            </li>
-                        </ul>
-                    </div>
-                    
+                    <ul className="github__icons">
+                        <li>
+                            <i className="far fa-star github__icon github__icon--star"/>
+                            {
+                                repo.stargazers_count > 0 &&
+                                <small>
+                                    {repo.stargazers_count}
+                                </small>
+                            }
+                        </li>
+                        <li>
+                            <i className="far fa-eye github__icon github__icon--watcher"/>
+                            {
+                                repo.watchers_count > 0 &&
+                                <small>
+                                    {repo.watchers_count}
+                                </small>
+                            }
+                        </li>
+                        <li>
+                            <i className="fas fa-code-branch github__icon github__icon--fork"/>
+                            {
+                                repo.forks_count > 0 &&
+                                <small>
+                                    {repo.forks_count}
+                                </small>
+                            }
+                        </li>
+                    </ul>
+
                 </div>
             ))}
 
