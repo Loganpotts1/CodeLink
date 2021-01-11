@@ -10,7 +10,6 @@ import Education from "./Education";
 
 export default function Dashboard() {
     const dispatch = useDispatch();
-    const state = useSelector(state => state);
     const {
         auth: {
             user
@@ -19,12 +18,13 @@ export default function Dashboard() {
             profile,
             loading
         }
-    } = state;
+    } = useSelector(state => state);
 
 
     useEffect(() => {
         dispatch(getCurrentProfile());
     }, [dispatch]);
+
 
     return (
         <main className="dashboard">
@@ -41,7 +41,7 @@ export default function Dashboard() {
             
 
             {
-                profile && (!loading) ? 
+                profile && !loading ? 
                 
                 <Fragment>
 

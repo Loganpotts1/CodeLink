@@ -1,7 +1,7 @@
 import api from "./api";
 
-export default function setAuthToken(token) {
 
+export default function setAuthToken(token) {
     const { common } = api.defaults.headers;
 
     if (token) {

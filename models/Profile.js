@@ -40,7 +40,7 @@ const ProfileSchema = new Schema({
         type: String
     },
 
-    githubUsername: {
+    githubusername: {
         type: String
     },
 

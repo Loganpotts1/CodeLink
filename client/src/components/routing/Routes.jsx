@@ -33,6 +33,7 @@ export default function Routes() {
                     <PrivateRoute exact path="/posts/:id" component={Discussion} />
                 </Switch>
             </div>
+            
         </Fragment>
     );
 }

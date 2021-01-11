@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 //  LOCAL
 import { login } from "../../actions/auth";
 
@@ -11,8 +11,8 @@ export default function Login(props) {
     const dispatch = useDispatch();
     
     const [ formData, setFormData ] = React.useState({
-        email: "",
-        password: "",
+        email: "techguyinfo@gmail.com",
+        password: "123456",
     });
     const {
         email, 

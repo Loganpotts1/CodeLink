@@ -1,13 +1,10 @@
-import React, { useEffect, Fragment } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 // LOCAL
 import { getPost } from "../../actions/post";
 import Spinner from "../utils/Spinner";
 import PostItem from "../posts/PostItem";
-// import CommentForm from "./CommentForm";
 import PostForm from "../posts/PostForm";
-// import CommentItem from "./CommentItem";
 
 
 export default function Post(props) {
@@ -15,10 +12,12 @@ export default function Post(props) {
     const { post, loading } = useSelector(state => state.post);
     const dispatch = useDispatch();
 
+
     useEffect(() => {
         dispatch(getPost(id));
         // eslint-disable-next-line
     }, []);
+
 
     return loading || !post || post._id !== id ?
     <Spinner /> :

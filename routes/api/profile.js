@@ -52,7 +52,7 @@ router.post("/",
             location,
             bio,
             status,
-            githubUsername,
+            githubusername,
             skills,
             youtube,
             facebook,
@@ -77,7 +77,7 @@ router.post("/",
                     ? skills
                     : skills.split(",").map(skill => " " + skill.trim()),
                 status,
-                githubUsername
+                githubusername
             };
 
             //  Verifying that socialfields' inputs are actual "http://" web links

@@ -1,5 +1,5 @@
-import React, { Fragment } from "react"
-import { Link, Redirect } from "react-router-dom";
+import React from "react"
+import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 //  LOCAL
 import { register } from "../../actions/auth";
@@ -10,7 +10,7 @@ export default function Register(props) {
     const { login } = props;
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
     const dispatch = useDispatch();
-    const [formData, setFormData] = React.useState({
+    const [ formData, setFormData ] = React.useState({
         name: "",
         email: "",
         password: "",
@@ -83,10 +83,6 @@ export default function Register(props) {
                         value={email} 
                         onChange={onChange}
                     />
-                    <small className="form__text">
-                        <i className="fa fa-info-circle"/> This site uses Gravatar. If you want a profile image, use a
-                        Gravatar email
-                    </small>
                 </div>
 
                 <div className="form__group">

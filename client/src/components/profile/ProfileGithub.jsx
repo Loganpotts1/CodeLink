@@ -9,17 +9,15 @@ export default function ProfileGithub(props) {
     const { repos } = useSelector(state => state.profile);
     const dispatch = useDispatch();
 
+
     useEffect(() => {
         dispatch(getGithub(username));
         // eslint-disable-next-line
     }, []);
 
+    
     return (
         <section className="github">
-
-            {/* <h2 className="github__heading">
-                Github Repos
-            </h2> */}
 
             <i className="fab fa-github github__heading"></i>
 

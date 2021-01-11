@@ -1,9 +1,11 @@
 import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
 
+
 export default function Alert() {
     const { alerts } = useSelector(state => state);
 
+    
     return (
         <Fragment>
             {

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 //  LOCAL
 import { getAllPosts } from "../../actions/post";
@@ -21,8 +21,7 @@ export default function Posts() {
         // eslint-disable-next-line
     },[]);
 
-    return (
-        loading ?
+    return loading ?
         <Spinner /> :
         <main className="posts">
 
@@ -42,6 +41,5 @@ export default function Posts() {
                 }
             </div>
 
-        </main>
-    );
+        </main>;
 }

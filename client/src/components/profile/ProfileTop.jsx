@@ -18,6 +18,7 @@ export default function ProfileTop(props) {
         }
     } = props;
 
+    
     return (
         <section className="profile-top">
 

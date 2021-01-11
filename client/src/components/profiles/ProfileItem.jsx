@@ -17,8 +17,10 @@ export default function ProfileItem(props) {
         }
     } = props;
 
+
     return (
         <section className="card">
+
 
             <figure className="card__avatar">
                 {
@@ -28,7 +30,9 @@ export default function ProfileItem(props) {
                 }
             </figure>
 
+
             <div className="card__content">
+
                 <h2 className="card__name">
                     {name}
                 </h2>
@@ -55,6 +59,7 @@ export default function ProfileItem(props) {
                         </li>
                     ))}
                 </ul>
+                
             </div>
 
         </section>

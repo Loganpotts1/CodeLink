@@ -31,7 +31,7 @@ export default function CreateProfile() {
         if (!profile)
         dispatch(getCurrentProfile());
 
-        //  Populating const profileData with properties from profile state
+        //  Populating const temp with properties from profile state
         if (profile && !loading) {
             const temp = { ...formData };
 
@@ -47,7 +47,7 @@ export default function CreateProfile() {
 
             if (Array.isArray(profile.skills))
             temp.skills = profile.skills.join();
-            //  Then set formData to profileData
+            //  Then set formData to temp
             setFormData(temp);
         }
         // eslint-disable-next-line
@@ -97,11 +97,6 @@ export default function CreateProfile() {
             <h1 className="edit__heading">
                 Edit Your Profile
             </h1>
-
-
-            {/* <small>
-                * = required field
-            </small> */}
 
 
             <form className="form" onSubmit={onSubmit}>

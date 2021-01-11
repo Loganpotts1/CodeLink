@@ -67,7 +67,7 @@ export default function PostItem(props) {
                 </p>
                 
             </header>
-            
+
 
             <p className="post__text">
                 {text}
@@ -82,7 +82,7 @@ export default function PostItem(props) {
                         !comment &&
                         <Fragment>
 
-                            <button onClick={likeCurrentPost} className={`btn btn--tertiary post__likes ${ userLiked ? `post__likes--active` : `` }`}>
+                            <button onClick={likeCurrentPost} className={`btn btn--tertiary post__likes ${ userLiked && `post__likes--active` }`}>
                                 <i className="fas fa-thumbs-up" />
                                 <span>
                                     {

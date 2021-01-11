@@ -50,6 +50,7 @@ export default function Experience(props) {
 
 
             <header className="table__header">
+                
                 <h2>
                     Experience
                 </h2>

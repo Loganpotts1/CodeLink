@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 //  LOCAL
 import { logout } from "../../actions/auth";
 
@@ -39,8 +39,6 @@ export default function Navbar() {
 
                 <li>
                     <Link to="/dashboard">
-                        {/* <i className="fas fa-user" />
-                        {' '} */}
                         Dashboard
                     </Link>
                 </li>
@@ -48,10 +46,6 @@ export default function Navbar() {
                 <li>
                     <a onClick={() => dispatch(logout())} href="#!">
                         <i className="fas fa-sign-out-alt" />
-                        {' '}
-                        {/* <span className="hide-sm">
-                            Logout
-                        </span> */}
                     </a>
                 </li>
 

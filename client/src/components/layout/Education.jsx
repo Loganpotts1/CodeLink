@@ -50,6 +50,7 @@ export default function Education(props) {
 
 
             <header className="table__header">
+                
                 <h2>
                     Education
                 </h2>

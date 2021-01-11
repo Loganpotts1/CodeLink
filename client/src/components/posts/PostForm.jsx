@@ -7,8 +7,9 @@ import { createComment, createPost } from "../../actions/post";
 export default function PostForm(props) {
     const { selected = false, postId } = props;
     const dispatch = useDispatch();
-    const [text, setText] = useState("");
+    const [ text, setText ] = useState("");
 
+    
     const onSubmit = event => {
         selected ? 
         dispatch(createComment(postId, { text })) :
@@ -17,6 +18,7 @@ export default function PostForm(props) {
         setText("");
         event.preventDefault();
     }
+
 
     return (
         <form className="form" onSubmit={event => onSubmit(event)}>

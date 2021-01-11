@@ -1,11 +1,10 @@
 import React, { Fragment, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 //  LOCAL
 import { getProfileById } from "../../actions/profile";
 import Spinner from "../utils/Spinner";
 import ProfileTop from "./ProfileTop";
-import ProfileAbout from "./ProfileAbout";
 import Experience from "../layout/Experience";
 import Education from "../layout/Education";
 import ProfileGithub from "./ProfileGithub";
@@ -25,15 +24,14 @@ export default function Profile(props) {
     } = useSelector(state => state);
     const dispatch = useDispatch();
 
+
     useEffect(() => {
         dispatch(getProfileById(id));
         // eslint-disable-next-line
     },[]);
 
 
-    return (
-        
-        (!profile) || loading ?
+    return !profile || loading ?
         <Spinner /> :
         <main className="profile">
 
@@ -85,7 +83,5 @@ export default function Profile(props) {
                 </Fragment>
             }
 
-        </main>
-            
-    );
+        </main>;
 }
