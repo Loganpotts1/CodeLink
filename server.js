@@ -11,8 +11,6 @@ const PORT = process.env.PORT || 5000;
 //  CONNECT DATABASE
 connectDB();
 
-app.get("/", (req, res) => res.send("API Running"));
-
 
 //  CORS HEADER
 app.use(function(req, res, next) {
@@ -20,6 +18,10 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+
+
+app.get("/", (req, res) => res.send("API Running"));
+
 
 
 //  INIT BODYPARSER
