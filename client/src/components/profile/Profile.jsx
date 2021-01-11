@@ -41,13 +41,13 @@ export default function Profile(props) {
             </button>
 
 
-            {
+            {/* {
                 isAuthenticated &&
                 user._id === profile.user._id &&
                 <Link to="/edit-profile" className="btn btn--secondary">
                     Edit Profile
                 </Link>
-            }
+            } */}
 
             <ProfileTop profile={profile} />
 
