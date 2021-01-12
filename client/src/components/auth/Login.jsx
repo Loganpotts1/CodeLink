@@ -11,8 +11,8 @@ export default function Login(props) {
     const dispatch = useDispatch();
     
     const [ formData, setFormData ] = React.useState({
-        email: "techguyinfo@gmail.com",
-        password: "123456",
+        email: "",
+        password: "",
     });
     const {
         email, 

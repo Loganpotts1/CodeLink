@@ -23,18 +23,12 @@ export default function PostForm(props) {
     return (
         <form className="form" onSubmit={event => onSubmit(event)}>
 
-            <header className='bg-primary p'>
-                <h3>
-                    { selected ? "Leave a Comment!" : "Join the Conversation!" }
-                </h3>
-            </header>
-
             <div className="form__group">
                 <textarea
                     name='text'
                     cols='30'
                     rows='1'
-                    placeholder='Create a post'
+                    placeholder={ selected ? "Leave a Comment!" : "Join the Conversation!" }
                     value={text}
                     onChange={event => setText(event.target.value)}
                     required
