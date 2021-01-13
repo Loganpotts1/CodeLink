@@ -58,8 +58,6 @@ export const getProfileById = (userId) => async dispatch => {
 export const getAllProfiles = () => async dispatch => {
 
     try {
-        dispatch({ type: CLEAR_PROFILE });
-
         const res = await api.get("/profile");
 
         dispatch({
