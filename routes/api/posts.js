@@ -46,7 +46,7 @@ router.post("/",
 
         try {
             const user = await User.findById(userId).select("-password");
-            const profile = await Profile.findOne({ user: userId});
+            const profile = await Profile.findOne({ user: userId });
 
             const newPost = new Post({
                 text,
@@ -179,7 +179,7 @@ router.post("/",
 
         try {
             const user = await User.findById(userId).select("-password");
-            const profile = await Profile.find({ user: userId });
+            const profile = await Profile.findOne({ user: userId });
             const post = await Post.findById(post_id);
 
             const newComment = {

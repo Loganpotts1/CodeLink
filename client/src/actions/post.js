@@ -87,6 +87,8 @@ export const createComment = (postId, formData) => async dispatch => {
     try {
         const res = await api.post(`/posts/comment/${postId}`, formData);
 
+        console.log(postId, formData);
+
         dispatch({
             type: ADD_COMMENT,
             payload: res.data
