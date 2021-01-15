@@ -60,7 +60,7 @@
     }
 
     &__likes {
-        justify-self: start;
+        justify-self: flex-start;
 
         &:hover {
             color: var(--color-success-alt-2);

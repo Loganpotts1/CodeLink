@@ -14,7 +14,7 @@
 
 .profile-top {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
 
     @media screen and (max-width: $bp-mobile) {

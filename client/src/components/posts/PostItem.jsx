@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { stateToHTML } from "draft-js-export-html";
 import { Link } from "react-router-dom";
 // LOCAL
 import formatDate from "../../utils/formatDate";
@@ -70,7 +71,7 @@ export default function PostItem(props) {
 
 
             <p className="post__text">
-                {text}
+                {stateToHTML(text)}
             </p>
 
 
