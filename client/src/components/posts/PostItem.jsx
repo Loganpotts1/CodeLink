@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { convertFromRaw, EditorState } from "draft-js";
 import { stateToHTML } from "draft-js-export-html";
 import { Link } from "react-router-dom";
 // LOCAL
@@ -71,7 +72,7 @@ export default function PostItem(props) {
 
 
             <p className="post__text">
-                {stateToHTML(text)}
+                {console.log(stateToHTML(convertFromRaw(text)))}
             </p>
 
 

@@ -30,7 +30,7 @@ router.post("/",
     [
         auth,
         [
-            check("text", "Text is required for a post").notEmpty()
+            // check("text", "Text is required for a post").notEmpty()
         ]
     ],
     async (req, res) => {

@@ -29,11 +29,13 @@ export default function PostForm(props) {
 
     
     const onSubmit = event => {
-        console.log(text);
+        const rawText = convertToRaw(text.getCurrentContent());
+
+        console.log(rawText);
 
         selected ? 
-        dispatch(createComment(postId, { text })) :
-        dispatch(createPost({ text }));
+        dispatch(createComment(postId, { rawText })) :
+        dispatch(createPost({ rawText }));
 
         setText(EditorState.createEmpty());
         event.preventDefault();
