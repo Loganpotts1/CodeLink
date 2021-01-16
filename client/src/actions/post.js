@@ -135,6 +135,7 @@ export const deleteComment = (postId, commentId) => async dispatch => {
 export const createPost = formData => async dispatch => {
 
     try {
+        console.log(formData);
         const res = await api.post("/posts", formData);
 
         dispatch({
@@ -159,7 +160,7 @@ export const createPost = formData => async dispatch => {
 export const deletePost = (postId) => async dispatch => {
 
     try {
-        const res = await api.delete(`/posts/${postId}`);
+        await api.delete(`/posts/${postId}`);
 
         dispatch(setAlert("Post Deleted", "danger"));
 

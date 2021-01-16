@@ -1,5 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 //  LOCAL
 import { getCurrentProfile, createProfile } from "../../actions/profile";

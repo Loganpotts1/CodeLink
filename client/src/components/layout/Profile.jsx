@@ -1,22 +1,18 @@
 import React, { Fragment, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 //  LOCAL
 import { getProfileById } from "../../actions/profile";
 import Spinner from "../utils/Spinner";
-import ProfileTop from "./ProfileTop";
-import Experience from "../layout/Experience";
-import Education from "../layout/Education";
-import ProfileGithub from "./ProfileGithub";
+import User from "../profile/User";
+import Experience from "../profile/Experience";
+import Education from "../profile/Education";
+import Github from "../profile/Github";
 
 
 export default function Profile(props) {
     const { id } = props.match.params;
     const {
-        auth: {
-            isAuthenticated,
-            user
-        },
         profile: {
             profile,
             loading
@@ -49,27 +45,7 @@ export default function Profile(props) {
                 </Link>
             } */}
 
-            <ProfileTop profile={profile} />
-
-            {
-                profile.bio && 
-                <div className="profile__bio">
-                    <h2>
-                        {profile.user.name.trim().split(' ')[0]}'s Bio
-                    </h2>
-                    <p>{profile.bio}</p>
-                </div>
-            }
-
-            <div className="line" />
-
-            <div className="profile__skills">
-                {profile.skills.map((skill, index) => (
-                    <span key={index}>
-                        {" " + skill}
-                    </span>
-                ))}
-            </div>
+            <User profile={profile} />
 
             { profile.experience.length > 0 && <Experience experience={profile.experience} id={profile.user._id} /> }
             
@@ -79,7 +55,7 @@ export default function Profile(props) {
                 profile.githubusername &&
                 <Fragment>
                     <div className="line"></div>
-                    <ProfileGithub username={profile.githubusername} />
+                    <Github username={profile.githubusername} />
                 </Fragment>
             }
 

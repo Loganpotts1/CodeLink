@@ -100,7 +100,7 @@
 
     &__delete {
         grid-column: 3 / -1;
-        justify-self: end;
+        justify-self: flex-end;
 
         &:hover {
             color: var(--color-danger-alt-2);

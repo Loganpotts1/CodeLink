@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 //  LOCAL
 import { getAllPosts } from "../../actions/post";
 import Spinner from "../utils/Spinner";
-import PostForm from "./PostForm";
-import PostItem from "./PostItem";
+import PostForm from "../forms/PostForm";
+import PostItem from "../post/PostItem";
 
 
 export default function Posts() {

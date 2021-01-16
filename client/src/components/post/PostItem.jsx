@@ -1,7 +1,8 @@
 import React, { Fragment, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { convertFromRaw, EditorState } from "draft-js";
+import { convertFromRaw } from "draft-js";
 import { stateToHTML } from "draft-js-export-html";
+import DOMPurify from "dompurify";
 import { Link } from "react-router-dom";
 // LOCAL
 import formatDate from "../../utils/formatDate";
@@ -25,6 +26,7 @@ export default function PostItem(props) {
             date
         }
     } = props;
+    const convertedText = stateToHTML(convertFromRaw(JSON.parse(text)));
     const { auth } = useSelector(state => state);
     const dispatch = useDispatch();
 
@@ -71,9 +73,7 @@ export default function PostItem(props) {
             </header>
 
 
-            <p className="post__text">
-                {console.log(stateToHTML(convertFromRaw(text)))}
-            </p>
+            <p className="post__text" dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(convertedText)}}></p>
 
 
             {

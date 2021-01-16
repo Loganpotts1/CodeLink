@@ -6,7 +6,7 @@ import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./actions/auth";
 import { LOGOUT } from "./actions/types";
 import Alert from "./components/utils/Alert";
-import Routes from "./components/routing/Routes";
+import Routes from "./components/navigation/Routes";
 import Landing from "./components/layout/Landing";
 import "./scss/main.min.css";
 

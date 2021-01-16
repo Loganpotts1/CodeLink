@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 //  LOCAL
 import { getCurrentProfile } from "../../actions/profile";
 import { deleteAccount } from "../../actions/auth";
-import Experience from "./Experience";
-import Education from "./Education";
+import Experience from "../profile/Experience";
+import Education from "../profile/Education";
 
 
 export default function Dashboard() {

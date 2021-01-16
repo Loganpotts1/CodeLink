@@ -46,7 +46,7 @@
 
     &__actions {
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         margin: 3rem 0;
 
         @media screen and (max-width: $bp-mobile) {

@@ -96,7 +96,7 @@
     &__skills {
         grid-column: 1 / -1;
         grid-row: 3 / -1;
-        align-self: end;
+        align-self: flex-end;
         display: flex;
         justify-content: space-around;
         font-size: 16px;

@@ -43,6 +43,8 @@ router.post("/",
         const { userId } = req.user;
         const { text } = req.body;
 
+        console.log(text);
+
 
         try {
             const user = await User.findById(userId).select("-password");

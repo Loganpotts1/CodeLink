@@ -1,0 +1,79 @@
+.user {
+    display: flex;
+    flex-direction: column;
+
+    &__top,
+    &__bio {
+        margin: 0 6%;
+    }
+
+    &__top {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        @media screen and (max-width: $bp-mobile) {
+            justify-content: center;
+    
+            h1 {
+                font-size: 3rem;
+            }
+        }
+    }
+
+    &__avatar {
+        width: 14rem;
+        border-radius: 50%;
+        margin-right: 2rem;
+
+        @media screen and (max-width: $bp-mobile) {
+            width: 10rem;
+        }
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+
+        @media screen and (max-width: $bp-mobile) {
+            text-align: center;
+        }
+    }
+
+    &__links {
+        font-size: 1.2rem;
+        padding: 1rem 0;
+
+        a:hover {
+            color: var(--color-primary);
+        }
+
+        a:not(:first-child):not(:last-child) {
+            margin: .5rem;
+        }
+    }
+
+    &__bio {
+        padding: 6rem 0 1rem;
+
+        p {
+            color: var(--color-neutral);
+            font-size: 2rem;
+        }
+    }
+
+    &__skills {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 1rem;
+        color: var(--color-success);
+        background-color: rgba(0, 0, 0, .4);
+        border-radius: 12px;
+        font-style: italic;
+
+        span {
+            margin: 1rem 2.5rem;
+        }
+    }
+}
