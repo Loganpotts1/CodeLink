@@ -39,9 +39,12 @@
     }
 
     &__text {
-        font-size: 2rem;
-        color: var(--color-neutral);
         padding: 4rem 3rem;
+
+        > * {
+            font-size: 2rem;
+            color: var(--color-neutral);
+        }
     }
 
     &__actions {
