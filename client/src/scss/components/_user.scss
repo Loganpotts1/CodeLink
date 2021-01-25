@@ -41,6 +41,11 @@
         @media screen and (max-width: $bp-mobile) {
             text-align: center;
         }
+
+        aside {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     &__links {
