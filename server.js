@@ -1,7 +1,7 @@
 const express = require("express");
 const connectDB = require("./config/connectDB");
 const cors = require("cors");
-
+const path = require("path");
 const app = express();
 
 
@@ -20,7 +20,6 @@ app.use(cors());
 app.get("/", (req, res) => res.send("API Running"));
 
 
-
 //  INIT BODYPARSER
 app.use(express.json({ extended: false }));
 
@@ -31,6 +30,10 @@ app.use("/api/posts", require("./routes/api/posts"));
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/profile", require("./routes/api/profile"));
 
+app.get("*", function (req, res) {
+    res.sendFile(path.resolve(__dirname, "client", "public", "index.html"));
+});
+  
 
 //  APP LISTEN
 app.listen(PORT, () => console.log(`Server is up and running on port ${ PORT }`));
