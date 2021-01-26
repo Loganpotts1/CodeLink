@@ -21,6 +21,8 @@ response.use(
   err => {
     if (err.response.status === 401) {
       store.dispatch({ type: LOGOUT });
+    } else if (err.response.status === 404) {
+      return window.location = "/";
     }
     return Promise.reject(err);
   }

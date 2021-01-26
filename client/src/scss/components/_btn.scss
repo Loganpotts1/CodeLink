@@ -35,12 +35,12 @@
         i {
             font-size: 1.1rem;
             margin-left: 1.1rem;
-            transform: translateY(1px);
+            transform: translateY(-1px);
             transition: all .2s;
         }
 
         &:active i {
-            transform: translateX(.5rem);
+            transform: translate(.5rem, -1px);
         }
     }
 
@@ -90,6 +90,10 @@
 
         i {
             padding: 1rem 1.1rem;
+
+            @media screen and (max-width: $bp-mobile) {
+                transform: translateY(1px);
+            }
         }
     }
 }
