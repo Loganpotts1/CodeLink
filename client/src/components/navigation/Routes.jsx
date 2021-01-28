@@ -1,16 +1,18 @@
-import React, { Fragment } from "react";
+import React, { Fragment, lazy, Suspense } from "react";
 import { Switch } from "react-router-dom";
 //  LOCAL
 import Navbar from "./Navbar";
 import PrivateRoute from "./PrivateRoute";
-import Profile from "../layout/Profile";
-import Profiles from "../layout/Profiles";
-import Dashboard from "../layout/Dashboard";
-import EditProfile from "../forms/ProfileForm";
-import AddEducation from "../forms/EducationForm";
-import AddExperience from "../forms/ExperienceForm";
-import Posts from "../layout/Posts";
-import Discussion from "../layout/Discussion";
+import Spinner from "../utils/Spinner";
+
+const Profile = lazy(() => import("../layout/Profile"));
+const Profiles = lazy(() => import("../layout/Profiles"));
+const Dashboard = lazy(() => import("../layout/Dashboard"));
+const EditProfile = lazy(() => import("../forms/ProfileForm"));
+const AddEducation = lazy(() => import("../forms/EducationForm"));
+const AddExperience = lazy(() => import("../forms/ExperienceForm"));
+const Posts = lazy(() => import("../layout/Posts"));
+const Discussion = lazy(() => import("../layout/Discussion"));
 
 
 export default function Routes() {

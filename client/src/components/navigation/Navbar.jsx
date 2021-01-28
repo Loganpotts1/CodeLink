@@ -44,7 +44,7 @@ export default function Navbar() {
                 </li>
 
                 <li>
-                    <a onClick={() => dispatch(logout())} href="#!">
+                    <a onClick={() => dispatch(logout())} href="#">
                         <i className="fas fa-sign-out-alt" />
                     </a>
                 </li>

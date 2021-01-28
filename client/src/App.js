@@ -1,14 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, lazy, Suspense } from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 //	LOCAL
 import setAuthToken from "./utils/setAuthToken";
 import { loadUser } from "./actions/auth";
 import { LOGOUT } from "./actions/types";
-import Alert from "./components/utils/Alert";
-import Routes from "./components/navigation/Routes";
-import Landing from "./components/layout/Landing";
+import Spinner from "./components/utils/Spinner";
 import "./scss/main.min.css";
+
+const Landing = lazy(() => import("./components/layout/Landing"));
+const Alert = lazy(() => import("./components/utils/Alert"));
+const Routes = lazy(() => import("./components/navigation/Routes"));
 
 
 export default function App() {
@@ -38,13 +40,14 @@ export default function App() {
   return (
 	<Router>
 		<div className="page">
+			<Suspense fallback={Spinner}>
+				<Alert />
 
-			<Alert />
-
-			<Switch>
-				<Route exact path="/" component={Landing} />
-				<Route component={Routes} />
-			</Switch>
+				<Switch>
+					<Route exact path="/" component={Landing} />
+					<Route component={Routes} />
+				</Switch>
+			</Suspense>
 		</div>
 	</Router>
   );
