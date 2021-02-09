@@ -119,7 +119,7 @@ export default function Register(props) {
 
             <p className="login__switch">
                 Already have an account? 
-                <a href="#!" onClick={login}>
+                <a href="#" onClick={login}>
                     {" Sign In"}
                 </a>
             </p>

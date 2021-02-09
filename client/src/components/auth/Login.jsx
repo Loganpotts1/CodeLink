@@ -84,7 +84,7 @@ export default function Login(props) {
 
             <p className="login__switch">
                 Don't have an account?
-                <a href="#!" onClick={register}>
+                <a href="#" onClick={register}>
                     {" Sign Up"}
                 </a>
             </p>
