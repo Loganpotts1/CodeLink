@@ -20,8 +20,8 @@ export default function Landing() {
 
             <section className="landing__inner">
 
-                <h2 className="codelink">
-                    <i className="fas fa-code"/>
+                <h2 className="landing__inner-logo">
+                    <sup><i className="fas fa-code"/></sup>
                     {" "}
                     Code<span>Link</span>
                 </h2>
@@ -37,7 +37,7 @@ export default function Landing() {
             </section>
 
 
-            <aside className="landing__hero"/>
+            <figure className="landing__hero"/>
 
 
         </main>
