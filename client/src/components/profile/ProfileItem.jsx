@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+// LOCAL
+import guestIcon from "../../img/CodeLink_Guest_Icon.png";
 
 export default function ProfileItem(props) {
-    const {
+    let {
         profile: {
             user: {
                 _id,
@@ -17,6 +18,10 @@ export default function ProfileItem(props) {
         }
     } = props;
 
+    if (company && company.length > 8) {
+        company = company.slice(0,8).concat("...");
+    }
+
 
     return (
         <section className="card">
@@ -26,7 +31,8 @@ export default function ProfileItem(props) {
                 {
                     avatar.length > 0 ?
                     <img src={avatar} alt="avatar"/> :
-                    <i className="fas fa-user-ninja"/>
+                    <img src={guestIcon} alt="guest-avatar" />
+                    // <i className="fas fa-user-ninja"/>
                 }
             </figure>
 
@@ -52,12 +58,17 @@ export default function ProfileItem(props) {
                 </aside>
 
                 <ul className="card__skills">
-                    {skills.slice(0,4).map((skill, index) => (
-                        <li key={index}>
-                            {/* <i className="fas fa-check"></i> */}
-                            {" " + skill}
-                        </li>
-                    ))}
+                    {skills.slice(0,3).map((skill, index) => {
+                        if (skill.length > 6) {
+                            skill = skill.slice(0, 6).concat("...");
+                        }
+
+                        return (
+                            <li key={index}>
+                                {" " + skill}
+                            </li>
+                        );
+                    })}
                 </ul>
                 
             </div>

@@ -71,18 +71,15 @@
     }
 
     &__submit{
-        display: block;
+        display: flex;
+        align-items: center;
 
         &--center {
-            margin: 0 auto;
+            justify-content: center;
         }
 
         &--right {
-            margin-left: auto;
-
-            @media screen and (max-width: $bp-mobile) {
-                margin: 0 auto;
-            }
+            justify-content: end;
         }
     }
 }

@@ -150,7 +150,10 @@ export default function AddExperience() {
                     />
                 </div>
 
-                <input className="btn btn--primary form__submit form__submit--right" type="submit" value="Submit" />
+                <div className="form__submit form__submit--right">
+                    <input className="btn btn--primary form__submit form__submit--right" type="submit" value="Submit" />
+                </div>
+
 
             </form>
 

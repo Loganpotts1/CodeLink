@@ -54,15 +54,6 @@
         }
     }
 
-    &__delete-account {
-        margin-left: 1rem;
-
-        &:hover {
-            color: var(--color-danger-alt-2);
-            background-color: var(--color-danger-alt);
-        }
-    }
-
     &--new {
         display: flex;
         flex-direction: column;

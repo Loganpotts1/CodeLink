@@ -107,9 +107,13 @@ export default function Register(props) {
                     />
                 </div>
 
-                <button type="submit" className="btn btn--login form__submit form__submit--center" onChange={onChange}>
-                    Submit <i className="fa fa-chevron-right"/>
-                </button>
+                <div className="form__submit form__submit--center">
+                    <button type="submit" className="btn btn--login form__submit form__submit--center" onChange={onChange}>
+                        Submit <i className="fa fa-chevron-right"/>
+                    </button>
+                </div>
+
+                
 
             </form>
 

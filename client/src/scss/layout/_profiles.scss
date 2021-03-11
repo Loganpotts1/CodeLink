@@ -7,18 +7,24 @@
 
     &__container {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-column-gap: 3rem;
-        grid-row-gap: 6rem;
-        padding: 0 4rem;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 2rem;
+        grid-row-gap: 4rem;
+        // padding: 0 2rem;
         margin-bottom: 5rem;
 
-        @media screen and (max-width: $bp-medium) {
-            grid-template-columns: 1fr;
-            padding: 0 12vw;
+        @media screen and (max-width: $bp-large) {
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: 6rem;
+            padding: 0 3rem;
+        }
+
+        @media screen and (max-width: $bp-desktop) {
+            grid-column-gap: 2rem;
         }
 
         @media screen and (max-width: $bp-small) {
+            grid-template-columns: repeat(1, 1fr);
             padding: 0 8vw;
         }
 

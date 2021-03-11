@@ -53,9 +53,6 @@ export default function Dashboard() {
                         <Link className="btn btn--secondary" to="/edit-profile">
                             Edit Profile
                         </Link>
-                        <button className="btn btn--tertiary dashboard__delete-account" onClick={() => dispatch(deleteAccount())}>
-                            Delete Account
-                        </button>
                     </div>
 
                 </Fragment> :

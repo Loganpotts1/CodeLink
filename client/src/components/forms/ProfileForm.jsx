@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 //  LOCAL
 import { getCurrentProfile, createProfile } from "../../actions/profile";
+import { deleteAccount } from "../../actions/auth";
 
 
 export default function CreateProfile() {
@@ -289,7 +290,17 @@ export default function CreateProfile() {
 
                 <div className="line"></div>
 
-                <input type="submit" value="Submit" className="btn btn--primary form__submit form__submit--right"/>
+                <div className="form__submit">
+
+                    <button className="btn btn--tertiary delete-account" onClick={() => dispatch(deleteAccount())}>
+                        Delete Account
+                    </button>
+
+                    <input type="submit" value="Submit" className="btn btn--primary"/>
+
+                </div>
+
+                
 
             </form>
 

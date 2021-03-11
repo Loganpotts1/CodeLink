@@ -72,9 +72,13 @@ export default function Login(props) {
                     />
                 </div>
 
-                <button type="submit" className="btn btn--login form__submit form__submit--center" onChange={onChange}>
-                    Login <i className="fa fa-chevron-right"/>
-                </button>
+                <div className="form__submit form__submit--center">
+                    <button type="submit" className="btn btn--login form__submit form__submit--center" onChange={onChange}>
+                        Login <i className="fa fa-chevron-right"/>
+                    </button>
+                </div>
+
+                
 
             </form>
 
