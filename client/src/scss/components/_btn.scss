@@ -26,21 +26,26 @@
 
     &--login {
         @extend .btn--primary;
-        display: inline-flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: repeat(2, min-content);
         align-items: center;
-        padding: 1rem 1.8rem;
+        column-gap: .8rem;
+        padding: 1rem 1.4rem;
         text-align: left;
 
         i {
             font-size: 1.1rem;
-            margin-left: 1.1rem;
-            transform: translateY(-1px);
+            // margin-left: 1.1rem;
+            // transform: translateY(-1px);
             transition: all .2s;
         }
 
         &:active i {
-            transform: translate(.5rem, -1px);
+            transform: translate(.5rem);
+        }
+
+        svg {
+            margin-left: auto;
         }
     }
 

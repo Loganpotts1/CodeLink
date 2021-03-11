@@ -1,15 +1,15 @@
 import React from "react";
 //  LOCAL
-import spinner from "../../img/spinner.gif";
+import spinner from "../../img/spinner.svg";
 
 
-export default function Spinner() {
-
+export default function Spinner(props) {
+    let { width } = props;
     
     return (
         <img 
             src={spinner}
-            style={{ width:"200px", margin:"auto", display: "block" }}
+            style={{ width: width || "100px", margin:"auto", display: "block" }}
             alt="Loading..."
         />
     );

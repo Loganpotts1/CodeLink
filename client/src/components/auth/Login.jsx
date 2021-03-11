@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 //  LOCAL
 import { login } from "../../actions/auth";
+import Spinner from "../utils/Spinner";
 
 
 export default function Login(props) {
     const { register } = props;
     const { isAuthenticated } = useSelector(state => state.auth);
     const dispatch = useDispatch();
+    let [ isSubmitting, setIsSubmitting ] = useState(false);
     
-    const [ formData, setFormData ] = React.useState({
+    const [ formData, setFormData ] = useState({
         email: "angela@gmail.com",
         password: "123456",
     });
@@ -32,6 +34,7 @@ export default function Login(props) {
     
     const onSubmit = async event => {
         event.preventDefault();
+        setIsSubmitting(true);
         
         dispatch(login({
             email,
@@ -73,8 +76,12 @@ export default function Login(props) {
                 </div>
 
                 <div className="form__submit form__submit--center">
-                    <button type="submit" className="btn btn--login form__submit form__submit--center" onChange={onChange}>
-                        Login <i className="fa fa-chevron-right"/>
+                    <button type="submit" className="btn btn--login" onChange={onChange}>
+                        <span>Login</span> {
+                            isSubmitting ?
+                            <Spinner width="1.1rem"/> :
+                            <i className="fa fa-chevron-right"/>
+                        }
                     </button>
                 </div>
 
