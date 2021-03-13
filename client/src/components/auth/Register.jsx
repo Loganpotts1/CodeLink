@@ -109,7 +109,7 @@ export default function Register(props) {
 
                 <div className="form__submit form__submit--center">
                     <button type="submit" className="btn btn--login form__submit form__submit--center" onChange={onChange}>
-                        Submit <i className="fa fa-chevron-right"/>
+                        Sign Up <i className="fa fa-chevron-right"/>
                     </button>
                 </div>
 
@@ -124,7 +124,7 @@ export default function Register(props) {
             <p className="login__switch">
                 Already have an account? 
                 <a href="#" onClick={login}>
-                    {" Sign In"}
+                    {" Log In"}
                 </a>
             </p>
 

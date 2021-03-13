@@ -63,7 +63,7 @@ export default function PostForm(props) {
                 </InlineToolbar>
             </div>
 
-            <div className="form__submit">
+            <div className="form__submit form__submit--right">
                 <input type="submit" className="btn btn--primary" value="Submit" />
             </div>
 
